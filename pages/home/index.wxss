@@ -1,0 +1,10 @@
+.home_container {
+  width: 100vw;
+  height: 100vh;
+}
+.home_container .title {
+  font-size: 60rpx;
+  color: #333;
+  font-weight: bold;
+  padding: 20rpx 40rpx;
+}

@@ -1,0 +1,13 @@
+<view class="disDrawing">
+  <van-image src="{{goods.show.img}}"
+             class="img"
+             width="100vw"
+             height="{{ goods.show.h }}"
+  />
+  <text class="slogan_1">年中盛会 乐享潮礼</text>
+  <text class="slogan_2">低至 3 折，满 2 件享额外 8 折</text>
+  <view class="description">
+    <van-icon name="/assets/touch.svg" size="50rpx" />
+    <text>{{ goods.title }}</text>
+  </view>
+</view>

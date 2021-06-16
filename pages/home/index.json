@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "dis-drawing": "./components/DisDrawing/index"
+  }
+}

@@ -1,0 +1,27 @@
+.disDrawing {
+  width: 100vw;
+  position: relative;
+}
+.disDrawing .img {
+  width: 100vw;
+  display: block;
+}
+.disDrawing .slogan_1 {
+  position: absolute;
+  top: 3%;
+  left: 5%;
+  font-size: 42rpx;
+  color: #fff;
+}
+.disDrawing .slogan_2 {
+  position: absolute;
+  bottom: 15%;
+  left: 10%;
+  font-size: 42rpx;
+  color: #fff;
+}
+.disDrawing .description {
+  font-size: 32rpx;
+  color: #333;
+  padding: 0 8rpx;
+}

@@ -1,0 +1,47 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/home/index",
+    "pages/mall/index",
+    "pages/bag/index",
+    "pages/profile/index"
+  ],
+  "usingComponents": {
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index"
+  },
+  "tabBar": {
+    "selectedColor": "#333",
+    "list": [{
+      "pagePath": "pages/home/index",
+      "iconPath": "/assets/dot_white.png",
+      "selectedIconPath": "/assets/dot.png",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/mall/index",
+      "iconPath": "/assets/dot_white.png",
+      "selectedIconPath": "/assets/dot.png",
+      "text": "商城"
+    }, {
+      "pagePath": "pages/profile/index",
+      "iconPath": "/assets/dot_white.png",
+      "selectedIconPath": "/assets/dot.png",
+      "text": "我的账户"
+    }, {
+      "pagePath": "pages/bag/index",
+      "iconPath": "/assets/dot_white.png",
+      "selectedIconPath": "/assets/dot.png",
+      "text": "购物袋"
+    }]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "B.U.Y",
+    "navigationBarTextStyle":"black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

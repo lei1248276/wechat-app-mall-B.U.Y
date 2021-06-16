@@ -1,0 +1,12 @@
+@import '../../styles/mixin.scss';
+
+.home_container{
+  @include wh(100vw, 100vh);
+
+  .title{
+    @include fc(60rpx, #333);
+    font-weight: bold;
+    padding: 20rpx 40rpx;
+  }
+
+}

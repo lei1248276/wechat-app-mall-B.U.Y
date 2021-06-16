@@ -1,0 +1,16 @@
+.index_container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.index_container .goto {
+  width: 90vw;
+  height: 120rpx;
+  background-color: transparent;
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translate(-50%, -3%);
+  z-index: 100;
+}

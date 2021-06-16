@@ -1,0 +1,6 @@
+<view class="home_container">
+  <view class="title">B.U.Y</view>
+
+  <dis-drawing goods="{{goods[0]}}"/>
+
+</view>

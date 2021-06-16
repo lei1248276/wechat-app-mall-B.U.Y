@@ -1,0 +1,17 @@
+@import "../../styles/mixin.scss";
+
+.index_container{
+  position: relative;
+  @include wh(100vw, 100vh);
+  overflow: hidden;
+
+  .goto{
+    @include wh(90vw, 120rpx);
+    background-color: transparent;
+    position: absolute;
+    left: 50%;
+    bottom: 3%;
+    transform: translate(-50%, -3%);
+    z-index: 100;
+  }
+}

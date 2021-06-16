@@ -1,0 +1,47 @@
+// 水平垂直居中
+@mixin mid($x: 50%, $y: 50%) {
+  position: absolute;
+  left: $x;
+  top: $y;
+  transform: translate3d(-$x, -$y, 0);
+}
+
+// 水平垂直居中（margin版）
+@mixin marMid($x, $y, $mx, $my) {
+  position: absolute;
+  left: $x;
+  top: $y;
+  margin-left: $mx;
+  margin-top: $my;
+}
+
+// 水平居中
+@mixin xMid($x: 50%) {
+  position: absolute;
+  left: $x;
+  transform: translate3d(-$x, 0, 0);
+}
+
+// 垂直居中
+@mixin yMid($y: 50%) {
+  position: absolute;
+  top: $y;
+  transform: translate3d(0, -$y, 0);
+}
+
+// 字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {
+  font: #{$size}/#{$line-height} $family;
+}
+
+// 字体大小、字体颜色
+@mixin fc($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+// 宽高
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}

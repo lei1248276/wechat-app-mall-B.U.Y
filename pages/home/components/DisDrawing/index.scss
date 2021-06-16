@@ -1,0 +1,26 @@
+@import "../../../../styles/mixin.scss";
+
+.disDrawing{
+  width: 100vw;
+  position: relative;
+  .img{
+    width: 100vw;
+    display: block;
+  }
+  .slogan_1{
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    @include fc(42rpx, #fff);
+  }
+  .slogan_2{
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    @include fc(42rpx, #fff);
+  }
+  .description{
+    @include fc(32rpx, #333);
+    padding: 0 8rpx;
+  }
+}
