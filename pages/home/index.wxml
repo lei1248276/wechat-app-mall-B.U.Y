@@ -1,6 +1,14 @@
+
 <view class="home_container">
   <view class="title">B.U.Y</view>
 
-  <dis-drawing goods="{{goods[0]}}"/>
+  <dis-drawing data="{{ goods[0] }}"/>
 
+  <wechat-search />
+
+  <carousels list="{{ disDrawing }}" />
+
+  <dis-drawing data="{{ goods[1] }}"/>
+
+  <goods list="{{ getGoods_1 }}" />
 </view>

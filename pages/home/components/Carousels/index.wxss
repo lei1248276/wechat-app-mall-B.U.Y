@@ -1,0 +1,11 @@
+.carousels {
+  width: 100%;
+  height: 500rpx;
+}
+.carousels .swiper {
+  width: 100%;
+  height: 370rpx;
+}
+.carousels .swiper .img {
+  margin: 0 15rpx;
+}

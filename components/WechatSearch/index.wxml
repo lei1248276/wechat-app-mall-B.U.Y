@@ -1,0 +1,17 @@
+<view class="wechat_search">
+  <view class="rule">条款与细则</view>
+  <view class="poster">
+    <van-icon class="icon"
+              name="/assets/wei.svg"
+              size="50rpx"
+    />
+    微信搜一搜
+    <van-button type="default"
+                size="small"
+                icon="search"
+                color="#07C160">
+      B.U.Y
+    </van-button>
+    获取更多潮流福利
+  </view>
+</view>

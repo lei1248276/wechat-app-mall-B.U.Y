@@ -1,0 +1,13 @@
+.indicator {
+  width: 100%;
+  height: 40rpx;
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: center;
+}
+.indicator .line {
+  width: 50rpx;
+  height: 6rpx;
+  background-color: #EBEBEB;
+  margin-right: 12rpx;
+}

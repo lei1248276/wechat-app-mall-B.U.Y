@@ -1,0 +1,21 @@
+@import "../../styles/mixin";
+
+.wechat_search{
+  margin-bottom: 80rpx;
+  text-align: center;
+
+  .rule{
+    text-decoration: underline;
+    @include fc(26rpx, #333);
+    padding: 60rpx;
+  }
+
+  .poster{
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #686868;
+    .icon{
+      vertical-align: middle;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 Component({
   properties: {
-    goods: {
+    data: {
       type: Object,
       value: {}
     }

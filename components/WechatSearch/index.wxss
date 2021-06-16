@@ -1,0 +1,18 @@
+.wechat_search {
+  margin-bottom: 80rpx;
+  text-align: center;
+}
+.wechat_search .rule {
+  text-decoration: underline;
+  font-size: 26rpx;
+  color: #333;
+  padding: 60rpx;
+}
+.wechat_search .poster {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #686868;
+}
+.wechat_search .poster .icon {
+  vertical-align: middle;
+}
