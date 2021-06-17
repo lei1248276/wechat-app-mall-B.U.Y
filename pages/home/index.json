@@ -2,6 +2,6 @@
   "usingComponents": {
     "dis-drawing": "./components/DisDrawing/index",
     "carousels": "./components/Carousels/index",
-    "goods": "./components/Goods/index"
+    "goods": "/components/Goods/index"
   }
 }

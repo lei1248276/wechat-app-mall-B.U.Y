@@ -152,9 +152,7 @@ module.exports = {
     'no-useless-escape': 0,
     'no-whitespace-before-property': 2,
     'no-with': 2,
-    'one-var': [2, {
-      'initialized': 'never'
-    }],
+    'one-var': [2],
     'operator-linebreak': [2, 'after', {
       'overrides': {
         '?': 'before',

@@ -40,6 +40,22 @@
   color: $color;
 }
 
+// 文字省略
+@mixin textSinOmit() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 文字多行省略
+@mixin testMulOmit($col: 2) {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $col;
+  -webkit-box-orient: vertical;
+}
+
 // 宽高
 @mixin wh($width, $height) {
   width: $width;

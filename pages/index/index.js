@@ -1,4 +1,4 @@
-import { getDisDrawing, getGoods } from '../../api/index';
+import { getDisDrawing, getGoods } from '../../api/home';
 
 const globalData = getApp().globalData;
 
@@ -18,7 +18,7 @@ Page({
     getGoods({
       params: { type: 'sell', page: 1 },
       success(res) {
-        globalData.goods = res.data.data.list;
+        globalData.goods = res.data.data;
       },
       fail(e) {
         console.log(e);

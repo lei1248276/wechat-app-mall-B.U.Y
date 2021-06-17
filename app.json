@@ -4,7 +4,8 @@
     "pages/home/index",
     "pages/mall/index",
     "pages/bag/index",
-    "pages/profile/index"
+    "pages/profile/index",
+    "pages/goodsDetail/index"
   ],
   "usingComponents": {
     "wechat-search": "components/WechatSearch/index",
@@ -12,7 +13,8 @@
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "van-image": "@vant/weapp/image/index",
     "van-button": "@vant/weapp/button/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-loading": "@vant/weapp/loading/index"
   },
   "tabBar": {
     "selectedColor": "#333",

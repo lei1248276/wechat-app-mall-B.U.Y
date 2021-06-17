@@ -6,7 +6,7 @@
           next-margin="40rpx"
           bind:change="onChange">
     <block wx:for="{{ list }}" wx:key="title">
-      <swiper-item>
+      <swiper-item bind:tap="toMall">
         <van-image src="{{ item.image923 }}"
                    class="img"
                    width="85vw"

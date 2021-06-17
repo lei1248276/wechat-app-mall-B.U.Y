@@ -1,0 +1,3 @@
+<view class="goods_detail_container">
+  {{ data }}
+</view>

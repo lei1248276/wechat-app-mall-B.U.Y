@@ -1,21 +1,61 @@
-const computed = require('miniprogram-computed').behavior;
+import { getGoods } from '../../api/home';
+
 const globalData = getApp().globalData;
 
 Page({
-  behaviors: [computed],
   data: {
+    loaded: false,
+    photo: '',
     disDrawing: [],
-    goods: []
+    goods: [
+      { drawing: '', list: [] }
+    ],
+    page: 1,
+    type: ''
   },
   onLoad: function(options) {
+    const globalGoods = globalData.goods,
+      list = globalGoods.list,
+      photo = list.splice(0, 1)[0],
+      goods = { drawing: list[0], list: list.slice(1, list.length) };
     this.setData({
       disDrawing: globalData.disDrawing,
-      goods: globalData.goods
+      photo,
+      goods: [goods],
+      page: globalGoods.page,
+      type: globalGoods.sort
     });
   },
-  computed: {
-    getGoods_1(data) {
-      return data.goods.slice(2, 31);
-    }
+  onReady() {
+    this.fetchGoods();
+  },
+  onReachBottom() {
+    this.fetchGoods();
+  },
+  fetchGoods() {
+    this.startLoad();
+
+    const { type, page, goods } = this.data;
+    getGoods({
+      params: { type, page: page + 1 },
+      success: res => {
+        const data = res.data.data,
+          newGoods = { drawing: data.list[0], list: data.list.slice(1, data.list.length) };
+        this.setData({
+          goods: [...goods, newGoods],
+          type: data.sort,
+          page: data.page,
+          loaded: false
+        });
+      },
+      fail(e) {
+        console.log(e);
+      }
+    });
+  },
+  startLoad() {
+    this.setData({
+      loaded: true
+    });
   }
 });

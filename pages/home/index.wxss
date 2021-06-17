@@ -3,7 +3,12 @@
 }
 .home_container .title {
   font-size: 60rpx;
-  color: #333;4
+  color: #333;
   font-weight: bold;
   padding: 20rpx 40rpx;
+}
+.home_container .loading {
+  position: absolute;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
 }

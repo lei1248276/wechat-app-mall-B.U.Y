@@ -1,14 +1,23 @@
-
 <view class="home_container">
   <view class="title">B.U.Y</view>
 
-  <dis-drawing data="{{ goods[0] }}"/>
+  <dis-drawing data="{{ photo }}"/>
 
   <wechat-search />
 
   <carousels list="{{ disDrawing }}" />
 
-  <dis-drawing data="{{ goods[1] }}"/>
+  <block wx:for="{{ goods }}" wx:key="index">
+    <dis-drawing data="{{ item.drawing }}"/>
 
-  <goods list="{{ getGoods_1 }}" />
+    <goods list="{{ item.list }}" />
+  </block>
+
+  <van-loading wx:if="{{ loaded }}"
+               class="loading"
+               type="spinner"
+               color="#1989fa"
+               size="36" 
+               text-size="18">加载中...
+  </van-loading>
 </view>

@@ -18,6 +18,11 @@ Component({
       this.setData({
         index: e.detail
       });
+    },
+    toMall() {
+      wx.switchTab({
+        url: '/pages/mall/index'
+      });
     }
   }
 });

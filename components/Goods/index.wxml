@@ -1,0 +1,28 @@
+<view class="goods">
+  <scroll-view class="scroll_view"
+               scroll-x
+               enable-flex
+               bind:scroll="onScroll">
+    <view class="goods_item"
+          wx:for="{{ list }}"
+          wx:key="iid"
+          data-iid="{{ item.iid }}"
+          bind:tap="toGoodsDetail">
+      <van-image src="{{ item.show.img }}"
+                 width="{{ item.show.w + 'rpx' }}"
+                 height="{{ item.show.h + 'rpx' }}"
+                 fit="cover"
+                 lazy-load
+      />
+      <view class="item_name">{{ item.title }}</view>
+      <text class="discount_price">￥{{ item.price }}</text>
+      <text class="origin_price">{{ item.orgPrice }}</text>
+    </view>
+  </scroll-view>
+
+  <van-progress percentage="{{ percentage }}"
+                show-pivot="{{ false }}"
+                color="#000000"
+                stroke-width="4rpx"
+  />
+</view>

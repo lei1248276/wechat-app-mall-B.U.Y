@@ -9,4 +9,8 @@
     padding: 20rpx 40rpx;
   }
 
+  .loading{
+    @include xMid();
+  }
+
 }
