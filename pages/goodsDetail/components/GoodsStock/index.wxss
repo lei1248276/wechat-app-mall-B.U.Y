@@ -1,0 +1,19 @@
+.goods_stock {
+  padding: 15rpx;
+}
+.goods_stock .item_color, .goods_stock .item_size {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20rpx;
+}
+.cell_title {
+  font-size: 38rpx !important;
+  color: #222 !important;
+  font-weight: bold !important;
+}
+
+.cell_value {
+  color: #00BFFFFF !important;
+}

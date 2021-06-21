@@ -1,0 +1,24 @@
+@import "../../../../styles/mixin";
+
+.goods_stock{
+  padding: 15rpx;
+
+  .item_color{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20rpx;
+  }
+  .item_size{
+    @extend .item_color;
+  }
+}
+.cell_title{
+  font-size: 38rpx !important;
+  color: #222 !important;
+  font-weight: bold !important;
+}
+.cell_value{
+  color: #00BFFFFF !important;
+}

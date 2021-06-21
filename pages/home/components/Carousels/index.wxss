@@ -4,7 +4,7 @@
 }
 .carousels .swiper {
   width: 100%;
-  height: 370rpx;
+  height: 80%;
 }
 .carousels .swiper .img {
   margin: 0 15rpx;

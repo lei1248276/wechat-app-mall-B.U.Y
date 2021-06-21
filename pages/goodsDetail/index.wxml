@@ -1,3 +1,21 @@
 <view class="goods_detail_container">
-  {{ data }}
+  <van-image src="{{ topBar.img }}"
+             width="446rpx"
+             height="86rpx"
+  />
+
+  <goods-carousels list="{{ topImages }}" discount="{{ itemInfo.discountDesc }}"/>
+
+  <view class="goods_detail">
+    <view class="price">
+      <text class="discount_price">{{ itemInfo.price }}</text>
+      <text class="old_price">{{ itemInfo.oldPrice }}</text>
+    </view>
+    <view class="columns">
+      <text class="info" wx:for="{{ columns }}" wx:key="item">{{ item }}</text>
+    </view>
+    <view class="title">{{ itemInfo.title }}</view>
+  </view>
+
+  <goods-stock list="{{ stock }}" />
 </view>

@@ -1,8 +1,8 @@
 <view class="indicator">
   <view class="line"
-        style="background: {{ i === index ? '#666' : '#EBEBEB' }}"
+        style="background: {{ i === index ? '#666' : '#EBEBEB' }};width: {{ w }};height: {{ h }}"
         wx:for="{{ count }}"
-        wx:key="*this"
+        wx:key="index"
         bind:tap="onClick"
         data-index="{{ index }}">
   </view>

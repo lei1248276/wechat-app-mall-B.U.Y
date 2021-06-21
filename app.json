@@ -9,12 +9,15 @@
   ],
   "usingComponents": {
     "wechat-search": "components/WechatSearch/index",
+    "indicator": "components/Indicator/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "van-image": "@vant/weapp/image/index",
     "van-button": "@vant/weapp/button/index",
     "van-icon": "@vant/weapp/icon/index",
-    "van-loading": "@vant/weapp/loading/index"
+    "van-loading": "@vant/weapp/loading/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
   },
   "tabBar": {
     "selectedColor": "#333",

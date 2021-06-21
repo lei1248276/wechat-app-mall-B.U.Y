@@ -1,29 +1,23 @@
-import { getGoods } from '../../api/home';
-
-const globalData = getApp().globalData;
+const APP = getApp(),
+  cache = APP.globalData.cache;
 
 Page({
   data: {
     loaded: false,
     photo: '',
-    disDrawing: [],
-    goods: [
-      { drawing: '', list: [] }
-    ],
-    page: 1,
-    type: ''
+    goods: [],
+    disDrawing: ''
   },
-  onLoad: function(options) {
-    const globalGoods = globalData.goods,
-      list = globalGoods.list,
-      photo = list.splice(0, 1)[0],
-      goods = { drawing: list[0], list: list.slice(1, list.length) };
+  onLoad: function() {
+    const disDrawing = cache.get('disDrawing'),
+      goods = cache.get('goods'),
+      list = goods[0].list,
+      photo = list.splice(0, 1)[0];
+
     this.setData({
-      disDrawing: globalData.disDrawing,
       photo,
-      goods: [goods],
-      page: globalGoods.page,
-      type: globalGoods.sort
+      goods,
+      disDrawing
     });
   },
   onReady() {
@@ -33,27 +27,15 @@ Page({
     this.fetchGoods();
   },
   fetchGoods() {
-    this.startLoad();
+    this.loadStart();
+    const goods = cache.get('goods'),
+      { type, page } = goods[goods.length - 1];
 
-    const { type, page, goods } = this.data;
-    getGoods({
-      params: { type, page: page + 1 },
-      success: res => {
-        const data = res.data.data,
-          newGoods = { drawing: data.list[0], list: data.list.slice(1, data.list.length) };
-        this.setData({
-          goods: [...goods, newGoods],
-          type: data.sort,
-          page: data.page,
-          loaded: false
-        });
-      },
-      fail(e) {
-        console.log(e);
-      }
+    APP._fetchGoods({ type, page: page + 1 }, goods => {
+      this.setData({ goods, loaded: false });
     });
   },
-  startLoad() {
+  loadStart() {
     this.setData({
       loaded: true
     });

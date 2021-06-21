@@ -1,0 +1,41 @@
+<view class="goods_stock">
+    <van-cell title="颜色"
+              value="查看大图"
+              border="{{ false }}"
+              title-class="cell_title"
+              value-class="cell_value"
+              bind:click="onClick">
+        <van-icon slot="right-icon"
+                  color="#00BFFFFF"
+                  name="search"
+        />
+    </van-cell>
+    <view class="item_color">
+        <van-button wx:for="{{ list.props[0].list }}"
+                    wx:key="index"
+                    size="small"
+                    plain>
+            {{ item.name}}
+        </van-button>
+    </view>
+
+    <van-cell title="尺码"
+              value="查看尺码表"
+              border="{{ false }}"
+              title-class="cell_title"
+              value-class="cell_value"
+              bind:click="onClick">
+        <van-icon slot="right-icon"
+                  color="#00BFFFFF"
+                  name="search"
+        />
+    </van-cell>
+    <view class="item_size">
+        <van-button wx:for="{{ list.props[1].list }}"
+                    wx:key="index"
+                    size="small"
+                    plain>
+            {{ item.name}}
+        </van-button>
+    </view>
+</view>

@@ -5,17 +5,16 @@
           previous-margin="40rpx"
           next-margin="40rpx"
           bind:change="onChange">
-    <block wx:for="{{ list }}" wx:key="title">
-      <swiper-item bind:tap="toMall">
-        <van-image src="{{ item.image923 }}"
-                   class="img"
-                   width="85vw"
-                   height="100%"
-                   fit="cover"
-                   lazy-load
-        />
-      </swiper-item>
-    </block>
+    <swiper-item wx:for="{{ list }}"
+                 wx:key="index"
+                 bind:tap="toMall">
+      <van-image src="{{ item.image923 }}"
+                 class="img"
+                 width="100%"
+                 height="100%"
+                 lazy-load
+      />
+    </swiper-item>
   </swiper>
 
   <indicator bind:onClick="onClick"

@@ -1,4 +1,4 @@
-import { getGoodsDetail } from '../../api/goodsDetail';
+const APP = getApp();
 
 Component({
   properties: {
@@ -27,11 +27,8 @@ Component({
       wx.navigateTo({
         url: `/pages/goodsDetail/index?iid=${iid}`,
         success(res) {
-          getGoodsDetail({
-            params: { iid },
-            success({ data: { result }}) {
-              res.eventChannel.emit('acceptGoodsDetail', result);
-            }
+          APP._fetchGoodsDetail({ iid }, iid, data => {
+            res.eventChannel.emit('acceptGoodsDetail', data);
           });
         }
       });

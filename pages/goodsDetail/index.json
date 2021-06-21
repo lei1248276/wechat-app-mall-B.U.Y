@@ -1,4 +1,6 @@
 {
   "usingComponents": {
+    "goods-carousels": "./components/GoodsCarousels/index",
+    "goods-stock": "./components/GoodsStock/index"
   }
 }

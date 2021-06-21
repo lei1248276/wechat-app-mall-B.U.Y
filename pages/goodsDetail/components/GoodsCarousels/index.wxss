@@ -1,0 +1,33 @@
+.goods-carousels {
+  width: 100%;
+  height: 70vh;
+  position: relative;
+}
+.goods-carousels .swiper {
+  width: 100%;
+  height: 100%;
+}
+.goods-carousels .discount {
+  position: absolute;
+  top: 2%;
+  left: 5%;
+  border: 2rpx solid #B20F25;
+  font-size: 26rpx;
+  color: #B20F25;
+  font-weight: bold;
+}
+.goods-carousels .heart {
+  position: absolute;
+  top: 2%;
+  right: 5%;
+}
+.goods-carousels .indicator {
+  position: absolute;
+  bottom: 1%;
+  left: 5%;
+}
+.goods-carousels .btn {
+  position: absolute;
+  bottom: 1%;
+  right: 5%;
+}
