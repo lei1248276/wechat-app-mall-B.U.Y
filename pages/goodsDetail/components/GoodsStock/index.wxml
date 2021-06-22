@@ -11,9 +11,10 @@
         />
     </van-cell>
     <view class="item_color">
-        <van-button wx:for="{{ list.props[0].list }}"
+        <van-button class="btn"
+                    wx:for="{{ list.props[0].list }}"
                     wx:key="index"
-                    size="small"
+                    custom-style="min-width: 150rpx"
                     plain>
             {{ item.name}}
         </van-button>
@@ -26,14 +27,15 @@
               value-class="cell_value"
               bind:click="onClick">
         <van-icon slot="right-icon"
-                  color="#00BFFFFF"
+                  color="#70a7e8"
                   name="search"
         />
     </van-cell>
     <view class="item_size">
-        <van-button wx:for="{{ list.props[1].list }}"
+        <van-button class="btn"
+                    wx:for="{{ list.props[1].list }}"
                     wx:key="index"
-                    size="small"
+                    custom-style="min-width: 150rpx"
                     plain>
             {{ item.name}}
         </van-button>

@@ -1,10 +1,10 @@
-@import '../../styles/mixin.scss';
+@import '../../styles/index';
 
 .home_container{
   width: 100vw;
 
   .title{
-    @include fc(60rpx, #333);
+    @include fc(60rpx, $uni_black);
     font-weight: bold;
     padding: 20rpx 40rpx;
   }

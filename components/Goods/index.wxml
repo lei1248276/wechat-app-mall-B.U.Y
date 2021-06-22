@@ -22,7 +22,7 @@
 
   <van-progress percentage="{{ percentage }}"
                 show-pivot="{{ false }}"
-                color="#000000"
+                color="#222"
                 stroke-width="4rpx"
   />
 </view>

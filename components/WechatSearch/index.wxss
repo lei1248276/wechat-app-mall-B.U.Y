@@ -5,7 +5,7 @@
 .wechat_search .rule {
   text-decoration: underline;
   font-size: 26rpx;
-  color: #333;
+  color: #666;
   padding: 60rpx;
 }
 .wechat_search .poster {

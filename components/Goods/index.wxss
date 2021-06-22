@@ -13,7 +13,7 @@
   height: 100%;
   flex-shrink: 0;
   font-size: 28rpx;
-  color: #555;
+  color: #666;
 }
 .goods .scroll_view .goods_item .item_name {
   overflow: hidden;
@@ -29,6 +29,6 @@
 .goods .scroll_view .goods_item .origin_price {
   position: relative;
   right: -30rpx;
-  color: #B8B8B8;
+  color: #98989f;
   text-decoration: line-through;
 }

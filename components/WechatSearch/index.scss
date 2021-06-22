@@ -1,4 +1,4 @@
-@import "../../styles/mixin";
+@import "../../styles/index";
 
 .wechat_search{
   margin-bottom: 80rpx;
@@ -6,7 +6,7 @@
 
   .rule{
     text-decoration: underline;
-    @include fc(26rpx, #333);
+    @include fc(26rpx, $uni_black);
     padding: 60rpx;
   }
 

@@ -1,0 +1,63 @@
+@import "../../../../styles/index";
+
+.goods_params{
+  padding: 20rpx;
+
+  .title{
+    font-size: 38rpx;
+    color: $uni_black;
+    font-weight: bold;
+    margin-bottom: 15rpx;
+  }
+
+  .list{
+    padding: 20rpx 0;
+  }
+  .params_key{
+    color: $uni_grey;
+  }
+  .params_value{
+    color: $uni_black;
+  }
+
+  .look{
+    text-align: center;
+    color: $uni_blue;
+    padding: 20rpx;
+  }
+
+  .pop_params{
+    background-color: #fff;
+    border-radius: 20rpx 20rpx 0 0;
+    @include fc(40rpx, $uni_black);
+    text-align: center;
+    padding: 34rpx;
+    border-bottom: 2rpx solid $uni_grey;
+  }
+  .box{
+    width: 100%;
+    margin-bottom: 130rpx;
+  }
+  .allList{
+    border-bottom: 2rpx solid $uni_grey;
+    padding: 30rpx;
+  }
+
+  .btn{
+    position: fixed;
+    bottom: 1%;
+    left: 1%;
+    right: 1%;
+    &:before{
+      content: '';
+      width: 100vw;
+      height: 130rpx;
+      border-top: 2rpx solid $uni_grey;
+      background-color: #fff;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<view class="goods_info">
+    <view class="price">
+        <text class="discount_price">{{ list.price }}</text>
+        <text class="old_price">{{ list.oldPrice }}</text>
+    </view>
+    <view class="columns">
+        <text class="info" wx:for="{{ list.columns }}" wx:key="item">{{ item }}</text>
+    </view>
+    <view class="title">{{ list.title }}</view>
+</view>

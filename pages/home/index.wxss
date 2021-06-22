@@ -3,7 +3,7 @@
 }
 .home_container .title {
   font-size: 60rpx;
-  color: #333;
+  color: #666;
   font-weight: bold;
   padding: 20rpx 40rpx;
 }

@@ -1,0 +1,32 @@
+<view class="goods_params">
+  <view class="title">{{ list.key }}</view>
+  <van-row custom-class="list" wx:for="{{ temp }}" wx:key="key">
+    <van-col custom-class="params_key" span="4">{{ item.key }}</van-col>
+    <van-col custom-class="params_value" span="20">{{ item.value }}</van-col>
+  </van-row>
+  <view class="look" bind:tap="onLookMore">查看全部</view>
+  <van-popup
+    show="{{ show }}"
+    position="bottom"
+    custom-style="height: 65%;"
+    round
+    closeable
+    close-icon="close"
+    bind:close="onClose"
+  >
+    <view class="pop_params">商品参数</view>
+    <view class="box">
+      <van-row custom-class="allList" wx:for="{{ list.set }}" wx:key="key">
+        <van-col custom-class="params_key" span="4">{{ item.key }}</van-col>
+        <van-col span="20">{{ item.value }}</van-col>
+      </van-row>
+    </view>
+    <van-button class="btn"
+                bind:click="onClose"
+                size="large"
+                custom-style="border-radius: 10rpx"
+                color="#f03867">
+      知道了
+    </van-button>
+  </van-popup>
+</view>

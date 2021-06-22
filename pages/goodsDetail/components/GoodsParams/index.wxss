@@ -1,0 +1,57 @@
+.goods_params {
+  padding: 20rpx;
+}
+.goods_params .title {
+  font-size: 38rpx;
+  color: #666;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+}
+.goods_params .list {
+  padding: 20rpx 0;
+}
+.goods_params .params_key {
+  color: #98989f;
+}
+.goods_params .params_value {
+  color: #666;
+}
+.goods_params .look {
+  text-align: center;
+  color: #70a7e8;
+  padding: 20rpx;
+}
+.goods_params .pop_params {
+  background-color: #fff;
+  border-radius: 20rpx 20rpx 0 0;
+  font-size: 40rpx;
+  color: #666;
+  text-align: center;
+  padding: 34rpx;
+  border-bottom: 2rpx solid #98989f;
+}
+.goods_params .box {
+  width: 100%;
+  margin-bottom: 130rpx;
+}
+.goods_params .allList {
+  border-bottom: 2rpx solid #98989f;
+  padding: 30rpx;
+}
+.goods_params .btn {
+  position: fixed;
+  bottom: 1%;
+  left: 1%;
+  right: 1%;
+}
+.goods_params .btn:before {
+  content: "";
+  width: 100vw;
+  height: 130rpx;
+  border-top: 2rpx solid #98989f;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

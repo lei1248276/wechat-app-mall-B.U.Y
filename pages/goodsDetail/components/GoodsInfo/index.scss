@@ -1,0 +1,40 @@
+@import "../../../../styles/index";
+
+.goods_info{
+  padding: 10rpx 20rpx;
+  color: $uni_black;
+
+  .price{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 44rpx;
+    margin-bottom: 10rpx;
+    .discount_price{
+      color: $uni_red;
+      margin-right: 30rpx;
+    }
+    .old_price{
+      color: $uni_grey;
+      text-decoration: line-through;
+    }
+  }
+
+  .columns{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10rpx;
+    .info{
+      @include fc(24rpx, $uni_white);
+      padding: 4rpx;
+      margin-right: 20rpx;
+      background-color: $uni_green;
+    }
+  }
+
+  .title{
+    font-weight: bold;
+    margin-bottom: 10rpx;
+  }
+}

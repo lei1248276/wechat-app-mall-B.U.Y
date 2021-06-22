@@ -1,0 +1,36 @@
+.goods_info {
+  padding: 10rpx 20rpx;
+  color: #666;
+}
+.goods_info .price {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 44rpx;
+  margin-bottom: 10rpx;
+}
+.goods_info .price .discount_price {
+  color: #B20F25;
+  margin-right: 30rpx;
+}
+.goods_info .price .old_price {
+  color: #98989f;
+  text-decoration: line-through;
+}
+.goods_info .columns {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.goods_info .columns .info {
+  font-size: 24rpx;
+  color: #f5f5f5;
+  padding: 4rpx;
+  margin-right: 20rpx;
+  background-color: #3fb326;
+}
+.goods_info .title {
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}

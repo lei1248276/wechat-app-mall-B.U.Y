@@ -8,12 +8,15 @@
   flex-wrap: wrap;
   margin-bottom: 20rpx;
 }
+.goods_stock .btn {
+  margin-right: 20rpx;
+}
 .cell_title {
   font-size: 38rpx !important;
-  color: #222 !important;
+  color: #666 !important;
   font-weight: bold !important;
 }
 
 .cell_value {
-  color: #00BFFFFF !important;
+  color: #70a7e8 !important;
 }

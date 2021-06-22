@@ -32,7 +32,7 @@
                 icon="share"
                 type="mini"
                 plain
-                custom-style="border: 4rpx solid #222;">
+                custom-style="border: 2rpx solid #222;">
         分享
     </van-button>
 </view>

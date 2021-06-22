@@ -1,4 +1,4 @@
-@import "../../../../styles/mixin";
+@import "../../../../styles/index";
 
 .goods_stock{
   padding: 15rpx;
@@ -10,15 +10,18 @@
     flex-wrap: wrap;
     margin-bottom: 20rpx;
   }
+  .btn{
+    margin-right: 20rpx;
+  }
   .item_size{
     @extend .item_color;
   }
 }
 .cell_title{
   font-size: 38rpx !important;
-  color: #222 !important;
+  color: $uni_black !important;
   font-weight: bold !important;
 }
 .cell_value{
-  color: #00BFFFFF !important;
+  color: $uni_blue !important;
 }
