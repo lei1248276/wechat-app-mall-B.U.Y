@@ -1,0 +1,11 @@
+<van-cell title="{{ title }}"
+          value="{{ value }}"
+          border="{{ false }}"
+          title-class="cell_title"
+          value-class="cell_value"
+          bind:click="onClick">
+  <van-icon slot="right-icon"
+            color="#70a7e8"
+            name="search"
+  />
+</van-cell>

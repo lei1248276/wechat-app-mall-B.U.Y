@@ -1,0 +1,24 @@
+.goods_rate {
+  padding-bottom: 30rpx;
+}
+.goods_rate .score {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.goods_rate .score .item {
+  background-color: #f688a4;
+  font-size: 26rpx;
+  color: #f5f5f5;
+  padding: 6rpx;
+}
+.goods_rate .user {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  padding: 30rpx;
+  font-size: 28rpx;
+  color: #98989f;
+}

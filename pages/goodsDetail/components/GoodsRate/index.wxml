@@ -1,0 +1,32 @@
+<view class="goods_rate">
+  <title-cell title="{{ '评价（' + list.cRate + '）' }}" value="查看全部"/>
+  <view class="score">
+    <view class="item" wx:for="{{ list.score }}"
+          wx:key="name">
+      {{ item.name + ': ' + item.score}}
+    </view>
+  </view>
+  <view class="user" wx:for="{{ list.list }}" wx:key="index">
+    <van-image src="{{ item.user.avatar}}"
+               width="70rpx"
+               height="70rpx"
+               round
+               lazyload
+    />
+    {{ item.user.uname }}
+    <text>{{ item.content }}</text>
+    <van-image wx:for="{{ item.images }}"
+               wx:key="index"
+               wx:for-item="img"
+               src="{{ img }}"
+               width="300rpx"
+               height="250rpx"
+               lazyload
+               bind:click="onImage"
+               data-imgs="{{ item.images }}"
+               data-img="{{ img }}"
+    />
+    <text wx:for="{{ item.extraInfo }}" wx:key="index">{{ item }}</text>
+    <text>{{ item.style }}</text>
+  </view>
+</view>

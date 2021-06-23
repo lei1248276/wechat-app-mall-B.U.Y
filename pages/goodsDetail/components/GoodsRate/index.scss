@@ -1,0 +1,26 @@
+@import "../../../../styles/index";
+
+.goods_rate{
+  padding-bottom: 30rpx;
+
+  .score{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    .item{
+      background-color: #f688a4;
+      @include fc(26rpx, $uni_white);
+      padding: 6rpx;
+    }
+  }
+
+  .user{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20rpx;
+    padding: 30rpx;
+    @include fc(28rpx, $uni_grey);
+  }
+}

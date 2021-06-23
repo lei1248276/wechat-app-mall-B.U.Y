@@ -8,6 +8,7 @@
     "pages/goodsDetail/index"
   ],
   "usingComponents": {
+    "title-cell": "components/TitleCell/index",
     "wechat-search": "components/WechatSearch/index",
     "indicator": "components/Indicator/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
@@ -20,7 +21,8 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index"
   },
   "tabBar": {
     "selectedColor": "#222",

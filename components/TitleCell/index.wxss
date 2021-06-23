@@ -1,0 +1,9 @@
+.cell_title {
+  font-size: 38rpx !important;
+  color: #666 !important;
+  font-weight: bold !important;
+}
+
+.cell_value {
+  color: #70a7e8 !important;
+}

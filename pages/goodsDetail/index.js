@@ -5,7 +5,8 @@ Page({
     itemInfo: {},
     columns: [],
     stock: {},
-    params: {}
+    params: {},
+    rate: {}
   },
   onLoad: function() {
     const eventChannel = this.getOpenerEventChannel();
@@ -17,7 +18,10 @@ Page({
         itemInfo: data.itemInfo,
         'itemInfo.columns': data.columns,
         stock: data.skuInfo,
-        params: data.itemParams.info
+        'stock.sizeTable': data.itemParams.rule,
+        params: data.itemParams.info,
+        rate: data.rate,
+        'rate.score': data.shopInfo.score
       });
     });
   }

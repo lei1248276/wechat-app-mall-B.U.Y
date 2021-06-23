@@ -1,14 +1,14 @@
 @import "../../../../styles/index";
 
 .goods_stock{
-  padding: 15rpx;
 
   .item_color{
     display: flex;
     justify-content: left;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 20rpx;
+    padding: 0 20rpx;
+    gap: 10rpx 0;
   }
   .btn{
     margin-right: 20rpx;
@@ -16,12 +16,16 @@
   .item_size{
     @extend .item_color;
   }
-}
-.cell_title{
-  font-size: 38rpx !important;
-  color: $uni_black !important;
-  font-weight: bold !important;
-}
-.cell_value{
-  color: $uni_blue !important;
+
+  .size_table{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 20rpx 10rpx;
+    .item{
+      flex-basis: 145rpx;
+      flex-shrink: 0;
+    }
+  }
 }

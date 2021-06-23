@@ -10,6 +10,8 @@
 
   <goods-stock list="{{ stock }}"/>
 
+  <goods-rate list="{{ rate }}"/>
+
   <goods-params list="{{ params }}"/>
 
   <van-goods-action>
