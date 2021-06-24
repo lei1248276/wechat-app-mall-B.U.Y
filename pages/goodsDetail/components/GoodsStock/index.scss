@@ -1,6 +1,7 @@
 @import "../../../../styles/index";
 
 .goods_stock{
+  margin-bottom: 40rpx;
 
   .item_color{
     display: flex;
@@ -8,10 +9,9 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 0 20rpx;
-    gap: 10rpx 0;
   }
   .btn{
-    margin-right: 20rpx;
+    margin: 10rpx 10rpx 10rpx 0;
   }
   .item_size{
     @extend .item_color;

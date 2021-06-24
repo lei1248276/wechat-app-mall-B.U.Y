@@ -1,0 +1,14 @@
+.goods_detail_info .title {
+  padding: 20rpx;
+  font-size: 38rpx;
+  color: #666;
+  font-weight: bold;
+}
+.goods_detail_info .description {
+  padding: 20rpx 40rpx;
+}
+.goods_detail_info .lookMore {
+  text-align: center;
+  color: #70a7e8;
+  padding: 20rpx;
+}

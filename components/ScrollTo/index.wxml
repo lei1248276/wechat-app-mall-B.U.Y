@@ -1,0 +1,6 @@
+<van-button class="scroll_to"
+            icon="back-top"
+            round
+            color="linear-gradient(to right, #4bb0ff, #6149f6)"
+            bind:tap="onScrollTo"
+/>

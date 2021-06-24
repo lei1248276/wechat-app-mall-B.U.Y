@@ -14,6 +14,7 @@
   margin-right: 30rpx;
 }
 .goods_info .price .old_price {
+  font-size: 28rpx;
   color: #98989f;
   text-decoration: line-through;
 }

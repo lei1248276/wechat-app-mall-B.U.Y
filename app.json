@@ -8,7 +8,7 @@
     "pages/goodsDetail/index"
   ],
   "usingComponents": {
-    "title-cell": "components/TitleCell/index",
+    "scroll-to": "components/ScrollTo/index",
     "wechat-search": "components/WechatSearch/index",
     "indicator": "components/Indicator/index",
     "van-tabbar": "@vant/weapp/tabbar/index",

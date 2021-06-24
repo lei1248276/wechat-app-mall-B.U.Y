@@ -13,7 +13,7 @@
     <goods list="{{ item.list }}" />
   </block>
 
-  <van-loading wx:if="{{ loaded }}"
+  <van-loading hidden="{{ loaded }}"
                class="loading"
                type="spinner"
                color="#1989fa"

@@ -1,6 +1,6 @@
 // app.js
 import { fetchDisDrawing, fetchGoods } from './api/home';
-import { fetchGoodsDetail } from './api/goodsDetail';
+import { fetchGoodsDetail, fetchGoodsRecommend } from './api/goodsDetail';
 
 App({
   globalData: {
@@ -14,15 +14,21 @@ App({
   send(key, value, updateCb) {
     const { cache } = this.globalData;
     cache.set(key, value);
-    updateCb && updateCb(cache.get(key));
+    updateCb && updateCb(cache.get(key), cache);
   },
 
   // ! 所有页面的 API 接口方法
   _fetchDisDrawing(updateCb) {
-    fetchDisDrawing({
-      success: res => this.send('disDrawing', res.data.data.banner.list, updateCb),
-      fail: e => console.log(e)
-    });
+    const value = this.globalData.cache.get(`disDrawing`);
+    if (value) {
+      this.send(`disDrawing`, value, updateCb);
+      console.log(`cache`);
+    } else {
+      fetchDisDrawing({
+        success: res => this.send('disDrawing', res.data.data.banner.list, updateCb),
+        fail: err => console.log(err)
+      });
+    }
   },
   _fetchGoods(params, updateCb) {
     fetchGoods({
@@ -39,19 +45,31 @@ App({
         goods.push(item);
         this.send('goods', goods, updateCb);
       },
-      fail: e => console.log(e)
+      fail: err => console.log(err)
     });
   },
   _fetchGoodsDetail(params, query, updateCb) {
     const value = this.globalData.cache.get(`goodsDetail${query}`);
     if (value) {
       this.send(`goodsDetail${query}`, value, updateCb);
-    } else {
       console.log(`cache`);
+    } else {
       fetchGoodsDetail({
         params,
         success: res => this.send(`goodsDetail${query}`, res.data.result, updateCb),
-        fail: e => console.log(e)
+        fail: err => console.log(err)
+      });
+    }
+  },
+  _fetchGoodsRecommend(updateCb) {
+    const value = this.globalData.cache.get(`goodsRecommend`);
+    if (value) {
+      this.send(`goodsRecommend`, value, updateCb);
+      console.log(`cache`);
+    } else {
+      fetchGoodsRecommend({
+        success: res => this.send('goodsRecommend', res.data.data.list, updateCb),
+        fail: err => console.log(err)
       });
     }
   }

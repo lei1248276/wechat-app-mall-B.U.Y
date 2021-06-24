@@ -15,7 +15,7 @@
       margin-right: 30rpx;
     }
     .old_price{
-      color: $uni_grey;
+      @include fc(28rpx, $uni_grey);
       text-decoration: line-through;
     }
   }

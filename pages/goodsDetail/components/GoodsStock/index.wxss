@@ -1,13 +1,15 @@
+.goods_stock {
+  margin-bottom: 40rpx;
+}
 .goods_stock .item_color, .goods_stock .item_size {
   display: flex;
   justify-content: left;
   align-items: center;
   flex-wrap: wrap;
   padding: 0 20rpx;
-  gap: 10rpx 0;
 }
 .goods_stock .btn {
-  margin-right: 20rpx;
+  margin: 10rpx 10rpx 10rpx 0;
 }
 .goods_stock .size_table {
   display: flex;

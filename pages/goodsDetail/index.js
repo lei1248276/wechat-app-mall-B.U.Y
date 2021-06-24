@@ -1,27 +1,37 @@
+const APP = getApp();
+
 Page({
   data: {
     topBar: {},
     topImages: [],
-    itemInfo: {},
+    goodsInfo: {},
     columns: [],
     stock: {},
+    goodsRecommend: [],
     params: {},
-    rate: {}
+    rate: {},
+    detailInfo: {}
   },
   onLoad: function() {
     const eventChannel = this.getOpenerEventChannel();
     eventChannel.on('acceptGoodsDetail', data => {
-      console.log(data);
       this.setData({
         topBar: data.topBar,
         topImages: data.itemInfo.topImages,
-        itemInfo: data.itemInfo,
-        'itemInfo.columns': data.columns,
+        goodsInfo: data.itemInfo,
+        'goodsInfo.columns': data.columns,
         stock: data.skuInfo,
         'stock.sizeTable': data.itemParams.rule,
         params: data.itemParams.info,
         rate: data.rate,
-        'rate.score': data.shopInfo.score
+        'rate.score': data.shopInfo.score,
+        detailInfo: data.detailInfo
+      });
+    });
+
+    APP._fetchGoodsRecommend(goodsRecommend => {
+      this.setData({
+        goodsRecommend
       });
     });
   }

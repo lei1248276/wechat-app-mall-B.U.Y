@@ -6,11 +6,11 @@
     <view class="goods_item"
           wx:for="{{ list }}"
           wx:key="iid"
-          data-iid="{{ item.iid }}"
+          data-iid="{{ item.iid || item.item_id }}"
           bind:tap="toGoodsDetail">
-      <van-image src="{{ item.show.img }}"
-                 width="{{ item.show.w + 'rpx' }}"
-                 height="{{ item.show.h + 'rpx' }}"
+      <van-image src="{{ item.image || item.show.img }}"
+                 width="320rpx"
+                 height="416rpx"
                  fit="cover"
                  lazy-load
       />

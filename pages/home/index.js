@@ -1,5 +1,4 @@
-const APP = getApp(),
-  cache = APP.globalData.cache;
+const APP = getApp();
 
 Page({
   data: {
@@ -9,15 +8,16 @@ Page({
     disDrawing: ''
   },
   onLoad: function() {
-    const disDrawing = cache.get('disDrawing'),
-      goods = cache.get('goods'),
-      list = goods[0].list,
-      photo = list.splice(0, 1)[0];
+    APP._fetchDisDrawing((disDrawing, cache) => {
+      const goods = cache.get('goods'),
+        list = goods[0].list,
+        photo = list.splice(0, 1)[0];
 
-    this.setData({
-      photo,
-      goods,
-      disDrawing
+      this.setData({
+        photo,
+        goods,
+        disDrawing
+      });
     });
   },
   onReady() {
@@ -28,7 +28,7 @@ Page({
   },
   fetchGoods() {
     this.loadStart();
-    const goods = cache.get('goods'),
+    const goods = this.data.goods,
       { type, page } = goods[goods.length - 1];
 
     APP._fetchGoods({ type, page: page + 1 }, goods => {

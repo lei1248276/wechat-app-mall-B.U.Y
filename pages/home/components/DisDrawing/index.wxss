@@ -1,6 +1,7 @@
 .disDrawing {
   width: 100vw;
   position: relative;
+  margin: 40rpx 0;
 }
 .disDrawing .img {
   width: 100vw;

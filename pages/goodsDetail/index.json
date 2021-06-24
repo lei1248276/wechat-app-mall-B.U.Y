@@ -3,8 +3,11 @@
     "goods-carousels": "./components/GoodsCarousels/index",
     "goods-stock": "./components/GoodsStock/index",
     "goods-info": "./components/GoodsInfo/index",
+    "title-cell": "/components/TitleCell/index",
+    "goods": "/components/Goods/index",
     "goods-params": "./components/GoodsParams/index",
     "goods-rate": "./components/GoodsRate/index",
+    "goods-detail-info": "./components/GoodsDetailInfo/index",
     "van-goods-action": "@vant/weapp/goods-action/index",
     "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
     "van-goods-action-button": "@vant/weapp/goods-action-button/index"

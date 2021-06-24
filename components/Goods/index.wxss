@@ -1,12 +1,11 @@
 .goods {
-  height: 50vh;
-  padding: 70rpx 20rpx;
+  height: 580rpx;
+  padding: 20rpx 20rpx 40rpx;
 }
 .goods .scroll_view {
   height: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10rpx;
 }
 .goods .scroll_view .goods_item {
   width: 45vw;

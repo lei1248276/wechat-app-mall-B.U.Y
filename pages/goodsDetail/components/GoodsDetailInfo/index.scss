@@ -1,0 +1,20 @@
+@import "../../../../styles/index";
+
+.goods_detail_info{
+
+  .title{
+    padding: 20rpx;
+    @include fc(38rpx, $uni_black);
+    font-weight: bold;
+  }
+
+  .description{
+    padding: 20rpx 40rpx;
+  }
+
+  .lookMore{
+    text-align: center;
+    color: $uni_blue;
+    padding: 20rpx;
+  }
+}

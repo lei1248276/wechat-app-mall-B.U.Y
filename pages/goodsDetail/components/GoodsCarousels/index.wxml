@@ -5,7 +5,8 @@
             bind:change="onChange">
         <swiper-item wx:for="{{ list }}"
                      wx:key="index"
-                     data-index="{{ index }}">
+                     data-index="{{ index }}"
+                     bind:tap="onLookImg">
             <van-image src="{{ item }}"
                        width="100%"
                        height="100%"
