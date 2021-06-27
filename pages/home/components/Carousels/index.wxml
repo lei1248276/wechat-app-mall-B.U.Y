@@ -4,10 +4,10 @@
           circular
           previous-margin="40rpx"
           next-margin="40rpx"
-          bind:change="onChange">
+          bind:change="onChange"
+          bind:tap="toMall">
     <swiper-item wx:for="{{ list }}"
-                 wx:key="index"
-                 bind:tap="toMall">
+                 wx:key="index">
       <van-image src="{{ item.image923 }}"
                  class="img"
                  width="100%"

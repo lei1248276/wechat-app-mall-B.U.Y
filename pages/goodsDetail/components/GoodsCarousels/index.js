@@ -23,7 +23,7 @@ Component({
       });
     },
     onLookImg(e) {
-      const i = e.currentTarget.dataset.index,
+      const i = e.target.dataset.index,
         imgs = this.data.list.map(v => 'https:' + v);
       wx.previewImage({
         urls: imgs,

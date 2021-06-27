@@ -23,6 +23,12 @@
           "pathName": "pages/goodsDetail/index",
           "query": "iid=1m7jj7a",
           "scene": null
+        },
+        {
+          "name": "mall",
+          "pathName": "pages/mall/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -5,10 +5,24 @@ Component({
     list: {
       type: Array,
       value: []
+    },
+    progress: {
+      type: Boolean,
+      value: false
+    },
+    scrollY: {
+      type: Boolean,
+      value: false
+    },
+    scrollX: {
+      type: Boolean,
+      value: true
     }
   },
   data: {
-    percentage: 8
+    percentage: 8,
+    scroll_y: 'flex-wrap: wrap; height: 100%;',
+    scroll_x: 'flex-wrap: nowrap; height: 600rpx;'
   },
   methods: {
     onScroll(e) {
@@ -23,7 +37,7 @@ Component({
       }
     },
     toGoodsDetail(e) {
-      const iid = e.currentTarget.dataset.iid;
+      const iid = e.target.dataset.iid;
       wx.navigateTo({
         url: `/pages/goodsDetail/index?iid=${iid}`,
         success(res) {

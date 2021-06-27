@@ -1,7 +1,10 @@
+import Toast from '@vant/weapp/toast/toast';
+
 const APP = getApp();
 
 Page({
   data: {
+    isEmpty: false,
     topBar: {},
     topImages: [],
     goodsInfo: {},
@@ -15,6 +18,8 @@ Page({
   onLoad: function() {
     const eventChannel = this.getOpenerEventChannel();
     eventChannel.on('acceptGoodsDetail', data => {
+      if (!data) return this.setData({ isEmpty: true });
+
       this.setData({
         topBar: data.topBar,
         topImages: data.itemInfo.topImages,
@@ -34,6 +39,11 @@ Page({
         goodsRecommend
       });
     });
+  },
+  onAddCar() {
+    Toast('成功加入购物车');
+  },
+  toBack() {
+    wx.navigateBack();
   }
-
 });

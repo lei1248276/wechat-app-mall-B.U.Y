@@ -1,6 +1,7 @@
 // app.js
 import { fetchDisDrawing, fetchGoods } from './api/home';
 import { fetchGoodsDetail, fetchGoodsRecommend } from './api/goodsDetail';
+import { fetchMallGoods } from './api/mall';
 
 App({
   globalData: {
@@ -72,5 +73,22 @@ App({
         fail: err => console.log(err)
       });
     }
+  },
+  _fetchMallGoods(params, updateCb) {
+    fetchMallGoods({
+      params,
+      success: res => {
+        const mallGoods = this.globalData.cache.get('mallGoods') || {},
+          data = res.data.data,
+          item = {
+            list: mallGoods.list ? mallGoods.list.concat(data.list) : data.list,
+            type: data.sort,
+            page: data.page,
+            total: data.total
+          };
+        this.send('mallGoods', item, updateCb);
+      },
+      fail: err => console.log(err)
+    });
   }
 });

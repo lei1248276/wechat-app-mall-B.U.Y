@@ -1,11 +1,10 @@
 .home_container {
   width: 100vw;
 }
-.home_container .title {
-  font-size: 60rpx;
-  color: #666;
+.home_container .nav_bar {
+  font-size: 50rpx;
+  color: #222;
   font-weight: bold;
-  padding: 20rpx 40rpx;
 }
 .home_container .loading {
   position: absolute;

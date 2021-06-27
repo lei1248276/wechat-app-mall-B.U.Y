@@ -10,5 +10,5 @@
 .goods_detail_info .lookMore {
   text-align: center;
   color: #70a7e8;
-  padding: 20rpx;
+  padding: 40rpx;
 }

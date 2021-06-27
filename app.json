@@ -5,12 +5,15 @@
     "pages/mall/index",
     "pages/bag/index",
     "pages/profile/index",
-    "pages/goodsDetail/index"
+    "pages/goodsDetail/index",
+    "pages/search",
+    "pages/search/index"
   ],
   "usingComponents": {
     "scroll-to": "components/ScrollTo/index",
     "wechat-search": "components/WechatSearch/index",
     "indicator": "components/Indicator/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "van-image": "@vant/weapp/image/index",
@@ -22,7 +25,8 @@
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
     "van-popup": "@vant/weapp/popup/index",
-    "van-notice-bar": "@vant/weapp/notice-bar/index"
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "tabBar": {
     "selectedColor": "#222",
@@ -49,10 +53,9 @@
     }]
   },
   "window":{
-    "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#f5f5f5",
     "navigationBarTitleText": "B.U.Y",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -3,10 +3,9 @@
 .home_container{
   width: 100vw;
 
-  .title{
-    @include fc(60rpx, $uni_black);
+  .nav_bar{
+    @include fc(50rpx, #222);
     font-weight: bold;
-    padding: 20rpx 40rpx;
   }
 
   .loading{

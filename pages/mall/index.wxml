@@ -1,3 +1,49 @@
-<view>
-    mall
+<view class="mall_container">
+  <van-nav-bar fixed placeholder custom-style="background-color: #f5f5f5;">
+    <van-button slot="left"
+                icon="search"
+                plain
+                loading="{{ !loaded }}"
+                loading-type="spinner"
+                loading-text="加载中..."
+                size="small"
+                custom-class="custom_navbar"
+                bind:tap="toSearch">
+      搜索
+    </van-button>
+  </van-nav-bar>
+
+  <van-cell value="{{ mallGoods.total + ' 商品'}}">
+    <van-button slot="title"
+                size="small"
+                plain
+                custom-class="custom_select"
+                icon="bars">
+      筛选
+    </van-button>
+  </van-cell>
+
+  <view class="goods_list">
+    <van-tag class="tag"
+             wx:for="{{ tags }}"
+             wx:key="item"
+             size="large"
+             color="#ffe1e1"
+             text-color="#ad0000"
+             type="primary">
+      {{ item }}
+    </van-tag>
+
+    <goods list="{{ mallGoods.list }}" scrollY/>
+  </view>
+
+  <van-loading hidden="{{ loaded }}"
+               class="loading"
+               type="spinner"
+               color="#1989fa"
+               size="36"
+               text-size="18">加载中...
+  </van-loading>
+
+  <scroll-to/>
 </view>

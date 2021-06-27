@@ -1,17 +1,18 @@
 @import "../../styles/index";
 
 .goods{
-  height: 580rpx;
-  padding: 20rpx 20rpx 40rpx;
+  padding: 20rpx 20rpx 60rpx;
 
   .scroll_view{
-    height: 100%;
+    height: 600rpx;
     display: flex;
     justify-content: space-between;
+
     .goods_item{
-      @include wh(45vw, 100%);
+      @include wh(45vw, 600rpx);
       flex-shrink: 0;
       @include fc(28rpx, $uni_black);
+      margin-right: 10rpx;
       .item_name{
         @include testMulOmit();
         margin-bottom: 15rpx;

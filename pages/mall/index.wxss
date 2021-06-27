@@ -1,0 +1,20 @@
+.mall_container .custom_navbar {
+  border: none;
+  background-color: #f5f5f5;
+  font-size: 34rpx;
+}
+.mall_container .custom_select {
+  font-size: 32rpx;
+}
+.mall_container .goods_list {
+  width: 100vw;
+}
+.mall_container .goods_list .tag {
+  display: inline-block;
+  margin-left: 15rpx;
+}
+.mall_container .loading {
+  position: absolute;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+}

@@ -22,7 +22,7 @@ Component({
   },
   methods: {
     onImg(e) {
-      const i = e.currentTarget.dataset.index,
+      const i = e.target.dataset.index,
         data = this.data,
         imgs = data.show
           ? data.list.detailImage[0].list.map(v => 'https:' + v)

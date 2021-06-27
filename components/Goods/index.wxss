@@ -1,18 +1,18 @@
 .goods {
-  height: 580rpx;
-  padding: 20rpx 20rpx 40rpx;
+  padding: 20rpx 20rpx 60rpx;
 }
 .goods .scroll_view {
-  height: 100%;
+  height: 600rpx;
   display: flex;
   justify-content: space-between;
 }
 .goods .scroll_view .goods_item {
   width: 45vw;
-  height: 100%;
+  height: 600rpx;
   flex-shrink: 0;
   font-size: 28rpx;
   color: #666;
+  margin-right: 10rpx;
 }
 .goods .scroll_view .goods_item .item_name {
   overflow: hidden;
