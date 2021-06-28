@@ -1,1 +1,16 @@
-
+.search_container .popBrand {
+  padding: 20rpx 20rpx 0;
+  font-size: 30rpx;
+  color: #98989f;
+}
+.search_container .popBrand .brand {
+  height: 100rpx;
+  padding-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search_container .popBrand .btn {
+  margin: 0 10rpx;
+  flex-shrink: 0;
+}

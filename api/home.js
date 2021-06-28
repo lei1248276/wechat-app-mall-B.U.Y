@@ -13,7 +13,11 @@ export function fetchDisDrawing(options) {
 export function fetchGoods(options) {
   const op = Object.assign({
     url: '/home/data',
-    method: 'get'
+    method: 'get',
+    params: {
+      type: options.params.type,
+      page: options.params.page
+    }
   }, options);
   return request(op);
 }

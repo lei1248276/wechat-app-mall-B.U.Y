@@ -9,7 +9,7 @@ Page({
   onLoad: function() {
     this.fetchMallGoods();
   },
-  onReachBottom() {
+  onScrollLower() {
     this.fetchMallGoods();
   },
   fetchMallGoods() {
@@ -27,7 +27,14 @@ Page({
     });
   },
   toSearch() {
-    this.fetchMallGoods();
+    wx.navigateTo({
+      url: '/pages/search/index'
+    });
+  },
+  toCategory() {
+    wx.navigateTo({
+      url: '/pages/category/index'
+    });
   },
   loadStart() {
     this.setData({

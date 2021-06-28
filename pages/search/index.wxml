@@ -1,0 +1,30 @@
+<view class="search_container">
+  <van-search class="search"
+              value="{{ value }}"
+              placeholder="搜索女士单品"
+              shape="round"
+              background="#70a7e8"
+              bind:search="onSearch"
+  />
+
+  <view class="popBrand">
+    <view>正在流行</view>
+    <scroll-view class="brand" scroll-x enable-flex>
+      <van-button class="btn"
+                  wx:for="{{ popBrand }}"
+                  wx:key="index" size="small">
+        {{ item }}
+      </van-button>
+    </scroll-view>
+  </view>
+
+  <van-tabs active="{{ currentIndex }}"
+            swipeable
+            bind:change="onChange">
+    <van-tab wx:for="{{ ['流行', '新品', '热卖'] }}"
+             wx:key="index"
+             title="{{ item }}">
+      <goods list="{{ popularGoods[tabs[index]] }}"/>
+    </van-tab>
+  </van-tabs>
+</view>

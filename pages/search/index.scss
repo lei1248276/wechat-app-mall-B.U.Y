@@ -1,0 +1,21 @@
+@import "../../styles/index";
+
+.search_container{
+
+  .popBrand{
+    padding: 20rpx 20rpx 0;
+    @include fc(30rpx, $uni_grey);
+
+    .brand{
+      height: 100rpx;
+      padding-top: 20rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn{
+      margin: 0 10rpx;
+      flex-shrink: 0;
+    }
+  }
+}

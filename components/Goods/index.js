@@ -17,11 +17,19 @@ Component({
     scrollX: {
       type: Boolean,
       value: true
+    },
+    scrollTo: {
+      type: Boolean,
+      value: false
+    },
+    height: {
+      type: String,
+      value: '100vh'
     }
   },
   data: {
     percentage: 8,
-    scroll_y: 'flex-wrap: wrap; height: 100%;',
+    scroll_y: 'flex-wrap: wrap;',
     scroll_x: 'flex-wrap: nowrap; height: 600rpx;'
   },
   methods: {
@@ -36,6 +44,9 @@ Component({
         });
       }
     },
+    onScrollLower() {
+      this.triggerEvent('scrollLower');
+    },
     toGoodsDetail(e) {
       const iid = e.target.dataset.iid;
       wx.navigateTo({
@@ -46,6 +57,20 @@ Component({
           });
         }
       });
+    },
+    onScrollTo(e) {
+      this.createSelectorQuery()
+        .select('.goods .scroll_view')
+        .node()
+        .exec(res => {
+          const scrollView = res[0].node;
+          console.log(scrollView);
+          scrollView.scrollTo({
+            top: 0,
+            left: 0,
+            animated: true
+          });
+        });
     }
   }
 });

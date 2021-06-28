@@ -1,7 +1,6 @@
 import request from '../utils/request';
 
-// ! 请求商城商品数据
-export function fetchMallGoods(options) {
+export function fetchPopularGoods(options) {
   const op = Object.assign({
     url: '/home/data',
     method: 'get',

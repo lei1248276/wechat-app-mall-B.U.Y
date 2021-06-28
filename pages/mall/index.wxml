@@ -18,8 +18,9 @@
                 size="small"
                 plain
                 custom-class="custom_select"
-                icon="bars">
-      筛选
+                icon="bars"
+                bind:tap="toCategory">
+      筛选 / 全部新品
     </van-button>
   </van-cell>
 
@@ -34,16 +35,20 @@
       {{ item }}
     </van-tag>
 
-    <goods list="{{ mallGoods.list }}" scrollY/>
+    <goods list="{{ mallGoods.list }}"
+           scrollY
+           height="77vh"
+           bind:scrollLower="onScrollLower"
+    />
   </view>
 
-  <van-loading hidden="{{ loaded }}"
+  <!--<van-loading hidden="{{ loaded }}"
                class="loading"
                type="spinner"
                color="#1989fa"
                size="36"
                text-size="18">加载中...
-  </van-loading>
+  </van-loading>-->
 
-  <scroll-to/>
+<!--  <scroll-to/>-->
 </view>

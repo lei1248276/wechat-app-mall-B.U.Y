@@ -2,6 +2,7 @@
 import { fetchDisDrawing, fetchGoods } from './api/home';
 import { fetchGoodsDetail, fetchGoodsRecommend } from './api/goodsDetail';
 import { fetchMallGoods } from './api/mall';
+import { fetchPopularGoods } from './api/search';
 
 App({
   globalData: {
@@ -18,7 +19,8 @@ App({
     updateCb && updateCb(cache.get(key), cache);
   },
 
-  // ! 所有页面的 API 接口方法
+  /*  ! 所有页面的 API 接口方法  */
+  // * home page API
   _fetchDisDrawing(updateCb) {
     const value = this.globalData.cache.get(`disDrawing`);
     if (value) {
@@ -49,6 +51,7 @@ App({
       fail: err => console.log(err)
     });
   },
+  // * goodsDetail page API
   _fetchGoodsDetail(params, query, updateCb) {
     const value = this.globalData.cache.get(`goodsDetail${query}`);
     if (value) {
@@ -74,6 +77,7 @@ App({
       });
     }
   },
+  // * mall page API
   _fetchMallGoods(params, updateCb) {
     fetchMallGoods({
       params,
@@ -88,6 +92,14 @@ App({
           };
         this.send('mallGoods', item, updateCb);
       },
+      fail: err => console.log(err)
+    });
+  },
+  // * search page API
+  _fetchPopularGoods(params, updateCb) {
+    fetchPopularGoods({
+      params,
+      success: res => this.send('popularGoods', res.data.data.list, updateCb),
       fail: err => console.log(err)
     });
   }

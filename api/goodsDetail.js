@@ -4,7 +4,10 @@ import request from '../utils/request';
 export function fetchGoodsDetail(options) {
   const op = Object.assign({
     url: '/detail',
-    method: 'get'
+    method: 'get',
+    params: {
+      iid: options.params.iid
+    }
   }, options);
   return request(op);
 }

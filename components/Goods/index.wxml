@@ -1,10 +1,12 @@
 <view class="goods">
   <scroll-view class="scroll_view"
-               style="{{scrollY ? scroll_y : scroll_x }}"
+               style="{{scrollY ? scroll_y + 'height: ' + height : scroll_x }}"
                scroll-y="{{ scrollY }}"
                scroll-x="{{ scrollX }}"
                enable-flex
+               enhanced
                bind:scroll="{{ progress ? 'onScroll' : null }}"
+               bind:scrolltolower="onScrollLower"
                bind:tap="toGoodsDetail">
     <view class="goods_item"
           wx:for="{{ list }}"
@@ -31,4 +33,6 @@
                 color="#222"
                 stroke-width="4rpx"
   />
+
+  <scroll-to wx:if="{{ scrollTo }}" bind:tap="onScrollTo"/>
 </view>

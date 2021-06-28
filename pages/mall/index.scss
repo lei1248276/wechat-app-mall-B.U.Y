@@ -1,6 +1,8 @@
 @import "../../styles/index";
 
 .mall_container{
+  height: 100vh;
+  overflow: hidden;
 
   .custom_navbar{
     border: none;

@@ -6,8 +6,8 @@
     "pages/bag/index",
     "pages/profile/index",
     "pages/goodsDetail/index",
-    "pages/search",
-    "pages/search/index"
+    "pages/search/index",
+    "pages/category/index"
   ],
   "usingComponents": {
     "scroll-to": "components/ScrollTo/index",
