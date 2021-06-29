@@ -1,44 +1,49 @@
+import { fetchMallGoods } from '../../api/mall';
 const APP = getApp();
 
 Page({
   data: {
     loaded: true,
-    mallGoods: {},
+    mallGoods: { type: 'new', page: 0 },
     tags: ['服装', '鞋', '包', '配件']
   },
   onLoad: function() {
-    this.fetchMallGoods();
+    this._fetchMallGoods();
   },
   onScrollLower() {
-    this.fetchMallGoods();
+    this._fetchMallGoods();
   },
-  fetchMallGoods() {
+  _fetchMallGoods() {
     this.loadStart();
     const mallGoods = this.data.mallGoods,
-      { type, page } = mallGoods.type
-        ? mallGoods
-        : { type: 'new', page: 0 };
+      { type, page } = mallGoods;
 
-    APP._fetchMallGoods({ type, page: page + 1 }, mallGoods => {
-      this.setData({
-        loaded: true,
-        mallGoods
-      });
+    fetchMallGoods({
+      params: { type, page: page + 1 },
+      success: res => {
+        const data = res.data.data,
+          item = {
+            list: mallGoods.list ? mallGoods.list.concat(data.list) : data.list,
+            type: data.sort,
+            page: data.page,
+            total: data.total
+          };
+        this.setData({ loaded: true, mallGoods: item });
+      },
+      fail: err => console.error(err)
     });
   },
   toSearch() {
-    wx.navigateTo({
-      url: '/pages/search/index'
-    });
+    APP.fetch({ route: 'pages/search/index', params: { type: 'pop', page: 1 }});
+
+    wx.navigateTo({ url: '/pages/search/index' });
   },
   toCategory() {
-    wx.navigateTo({
-      url: '/pages/category/index'
-    });
+    APP.fetch({ route: 'pages/category/index' });
+
+    wx.navigateTo({ url: '/pages/category/index' });
   },
   loadStart() {
-    this.setData({
-      loaded: false
-    });
+    this.setData({ loaded: false });
   }
 });

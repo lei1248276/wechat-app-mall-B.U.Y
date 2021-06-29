@@ -1,1 +1,8 @@
-
+.category_container {
+  display: flex;
+  justify-content: space-between;
+}
+.category_container .main {
+  flex-grow: 1;
+  background-color: pink;
+}

@@ -1,3 +1,10 @@
 <view class="category_container">
-  category_container
+  <van-sidebar active-key="{{ currentIndex }}" style="text-align: center;">
+    <van-sidebar-item wx:for="{{ category }}"
+                      wx:key="title"
+                      title="{{ item.title }}"
+    />
+  </van-sidebar>
+  <view class="main">
+  </view>
 </view>

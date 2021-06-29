@@ -20,6 +20,8 @@
 
   <van-tabs active="{{ currentIndex }}"
             swipeable
+            line-width="230rpx"
+            color="#98989f"
             bind:change="onChange">
     <van-tab wx:for="{{ ['流行', '新品', '热卖'] }}"
              wx:key="index"

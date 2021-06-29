@@ -1,0 +1,11 @@
+@import "../../styles/index";
+
+.category_container{
+  display: flex;
+  justify-content: space-between;
+
+  .main{
+    flex-grow: 1;
+    background-color: pink;
+  }
+}

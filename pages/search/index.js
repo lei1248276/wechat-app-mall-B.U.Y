@@ -1,3 +1,4 @@
+import { fetchPopularGoods } from '../../api/search';
 const APP = getApp();
 
 Page({
@@ -14,13 +15,17 @@ Page({
   },
   onLoad: function() {
     const { tabs, currentIndex } = this.data;
-    this.fetchPopularGoods(tabs[currentIndex]);
+    APP.take('pages/search/index').then(popularGoods => this.setData({
+      [`popularGoods.${tabs[currentIndex]}`]: popularGoods
+    }));
   },
-  fetchPopularGoods(type) {
-    APP._fetchPopularGoods({ type, page: 1 }, popularGoods => {
-      this.setData({
-        [`popularGoods.${type}`]: popularGoods
-      });
+  _fetchPopularGoods(type) {
+    fetchPopularGoods({
+      params: { type, page: 1 },
+      success: res => this.setData({
+        [`popularGoods.${type}`]: res.data.data.list
+      }),
+      fail: err => console.err(err)
     });
   },
   onSearch() {
@@ -30,7 +35,7 @@ Page({
     const i = e.detail.index,
       { popularGoods, tabs } = this.data;
     if (!popularGoods[tabs[i]].length) {
-      this.fetchPopularGoods(tabs[i]);
+      this._fetchPopularGoods(tabs[i]);
     }
 
     this.setData({

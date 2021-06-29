@@ -9,23 +9,27 @@ export function fetchCategory(options) {
   return request(op);
 }
 
-/* 分类页面的menu-content网络请求*/
-export function getSubCategory(maitKey) {
-  return request({
+/* 分类页面的menu-content*/
+export function fetchSubCategory(options) {
+  const op = Object.assign({
     url: '/subcategory',
-    data: {
-      maitKey
+    method: 'get',
+    params: {
+      maitKey: options.params.maitKey
     }
   });
+  return request(op);
 }
 
-/* 分类页面的商品信息网络请求*/
-export function getCategoryGoods(miniWallkey, type) {
-  return request({
+/* 分类页面的商品信息*/
+export function getSubCategoryGoods(options) {
+  const op = Object.assign({
     url: '/subcategory/detail',
-    data: {
-      miniWallkey,
-      type
+    method: 'get',
+    params: {
+      miniWallkey: options.params.miniWallkey,
+      type: options.params.type
     }
   });
+  return request(op);
 }

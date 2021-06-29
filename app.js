@@ -1,106 +1,86 @@
 // app.js
 import { fetchDisDrawing, fetchGoods } from './api/home';
 import { fetchGoodsDetail, fetchGoodsRecommend } from './api/goodsDetail';
-import { fetchMallGoods } from './api/mall';
 import { fetchPopularGoods } from './api/search';
+import { fetchCategory } from './api/category';
 
 App({
   globalData: {
     cache: new Map()
   },
   onLaunch() {
-    this._fetchDisDrawing();
-    this._fetchGoods({ type: 'sell', page: 1 });
+    this.fetch({ route: 'pages/home/index', params: { type: 'sell', page: 1 }});
   },
-  // ! 统一设置缓存数据和更新回调
-  send(key, value, updateCb) {
-    const { cache } = this.globalData;
-    cache.set(key, value);
-    updateCb && updateCb(cache.get(key), cache);
+  // * 预获取请求
+  fetch({ route, params }) {
+    const cache = this.globalData.cache;
+    cache.set(route, this[route](route, params));
+  },
+  // * 获取请求到的缓存数据
+  take(route) {
+    const cache = this.globalData.cache;
+    if (cache.has(route)) return cache.get(route);
+    return null;
   },
 
-  /*  ! 所有页面的 API 接口方法  */
+  /*  ! 设置需要预请求页面数据的 API 方法  */
   // * home page API
-  _fetchDisDrawing(updateCb) {
-    const value = this.globalData.cache.get(`disDrawing`);
-    if (value) {
-      this.send(`disDrawing`, value, updateCb);
-      console.log(`cache`);
-    } else {
-      fetchDisDrawing({
-        success: res => this.send('disDrawing', res.data.data.banner.list, updateCb),
-        fail: err => console.log(err)
+  'pages/home/index': function(route, params) {
+    const goods = new Promise((resolve, reject) => {
+        fetchGoods({
+          params,
+          success: res => resolve(res.data.data),
+          fail: err => reject(err)
+        });
+      }),
+      disDrawing = new Promise((resolve, reject) => {
+        fetchDisDrawing({
+          success: res => resolve(res.data.data.banner.list),
+          fail: err => reject(err)
+        });
       });
-    }
-  },
-  _fetchGoods(params, updateCb) {
-    fetchGoods({
-      params,
-      success: res => {
-        const goods = this.globalData.cache.get('goods') || [],
-          data = res.data.data,
-          item = {
-            drawing: data.list[0],
-            list: data.list.slice(1, data.list.length),
-            type: data.sort,
-            page: data.page
-          };
-        goods.push(item);
-        this.send('goods', goods, updateCb);
-      },
-      fail: err => console.log(err)
-    });
+    return Promise.all([goods, disDrawing]);
   },
   // * goodsDetail page API
-  _fetchGoodsDetail(params, query, updateCb) {
-    const value = this.globalData.cache.get(`goodsDetail${query}`);
-    if (value) {
-      this.send(`goodsDetail${query}`, value, updateCb);
-      console.log(`cache`);
-    } else {
-      fetchGoodsDetail({
-        params,
-        success: res => this.send(`goodsDetail${query}`, res.data.result, updateCb),
-        fail: err => console.log(err)
+  'pages/goodsDetail/index': function(route, params) {
+    const goodsDetail = new Promise((resolve, reject) => {
+        fetchGoodsDetail({
+          params,
+          success: res => resolve(res.data.result),
+          fail: err => reject(err)
+        });
+      }),
+      goodsRecommend = new Promise((resolve, reject) => {
+        fetchGoodsRecommend({
+          success: res => resolve(res.data.data.list),
+          fail: err => reject(err)
+        });
       });
-    }
-  },
-  _fetchGoodsRecommend(updateCb) {
-    const value = this.globalData.cache.get(`goodsRecommend`);
-    if (value) {
-      this.send(`goodsRecommend`, value, updateCb);
-      console.log(`cache`);
-    } else {
-      fetchGoodsRecommend({
-        success: res => this.send('goodsRecommend', res.data.data.list, updateCb),
-        fail: err => console.log(err)
-      });
-    }
-  },
-  // * mall page API
-  _fetchMallGoods(params, updateCb) {
-    fetchMallGoods({
-      params,
-      success: res => {
-        const mallGoods = this.globalData.cache.get('mallGoods') || {},
-          data = res.data.data,
-          item = {
-            list: mallGoods.list ? mallGoods.list.concat(data.list) : data.list,
-            type: data.sort,
-            page: data.page,
-            total: data.total
-          };
-        this.send('mallGoods', item, updateCb);
-      },
-      fail: err => console.log(err)
-    });
+    return Promise.all([goodsDetail, goodsRecommend]);
   },
   // * search page API
-  _fetchPopularGoods(params, updateCb) {
-    fetchPopularGoods({
-      params,
-      success: res => this.send('popularGoods', res.data.data.list, updateCb),
-      fail: err => console.log(err)
+  'pages/search/index': function(route, params) {
+    const data = this.take(route);
+    if (data) return data;
+
+    return new Promise((resolve, reject) => {
+      fetchPopularGoods({
+        params,
+        success: res => resolve(res.data.data.list),
+        fail: err => reject(err)
+      });
+    });
+  },
+  // * category page API
+  'pages/category/index': function(route) {
+    const data = this.take(route);
+    if (data) return data;
+
+    return new Promise((resolve, reject) => {
+      fetchCategory({
+        success: res => resolve(res.data.data.category.list),
+        fail: err => reject(err)
+      });
     });
   }
 });

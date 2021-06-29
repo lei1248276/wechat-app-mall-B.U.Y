@@ -14,7 +14,7 @@
                round
                lazyload
     />
-    {{ item.user.uname }}
+    <text class="username">{{ item.user.uname }}</text>
     <view class="item">{{ item.content }}</view>
     <van-image class="item"
                wx:for="{{ item.images }}"
@@ -28,7 +28,9 @@
                data-imgs="{{ item.images }}"
                data-img="{{ img }}"
     />
-    <view class="item" wx:for="{{ item.extraInfo }}" wx:key="index">{{ item }}</view>
+    <view class="item">
+      <text wx:for="{{ item.extraInfo }}" wx:key="index">{{ item }}</text>
+    </view>
     <view class="item">{{ item.style }}</view>
   </view>
 </view>

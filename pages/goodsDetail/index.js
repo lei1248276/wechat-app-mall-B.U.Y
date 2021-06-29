@@ -16,27 +16,22 @@ Page({
     detailInfo: {}
   },
   onLoad: function() {
-    const eventChannel = this.getOpenerEventChannel();
-    eventChannel.on('acceptGoodsDetail', data => {
-      if (!data) return this.setData({ isEmpty: true });
+    APP.take('pages/goodsDetail/index').then(res => {
+      const [goodsDetail, goodsRecommend] = res;
+      if (!goodsDetail) return this.setData({ isEmpty: true });
 
       this.setData({
-        topBar: data.topBar,
-        topImages: data.itemInfo.topImages,
-        goodsInfo: data.itemInfo,
-        'goodsInfo.columns': data.columns,
-        stock: data.skuInfo,
-        'stock.sizeTable': data.itemParams.rule,
-        params: data.itemParams.info,
-        rate: data.rate,
-        'rate.score': data.shopInfo.score,
-        detailInfo: data.detailInfo
-      });
-    });
-
-    APP._fetchGoodsRecommend(goodsRecommend => {
-      this.setData({
-        goodsRecommend
+        goodsRecommend,
+        topBar: goodsDetail.topBar,
+        topImages: goodsDetail.itemInfo.topImages,
+        goodsInfo: goodsDetail.itemInfo,
+        'goodsInfo.columns': goodsDetail.columns,
+        stock: goodsDetail.skuInfo,
+        'stock.sizeTable': goodsDetail.itemParams.rule,
+        params: goodsDetail.itemParams.info,
+        rate: goodsDetail.rate,
+        'rate.score': goodsDetail.shopInfo.score,
+        detailInfo: goodsDetail.detailInfo
       });
     });
   },

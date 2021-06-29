@@ -49,14 +49,9 @@ Component({
     },
     toGoodsDetail(e) {
       const iid = e.target.dataset.iid;
-      wx.navigateTo({
-        url: `/pages/goodsDetail/index?iid=${iid}`,
-        success(res) {
-          APP._fetchGoodsDetail({ iid }, iid, data => {
-            res.eventChannel.emit('acceptGoodsDetail', data);
-          });
-        }
-      });
+      APP.fetch({ route: 'pages/goodsDetail/index', params: { iid }});
+
+      wx.navigateTo({ url: `/pages/goodsDetail/index?iid=${iid}` });
     },
     onScrollTo(e) {
       this.createSelectorQuery()

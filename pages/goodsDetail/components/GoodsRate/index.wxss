@@ -10,14 +10,13 @@
   padding: 6rpx;
 }
 .goods_rate .user {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  flex-wrap: wrap;
   padding: 10rpx 30rpx;
   font-size: 28rpx;
   color: #98989f;
 }
+.goods_rate .user .username {
+  vertical-align: super;
+}
 .goods_rate .user .item {
-  margin: 0 20rpx 20rpx 0;
+  margin: 20rpx 20rpx 20rpx 0;
 }
