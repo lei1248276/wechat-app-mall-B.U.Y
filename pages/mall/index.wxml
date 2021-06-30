@@ -20,7 +20,7 @@
                 custom-class="custom_select"
                 icon="bars"
                 bind:tap="toCategory">
-      筛选 / 全部新品
+      筛选 / {{ flag }}
     </van-button>
   </van-cell>
 
@@ -35,10 +35,11 @@
       {{ item }}
     </van-tag>
 
-    <goods list="{{ mallGoods.list }}"
+    <goods list="{{ category.length ? category : mallGoods.list }}"
            scrollY
            height="77vh"
-           bind:scrollLower="onScrollLower"
+           scrollTo
+           bind:scrollLower="{{ category.length ? null : 'onScrollLower' }}"
     />
   </view>
 

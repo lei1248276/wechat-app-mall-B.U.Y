@@ -3,6 +3,7 @@
                style="{{scrollY ? scroll_y + 'height: ' + height : scroll_x }}"
                scroll-y="{{ scrollY }}"
                scroll-x="{{ scrollX }}"
+               scroll-top="{{ scrollTop }}"
                enable-flex
                enhanced
                bind:scroll="{{ progress ? 'onScroll' : null }}"
@@ -12,7 +13,7 @@
           wx:for="{{ list }}"
           wx:key="index">
       <van-image data-iid="{{ item.iid || item.item_id }}"
-                 src="{{ item.image || item.show.img }}"
+                 src="{{ item.img || item.image || item.show.img }}"
                  width="340rpx"
                  height="440rpx"
                  fit="cover"

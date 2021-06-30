@@ -30,7 +30,8 @@ Component({
   data: {
     percentage: 8,
     scroll_y: 'flex-wrap: wrap;',
-    scroll_x: 'flex-wrap: nowrap; height: 600rpx;'
+    scroll_x: 'flex-wrap: nowrap; height: 600rpx;',
+    scrollTop: 0
   },
   methods: {
     onScroll(e) {
@@ -49,23 +50,24 @@ Component({
     },
     toGoodsDetail(e) {
       const iid = e.target.dataset.iid;
-      APP.fetch({ route: 'pages/goodsDetail/index', params: { iid }});
+      APP.fetch(`pages/goodsDetail/index?iid=${iid}`);
 
       wx.navigateTo({ url: `/pages/goodsDetail/index?iid=${iid}` });
     },
     onScrollTo(e) {
-      this.createSelectorQuery()
+      /* this.createSelectorQuery()
         .select('.goods .scroll_view')
         .node()
         .exec(res => {
           const scrollView = res[0].node;
           console.log(scrollView);
-          scrollView.scrollTo({
+           scrollView.scrollTo({
             top: 0,
             left: 0,
             animated: true
           });
-        });
+        });*/
+      this.setData({ scrollTop: 0 });
     }
   }
 });

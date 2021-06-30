@@ -1,8 +1,22 @@
 .category_container {
   display: flex;
   justify-content: space-between;
+  text-align: center;
+}
+.category_container .custom_sidebar {
+  height: 100% !important;
+  background-color: #f8f8fa;
 }
 .category_container .main {
   flex-grow: 1;
-  background-color: pink;
+  height: 100vh;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+.category_container .main .item {
+  flex-basis: 28%;
+  padding: 15rpx;
 }

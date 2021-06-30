@@ -14,9 +14,10 @@ Page({
     popBrand: ['Acne Studios', 'alexanderwang', 'Maison Margiela', 'JACQUEMUS', 'ADER error', 'We11Done']
   },
   onLoad: function() {
-    const { tabs, currentIndex } = this.data;
-    APP.take('pages/search/index').then(popularGoods => this.setData({
-      [`popularGoods.${tabs[currentIndex]}`]: popularGoods
+    const page = getCurrentPages(), route = page[page.length - 1].route,
+      { tabs, currentIndex } = this.data, type = tabs[currentIndex];
+    APP.take(route).then(popularGoods => this.setData({
+      [`popularGoods.${type}`]: popularGoods
     }));
   },
   _fetchPopularGoods(type) {

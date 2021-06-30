@@ -10,7 +10,7 @@ Component({
   methods: {
     toGoodsDetail() {
       const iid = this.data.data.iid;
-      APP.fetch({ route: 'pages/goodsDetail/index', params: { iid }});
+      APP.fetch(`pages/goodsDetail/index?iid=${iid}`);
 
       wx.navigateTo({ url: `/pages/goodsDetail/index?iid=${iid}` });
     }

@@ -17,12 +17,12 @@ export function fetchSubCategory(options) {
     params: {
       maitKey: options.params.maitKey
     }
-  });
+  }, options);
   return request(op);
 }
 
 /* 分类页面的商品信息*/
-export function getSubCategoryGoods(options) {
+export function fetchSubCategoryGoods(options) {
   const op = Object.assign({
     url: '/subcategory/detail',
     method: 'get',
@@ -30,6 +30,6 @@ export function getSubCategoryGoods(options) {
       miniWallkey: options.params.miniWallkey,
       type: options.params.type
     }
-  });
+  }, options);
   return request(op);
 }

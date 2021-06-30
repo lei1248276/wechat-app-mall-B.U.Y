@@ -15,8 +15,9 @@ Page({
     rate: {},
     detailInfo: {}
   },
-  onLoad: function() {
-    APP.take('pages/goodsDetail/index').then(res => {
+  onLoad: function({ iid }) {
+    const page = getCurrentPages(), route = page[page.length - 1].route;
+    APP.take(`${route}?iid=${iid}`).then(res => {
       const [goodsDetail, goodsRecommend] = res;
       if (!goodsDetail) return this.setData({ isEmpty: true });
 

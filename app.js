@@ -9,23 +9,29 @@ App({
     cache: new Map()
   },
   onLaunch() {
-    this.fetch({ route: 'pages/home/index', params: { type: 'sell', page: 1 }});
+    this.fetch('pages/home/index');
   },
   // * 预获取请求
-  fetch({ route, params }) {
-    const cache = this.globalData.cache;
+  fetch(route, params) {
+    const path = route.split('?'), cache = this.globalData.cache;
+    route = path[0];
+    path[1] && (params = path[1].split('=').reduce((acc, cur) => ({ [acc]: cur })));
     cache.set(route, this[route](route, params));
   },
-  // * 获取请求到的缓存数据
-  take(route) {
-    const cache = this.globalData.cache;
-    if (cache.has(route)) return cache.get(route);
-    return null;
+  // * 获取请求到的缓存数据，如果没有缓存就重新请求
+  take(route, params) {
+    const path = route.split('?');
+    route = path[0];
+    path[1] && (params = path[1].split('=').reduce((acc, cur) => ({ [acc]: cur })));
+    return this[route](route, params);
   },
 
   /*  ! 设置需要预请求页面数据的 API 方法  */
   // * home page API
-  'pages/home/index': function(route, params) {
+  'pages/home/index': function(route, params = { type: 'sell', page: 1 }) {
+    const cache = this.globalData.cache;
+    if (cache.has(route)) return cache.get(route);
+
     const goods = new Promise((resolve, reject) => {
         fetchGoods({
           params,
@@ -43,6 +49,12 @@ App({
   },
   // * goodsDetail page API
   'pages/goodsDetail/index': function(route, params) {
+    const cache = this.globalData.cache;
+    if (cache.has(route)) {
+      const value = cache.get(route);
+      cache.delete(route);
+      return value;
+    }
     const goodsDetail = new Promise((resolve, reject) => {
         fetchGoodsDetail({
           params,
@@ -59,9 +71,9 @@ App({
     return Promise.all([goodsDetail, goodsRecommend]);
   },
   // * search page API
-  'pages/search/index': function(route, params) {
-    const data = this.take(route);
-    if (data) return data;
+  'pages/search/index': function(route, params = { type: 'pop', page: 1 }) {
+    const cache = this.globalData.cache;
+    if (cache.has(route)) return cache.get(route);
 
     return new Promise((resolve, reject) => {
       fetchPopularGoods({
@@ -73,8 +85,8 @@ App({
   },
   // * category page API
   'pages/category/index': function(route) {
-    const data = this.take(route);
-    if (data) return data;
+    const cache = this.globalData.cache;
+    if (cache.has(route)) return cache.get(route);
 
     return new Promise((resolve, reject) => {
       fetchCategory({
@@ -83,4 +95,16 @@ App({
       });
     });
   }
+  /* // * mall page API
+  'pages/mall/index': function(route, params) {
+    const cache = this.globalData.cache;
+    if (cache.has(route)) {
+      const value = cache.get(route);
+      cache.delete(route);
+      return value;
+    }
+    return new Promise(((resolve, reject) => {
+
+    }))
+  }*/
 });

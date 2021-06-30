@@ -15,7 +15,7 @@
 }
 .mall_container .goods_list .tag {
   display: inline-block;
-  margin-left: 15rpx;
+  margin: 15rpx 0 0 15rpx;
 }
 .mall_container .loading {
   position: absolute;

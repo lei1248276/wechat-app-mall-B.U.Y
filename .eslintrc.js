@@ -2,7 +2,8 @@ module.exports = {
   root: true,
   parserOptions: {
     parser: 'babel-eslint',
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaVersion: 8
   },
   env: {
     browser: true,
@@ -152,7 +153,7 @@ module.exports = {
     'no-useless-escape': 0,
     'no-whitespace-before-property': 2,
     'no-with': 2,
-    'one-var': [2],
+    'one-var': [0],
     'operator-linebreak': [2, 'after', {
       'overrides': {
         '?': 'before',

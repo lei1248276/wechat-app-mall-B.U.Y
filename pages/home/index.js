@@ -9,7 +9,8 @@ Page({
     disDrawing: ''
   },
   onLoad: function() {
-    APP.take('pages/home/index').then(res => {
+    const page = getCurrentPages(), route = page[page.length - 1].route;
+    APP.take(route).then(res => {
       const [goods, disDrawing] = res,
         data = [{
           drawing: goods.list[0],
