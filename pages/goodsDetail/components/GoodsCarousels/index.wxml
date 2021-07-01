@@ -30,6 +30,7 @@
     />
 
     <van-button class="btn"
+                open-type="share"
                 icon="share"
                 type="mini"
                 plain

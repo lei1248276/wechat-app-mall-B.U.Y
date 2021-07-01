@@ -1,3 +1,28 @@
-<view>
-    profile
+<view class="profile_container">
+  <van-nav-bar border="{{ false }}" custom-style="background: #f29492;">
+    <view class="navbar" slot="left">B.U.Y</view>
+  </van-nav-bar>
+
+  <view class="user_info">
+    <view class="cell">
+      <view class="user">
+        <view class="name">{{ username }}</view>
+        <view class="point">时尚友人 / {{ point }} 积分</view>
+      </view>
+      <van-icon name="/assets/QRcode.svg" size="60rpx"/>
+    </view>
+  </view>
+
+  <view class="shelf">
+    <show-shelf title="我的订单" icon="send-gift-o"/>
+    <show-shelf title="我的券包" icon="coupon-o"/>
+    <show-shelf title="兑换积分" icon="point-gift-o"/>
+  </view>
+
+  <van-cell-group class="user_detail_list">
+    <van-cell title="我的信息" is-link custom-class="custom_cell"/>
+    <van-cell title="我的会籍" is-link custom-class="custom_cell"/>
+    <van-cell title="我的愿望清单" is-link custom-class="custom_cell"/>
+    <van-cell title="潮品抽取" is-link custom-class="custom_cell"/>
+  </van-cell-group>
 </view>

@@ -1,0 +1,9 @@
+<view class="show_shelf">
+  <view class="title item">{{ title }}</view>
+  <view class="value item"
+        wx:for="{{ value }}"
+        wx:key="index">
+    {{ item }}
+  </view>
+  <van-icon class="item" name="{{ icon }}" size="40rpx"/>
+</view>

@@ -7,7 +7,8 @@
     "pages/profile/index",
     "pages/goodsDetail/index",
     "pages/search/index",
-    "pages/category/index"
+    "pages/category/index",
+    "pages/help/index"
   ],
   "usingComponents": {
     "scroll-to": "components/ScrollTo/index",
@@ -32,24 +33,24 @@
     "selectedColor": "#222",
     "list": [{
       "pagePath": "pages/home/index",
-      "iconPath": "/assets/dot_white.png",
-      "selectedIconPath": "/assets/dot.png",
-      "text": "首页"
+      "iconPath": "/assets/home.png",
+      "selectedIconPath": "/assets/home_active.png"
     }, {
       "pagePath": "pages/mall/index",
-      "iconPath": "/assets/dot_white.png",
-      "selectedIconPath": "/assets/dot.png",
-      "text": "商城"
+      "iconPath": "/assets/mall.png",
+      "selectedIconPath": "/assets/mall_active.png"
     }, {
       "pagePath": "pages/profile/index",
-      "iconPath": "/assets/dot_white.png",
-      "selectedIconPath": "/assets/dot.png",
-      "text": "我的账户"
+      "iconPath": "/assets/profile.png",
+      "selectedIconPath": "/assets/profile_active.png"
+    },{
+      "pagePath": "pages/help/index",
+      "iconPath": "/assets/help.png",
+      "selectedIconPath": "/assets/help_active.png"
     }, {
       "pagePath": "pages/bag/index",
-      "iconPath": "/assets/dot_white.png",
-      "selectedIconPath": "/assets/dot.png",
-      "text": "购物袋"
+      "iconPath": "/assets/bag.png",
+      "selectedIconPath": "/assets/bag_active.png"
     }]
   },
   "window":{

@@ -13,33 +13,36 @@
     </van-button>
   </van-nav-bar>
 
-  <van-cell value="{{ mallGoods.total + ' 商品'}}">
+  <van-cell value="{{ mallGoods[tagIndex].total+ ' 商品'}}">
     <van-button slot="title"
                 size="small"
                 plain
                 custom-class="custom_select"
                 icon="bars"
                 bind:tap="toCategory">
-      筛选 / {{ flag }}
+      筛选 / {{ tags[tagIndex].title }}
     </van-button>
   </van-cell>
 
   <view class="goods_list">
     <van-tag class="tag"
              wx:for="{{ tags }}"
-             wx:key="item"
+             wx:key="title"
+             data-index="{{ index }}"
              size="large"
-             color="#ffe1e1"
-             text-color="#ad0000"
-             type="primary">
-      {{ item }}
+             color="{{ index === tagIndex ? tagsColor.active_color : tagsColor.color }}"
+             text-color="{{ index === tagIndex ? tagsColor.active_textColor : tagsColor.textColor }}"
+             type="primary"
+             closeable="{{ index === tagIndex && index !== 0 }}"
+             catch:tap="onTag">
+      {{ item.title }}
     </van-tag>
 
-    <goods list="{{ category.length ? category : mallGoods.list }}"
+    <goods list="{{ mallGoods[tagIndex].list }}"
            scrollY
-           height="77vh"
+           height="70vh"
            scrollTo
-           bind:scrollLower="{{ category.length ? null : 'onScrollLower' }}"
+           bind:scrollLower="{{ tagIndex !== 0 ? null : 'onScrollLower' }}"
     />
   </view>
 

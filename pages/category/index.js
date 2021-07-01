@@ -37,7 +37,7 @@ Page({
         wx.navigateBack({
           delta: 1,
           success: () => {
-            this.eventChannel.emit('acceptCategory', result.data, category[i].title);
+            this.eventChannel.emit('acceptCategory', result.data, category[i].title, result.data.length);
           }
         });
       },

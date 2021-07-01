@@ -1,0 +1,42 @@
+@import "../../styles/index";
+
+.profile_container{
+
+  .navbar{
+    @include fc(60rpx, #fff);
+    font-weight: bold;
+  }
+
+  .user_info{
+    @include wh(100vw, 45vh);
+    position: relative;
+    background: linear-gradient(to top, #114357, #f29492);
+      .cell{
+        width: 90%;
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        .name{
+          padding: 10rpx 0;
+        }
+        .point{
+          font-size: 28rpx;
+        }
+    }
+  }
+
+  .shelf{
+    padding: 40rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .custom_cell{
+    padding: 40rpx 30rpx;
+  }
+}

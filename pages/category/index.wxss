@@ -3,10 +3,6 @@
   justify-content: space-between;
   text-align: center;
 }
-.category_container .custom_sidebar {
-  height: 100% !important;
-  background-color: #f8f8fa;
-}
 .category_container .main {
   flex-grow: 1;
   height: 100vh;

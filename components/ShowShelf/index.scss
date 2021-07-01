@@ -1,0 +1,20 @@
+@import "../../styles/index";
+
+.show_shelf{
+  @include wh(200rpx, 200rpx);
+  box-shadow: 4rpx 4rpx 14rpx 4rpx $uni_grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .item{
+    padding: 10rpx 20rpx;
+  }
+  .title{
+    @include fc(28rpx, $uni_black);
+  }
+  .value{
+    @include fc(24rpx, $uni_grey);
+  }
+}
