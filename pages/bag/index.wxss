@@ -1,1 +1,15 @@
-
+.bag_container .custom_title {
+  font-size: 28rpx;
+  color: #666;
+}
+.bag_container .card:hover {
+  width: 80vw;
+}
+.bag_container .custom_price {
+  color: #333;
+}
+.bag_container .custom_button {
+  border-radius: 0;
+  background-color: #333;
+  border: none;
+}

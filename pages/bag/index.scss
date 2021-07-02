@@ -1,0 +1,21 @@
+@import "../../styles/index";
+
+.bag_container{
+
+  .custom_title{
+    @include fc(28rpx, $uni_black);
+  }
+
+  .card:hover{
+    width: 80vw;
+  }
+
+  .custom_price{
+    color: #333;
+  }
+  .custom_button{
+    border-radius: 0;
+    background-color: #333;
+    border: none;
+  }
+}

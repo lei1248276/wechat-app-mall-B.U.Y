@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 .show_shelf .item {
   padding: 10rpx 20rpx;

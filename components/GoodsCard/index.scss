@@ -1,0 +1,27 @@
+@import "../../styles/index";
+
+.goods_card{
+  @include wh(100vw, 320rpx);
+  border-bottom: 2rpx solid $uni_grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .button{
+    @include wh(15%, 100%);
+  }
+
+  .goods{
+    @include wh(80%, 85%);
+    background-color: pink;
+  }
+  
+}
+
+.delete{
+  @include wh(20vw, 320rpx);
+  color: #fff;
+  line-height: 320rpx;
+  text-align: center;
+  background-color: $uni_red;
+}

@@ -50,9 +50,9 @@ Page({
       fail: err => console.error(err)
     });
   },
-  _fetchSubCategoryGoods(i) {
+  _fetchSubCategoryGoods(i, params) {
     fetchSubCategoryGoods({
-      params: { miniWallkey: this.data.tags[i].key, type: 'sell' },
+      params: params || { miniWallkey: this.data.tags[i].key, type: 'sell' },
       success: res => {
         const list = res.data, item = { list, total: list.length };
         this.setData({ tagIndex: i, [`mallGoods[${i}]`]: item });
@@ -71,34 +71,23 @@ Page({
     wx.navigateTo({
       url: '/pages/category/index',
       events: {
-        acceptCategory: (list, title, total) => {
-          const { tags } = this.data, i = tags.findIndex(v => v.title === title);
-
-          if (i !== -1) {
-            this.onTag(i);
-          } else {
-            this.setData({
-              [`mallGoods[${tags.length}]`]: { list, total },
-              [`tags[${tags.length}]`]: { title },
-              tagIndex: tags.length
-            });
-          }
-        }
+        acceptCategory: (i, params) => this.onTag(i + 1, params)
       }
     });
   },
   loadStart() {
     this.setData({ loaded: false });
   },
-  onTag(e) {
-    const i = typeof e === 'object' ? e.currentTarget.dataset.index : e,
+  // ! 点击tag发出请求切换页面内容
+  onTag(event, params) {
+    const i = typeof event === 'number' ? event : event.currentTarget.dataset.index,
       { tagIndex, mallGoods } = this.data;
     if (mallGoods[i]) {
       if (Number(i) === 0 || tagIndex === i) return this.setData({ tagIndex: 0 });
 
       this.setData({ tagIndex: i });
     } else if (Number(i) !== 0 && tagIndex !== i) {
-      this._fetchSubCategoryGoods(i);
+      this._fetchSubCategoryGoods(i, params);
     }
   }
 });

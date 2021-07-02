@@ -1,0 +1,26 @@
+.goods_card {
+  width: 100vw;
+  height: 320rpx;
+  border-bottom: 2rpx solid #98989f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goods_card .button {
+  width: 15%;
+  height: 100%;
+}
+.goods_card .goods {
+  width: 80%;
+  height: 85%;
+  background-color: pink;
+}
+
+.delete {
+  width: 20vw;
+  height: 320rpx;
+  color: #fff;
+  line-height: 320rpx;
+  text-align: center;
+  background-color: #B20F25;
+}

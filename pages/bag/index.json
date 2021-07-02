@@ -1,4 +1,8 @@
 {
+  "navigationStyle": "custom",
   "usingComponents": {
+    "goods-card": "/components/GoodsCard/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "van-checkbox": "@vant/weapp/checkbox/index"
   }
 }

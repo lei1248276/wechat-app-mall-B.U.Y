@@ -1,0 +1,29 @@
+<view class="help_container">
+  <van-nav-bar border="{{ false }}" title="帮助中心" title-class="custom_title"/>
+
+  <van-notice-bar class="declaration"
+                  color="#1989fa"
+                  background="#ecf9ff"
+                  left-icon="info-o"
+                  text="我们一直都在,如果您有任何疑问或建议，请联系我们。"
+  />
+  <van-notice-bar class="declaration"
+                  color="#1989fa"
+                  background="#ecf9ff"
+                  left-icon="info-o"
+                  text="周一至周日  10:00-22:00  (不包含法定节假日)"
+  />
+
+  <view class="shelf">
+    <show-shelf title="在线咨询" icon="chat-o"/>
+    <show-shelf title="电话热线" icon="phone-o" value="{{ ['400 888 8888'] }}"/>
+    <show-shelf title="客服邮箱" icon="envelop-o" value="{{ ['example??@??.com'] }}"/>
+  </view>
+
+  <van-cell-group>
+    <van-cell title="门店查询" is-link custom-class="custom_cell"/>
+    <van-cell title="订单与配送" is-link custom-class="custom_cell"/>
+    <van-cell title="退货与退款" is-link custom-class="custom_cell"/>
+    <van-cell title="会员制度" is-link custom-class="custom_cell"/>
+  </van-cell-group>
+</view>

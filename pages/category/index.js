@@ -1,4 +1,4 @@
-import { fetchSubCategory, fetchSubCategoryGoods } from '../../api/category';
+import { fetchSubCategory } from '../../api/category';
 const APP = getApp();
 
 Page({
@@ -8,6 +8,7 @@ Page({
     currentIndex: 0
   },
   onLoad: function() {
+    // ! 获取上个页面的引用，方便传递数据
     this.eventChannel = this.getOpenerEventChannel();
 
     const page = getCurrentPages(), route = page[page.length - 1].route;
@@ -31,17 +32,8 @@ Page({
   },
   onSelectItem() {
     const { category, currentIndex: i } = this.data;
-    fetchSubCategoryGoods({
-      params: { miniWallkey: category[i].miniWallkey, type: 'sell' },
-      success: result => {
-        wx.navigateBack({
-          delta: 1,
-          success: () => {
-            this.eventChannel.emit('acceptCategory', result.data, category[i].title, result.data.length);
-          }
-        });
-      },
-      fail: err => console.error(err)
-    });
+    this.eventChannel.emit('acceptCategory', i, { miniWallkey: category[i].miniWallkey, type: 'sell' });
+
+    wx.navigateBack({ delta: 1 });
   }
 });

@@ -1,9 +1,9 @@
 Page({
   data: {
-    username: '未登录用户',
+    username: '点击登录',
     point: 0
   },
-  onLoad: function(options) {
-
+  onLogin() {
+    console.log('onLogin');
   }
 });

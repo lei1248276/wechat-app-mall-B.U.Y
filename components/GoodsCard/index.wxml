@@ -1,0 +1,13 @@
+<van-swipe-cell right-width="{{ 65 }}">
+  <view class="goods_card"
+        right-width="{{ 65 }}"
+        bind:tap="onClick">
+    <view class="button" style="background-color: {{ checked ? '#98989f' : '' }};">
+    </view>
+    <view class="goods">
+
+    </view>
+
+  </view>
+  <view slot="right" class="delete">删除</view>
+</van-swipe-cell>

@@ -1,3 +1,31 @@
 <view class="bag_container">
-    bag
+    <van-nav-bar border="{{ false }}" title="购物袋" title-class="custom_title"/>
+
+    <van-cell title="购物免费配送" icon="location-o">
+        <van-button slot="right-icon"
+                    icon="setting-o"
+                    size="mini"
+                    custom-style="border: none;font-size: 30rpx">
+            管理
+        </van-button>
+    </van-cell>
+
+    <goods-card checked="{{ select }}" bind:check="onSelect"></goods-card>
+
+    <van-submit-bar
+      price="{{ 3050 }}"
+      button-text="立即结算"
+      bind:submit="onClickBuy"
+      tip="{{ tip }}"
+      price-class="custom_price"
+      button-class="custom_button"
+    >
+        <van-checkbox value="{{ checked }}"
+                      icon-size="40rpx"
+                      shape
+                      checked-color="#333"
+                      bind:change="onClickAll">
+            全选
+        </van-checkbox>
+    </van-submit-bar>
 </view>

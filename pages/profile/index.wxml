@@ -6,6 +6,12 @@
   <view class="user_info">
     <view class="cell">
       <view class="user">
+        <van-image src=""
+                   round
+                   width="140rpx"
+                   height="140rpx"
+                   bind:click="onLogin"
+        />
         <view class="name">{{ username }}</view>
         <view class="point">时尚友人 / {{ point }} 积分</view>
       </view>

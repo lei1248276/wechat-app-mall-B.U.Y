@@ -1,0 +1,23 @@
+@import "../../styles/index";
+
+.help_container{
+
+  .custom_title{
+    @include fc(28rpx, $uni_black);
+  }
+
+  .declaration{
+    display: block;
+    margin: 32rpx 0;
+  }
+
+  .shelf{
+    padding: 40rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .custom_cell{
+    padding: 40rpx 30rpx;
+  }
+}

@@ -41,6 +41,18 @@
           "pathName": "pages/profile/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "help",
+          "pathName": "pages/help/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "bag",
+          "pathName": "pages/bag/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

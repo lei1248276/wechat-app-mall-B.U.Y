@@ -24,9 +24,7 @@ Component({
     onImg(e) {
       const i = e.target.dataset.index,
         data = this.data,
-        imgs = data.show
-          ? data.list.detailImage[0].list.map(v => 'https:' + v)
-          : data.temp.map(v => 'https:' + v);
+        imgs = data.list.detailImage[0].list.map(v => 'https:' + v);
       wx.previewImage({
         urls: imgs,
         current: imgs[i]

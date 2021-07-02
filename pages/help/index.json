@@ -1,4 +1,6 @@
 {
+  "navigationStyle": "custom",
   "usingComponents": {
+    "show-shelf": "/components/ShowShelf/index"
   }
 }

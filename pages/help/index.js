@@ -1,6 +1,3 @@
 Page({
-  data: {},
-  onLoad: function(options) {
-
-  }
+  data: {}
 });

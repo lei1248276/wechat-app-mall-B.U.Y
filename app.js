@@ -8,9 +8,6 @@ App({
   globalData: {
     cache: new Map()
   },
-  onLaunch() {
-    this.fetch('pages/home/index');
-  },
   // * 预获取请求
   fetch(route, params) {
     const path = route.split('?'), cache = this.globalData.cache;

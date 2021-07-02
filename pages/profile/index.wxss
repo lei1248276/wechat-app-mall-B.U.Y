@@ -10,7 +10,7 @@
   background: linear-gradient(to top, #114357, #f29492);
 }
 .profile_container .user_info .cell {
-  width: 90%;
+  width: 82%;
   position: absolute;
   bottom: 10%;
   left: 50%;
