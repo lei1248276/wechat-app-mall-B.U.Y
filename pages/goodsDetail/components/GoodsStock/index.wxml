@@ -1,21 +1,28 @@
 <view class="goods_stock">
   <title-cell title="颜色" value="查看大图" bind:click="onLookColor"/>
-  <view class="item_color">
+  <view class="item_color" bind:tap="onSelectColor">
     <van-button class="btn"
                 wx:for="{{ list.props[0].list }}"
                 wx:key="index"
-                custom-style="min-width: 140rpx"
+                data-index="{{ index }}"
+                data-name="{{ item.name }}"
+                icon="{{ getImgs[index] }}"
+                custom-style="min-width: 140rpx;font-size: 32rpx;"
+                custom-class="{{ curColorIndex === index ? 'custom_color_btn' : '' }}"
                 plain>
       {{ item.name}}
     </van-button>
   </view>
 
   <title-cell title="尺码" value="查看尺码表" bind:click="onLookSize"/>
-  <view class="item_size">
+  <view class="item_size" bind:tap="onSelectSize">
     <van-button class="btn"
                 wx:for="{{ list.props[1].list }}"
                 wx:key="index"
-                custom-style="min-width: 140rpx"
+                data-index="{{ index }}"
+                data-name="{{ item.name }}"
+                custom-style="min-width: 140rpx;"
+                custom-class="{{ curSizeIndex === index ? 'custom_color_btn' : '' }}"
                 plain>
       {{ item.name}}
     </van-button>

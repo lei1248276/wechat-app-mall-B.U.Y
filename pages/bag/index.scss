@@ -1,21 +1,55 @@
 @import "../../styles/index";
 
 .bag_container{
+  padding-bottom: 150rpx;
 
   .custom_title{
     @include fc(28rpx, $uni_black);
   }
 
-  .card:hover{
-    width: 80vw;
+  .custom_cell{
+    padding: 10rpx 32rpx 0;
+  }
+  .custom_totalPrice{
+    padding: 40rpx 32rpx;
   }
 
   .custom_price{
     color: #333;
   }
+  .custom_priceHide{
+    display: none;
+  }
   .custom_button{
+    padding: 0;
     border-radius: 0;
     background-color: #333;
     border: none;
+  }
+  .custom_delete{
+    width: 200rpx;
+    height: 80rpx;
+    position: relative;
+    left: 65%;
+  }
+
+  .like{
+    @include fc(36rpx, $uni_black);
+    .title{
+      padding: 40rpx 32rpx 0;
+    }
+  }
+
+  .declaration{
+    padding: 0 40rpx 20rpx;
+    @include fc(28rpx, $uni_black);
+    .link{
+      display: inline-block;
+      text-decoration: underline;
+      color: $uni_grey;
+    }
+  }
+  .text{
+    padding-bottom: 30rpx;
   }
 }

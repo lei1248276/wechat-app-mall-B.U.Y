@@ -6,20 +6,59 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(216, 219, 225, .3);
 
+  .bgColor{
+    background: #1e2603;
+  }
   .button{
-    @include wh(15%, 100%);
+    position: relative;
+    @include wh(15vw, 100%);
+    .click{
+      @include mid();
+    }
   }
 
   .goods{
-    @include wh(80%, 85%);
-    background-color: pink;
+    @include wh(84vw, 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .goods_detail{
+      @include wh(66%, 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: left;
+
+      .title{
+        @include fc(34rpx, $uni_black);
+        word-break:break-all;
+        @include textMulOmit();
+      }
+
+      .custom_params{
+        max-width: 400rpx;
+        height: 60rpx;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .discount_price{
+        color: $uni_red;
+      }
+      .old_price{
+        position: relative;
+        right: -30rpx;
+        color: $uni_grey;
+        text-decoration: line-through;
+      }
+    }
   }
-  
 }
 
 .delete{
-  @include wh(20vw, 320rpx);
+  @include wh(25vw, 320rpx);
   color: #fff;
   line-height: 320rpx;
   text-align: center;

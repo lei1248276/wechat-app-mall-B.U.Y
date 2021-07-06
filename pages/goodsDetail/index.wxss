@@ -1,5 +1,4 @@
 .goods_detail_container {
   width: 100%;
   margin-bottom: 100rpx;
-
 }

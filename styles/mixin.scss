@@ -48,7 +48,7 @@
 }
 
 // 文字多行省略
-@mixin testMulOmit($col: 2) {
+@mixin textMulOmit($col: 2) {
   overflow : hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

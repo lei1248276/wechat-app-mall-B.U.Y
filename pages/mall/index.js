@@ -21,8 +21,8 @@ Page({
     this._fetchMallGoods();
   },
   onReady() {
-    APP.fetch('pages/category/index');
-    APP.take('pages/category/index').then(res => {
+    APP.fetch('pages/mall/page/category/index');
+    APP.take('pages/mall/page/category/index').then(res => {
       this.setData({
         tags: this.data.tags.concat(res.slice(0, 6).map(v => ({ title: v.title, key: v.miniWallkey })))
       });
@@ -69,7 +69,7 @@ Page({
     // APP.fetch('pages/category/index');
 
     wx.navigateTo({
-      url: '/pages/category/index',
+      url: './page/category/index',
       events: {
         acceptCategory: (i, params) => this.onTag(i + 1, params)
       }

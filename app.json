@@ -3,11 +3,11 @@
     "pages/index/index",
     "pages/home/index",
     "pages/mall/index",
+    "pages/mall/page/category/index",
     "pages/bag/index",
     "pages/profile/index",
     "pages/goodsDetail/index",
     "pages/search/index",
-    "pages/category/index",
     "pages/help/index"
   ],
   "usingComponents": {

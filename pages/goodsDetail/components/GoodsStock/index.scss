@@ -3,6 +3,10 @@
 .goods_stock{
   margin-bottom: 40rpx;
 
+  .custom_color_btn{
+    border: 2rpx solid $uni_red;
+    color: $uni_red;
+  }
   .item_color{
     display: flex;
     justify-content: left;

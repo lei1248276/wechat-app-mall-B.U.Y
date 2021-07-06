@@ -1,31 +1,89 @@
 <view class="bag_container">
-    <van-nav-bar border="{{ false }}" title="购物袋" title-class="custom_title"/>
+  <van-nav-bar border="{{ false }}" fixed placeholder title="购物袋" title-class="custom_title"/>
 
-    <van-cell title="购物免费配送" icon="location-o">
-        <van-button slot="right-icon"
-                    icon="setting-o"
-                    size="mini"
-                    custom-style="border: none;font-size: 30rpx">
-            管理
-        </van-button>
-    </van-cell>
+  <van-cell title="购物免费配送" icon="location-o">
+    <van-button slot="right-icon"
+                icon="setting-o"
+                size="mini"
+                custom-style="border: none;font-size: 30rpx"
+                bind:click="onConfig">
+      管理
+    </van-button>
+  </van-cell>
 
-    <goods-card checked="{{ select }}" bind:check="onSelect"></goods-card>
+  <block wx:for="{{ purchase }}" wx:key="index">
+    <goods-card data-index="{{ index }}"
+                selected="{{ item.selected }}"
+                image="{{ item.img }}"
+                title="{{ item.title }}"
+                price="{{ item.price }}"
+                oldPrice="{{ item.oldPrice }}"
+                params="{{ item.color + ' / ' +  item.size }}"
+                count="{{ item.count }}"
+                bind:click="onAdd"
+                bind:close="onClose"
+                bind:select="onSelect"
+                bind:plus="onPlus"
+                bind:minus="onMinus"
+    />
+  </block>
 
-    <van-submit-bar
-      price="{{ 3050 }}"
-      button-text="立即结算"
-      bind:submit="onClickBuy"
-      tip="{{ tip }}"
-      price-class="custom_price"
-      button-class="custom_button"
-    >
-        <van-checkbox value="{{ checked }}"
-                      icon-size="40rpx"
-                      shape
-                      checked-color="#333"
-                      bind:change="onClickAll">
-            全选
-        </van-checkbox>
-    </van-submit-bar>
+  <van-cell-group>
+    <van-cell title="配送费"
+              value="¥ 0.00"
+              border="{{ false }}"
+              custom-class="custom_cell"
+    />
+    <van-cell title="小计"
+              value="¥ {{ totalPrice }}"
+              center
+              label="{{ purchase.length }} 商品"
+              custom-class="custom_cell"
+    />
+    <van-cell title="B.U.Y 赚取会员积分"
+              value="{{ vipPoint }}"
+              custom-class="custom_totalPrice"
+    />
+  </van-cell-group>
+
+  <view class="like">
+    <view class="title">猜你喜欢</view>
+    <goods list="{{ like }}" progress></goods>
+  </view>
+
+  <van-submit-bar
+    price="{{ totalPrice * 100 }}"
+    button-text="{{ isConfig ? '移至愿望清单' : '立即结算'}}"
+    button-type="info"
+    label="{{ isConfig ? ' ' : '合计: ' }}"
+    tip="{{ tip }}"
+    price-class="{{ isConfig ? 'custom_priceHide' : 'custom_price'}}"
+    button-class="custom_button"
+    bind:submit="onClickBuy"
+  >
+    <van-checkbox value="{{ isSelectAll }}"
+                  icon-size="40rpx"
+                  shape
+                  checked-color="#333"
+                  bind:change="onClickAll">
+      全选
+    </van-checkbox>
+    <van-button wx-if="{{ isConfig }}"
+                icon="close"
+                custom-class="custom_delete"
+                bind:click="onClose">
+      删除
+    </van-button>
+  </van-submit-bar>
+
+  <view class="declaration text">
+    <view class="text">配送方式</view>
+    <view class="text">由顺丰提供标准配送服务，即发货日 3 至 5 个工作日内送达，法定节假日除外。</view>
+    <view class="text">退货政策</view>
+    <view class="text">B.U.Y 提供 7 天无理由退货。详情请查看 <navigator class="link">帮助中心</navigator></view>
+    <view class="text">需要帮助</view>
+    <view class="text">访问我们的 <navigator class="link">帮助中心</navigator>，或<navigator class="link">点击此处</navigator>咨询在线客服</view>
+  </view>
+
+  <van-toast id="van-toast" />
 </view>

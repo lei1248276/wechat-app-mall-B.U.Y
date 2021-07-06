@@ -6,21 +6,27 @@ import { fetchCategory } from './api/category';
 
 App({
   globalData: {
-    cache: new Map()
+    cache: new Map(),
+    purchase: new Map(),
+    shoppingList: {},
+    isRefresh: false
   },
   // * 预获取请求
   fetch(route, params) {
-    const path = route.split('?'), cache = this.globalData.cache;
-    route = path[0];
-    path[1] && (params = path[1].split('=').reduce((acc, cur) => ({ [acc]: cur })));
+    const cache = this.globalData.cache;
+    ({ route, params } = this.filter(route, params));
     cache.set(route, this[route](route, params));
   },
   // * 获取请求到的缓存数据，如果没有缓存就重新请求
   take(route, params) {
+    ({ route, params } = this.filter(route, params));
+    return this[route](route, params);
+  },
+  filter(route, params) {
     const path = route.split('?');
     route = path[0];
     path[1] && (params = path[1].split('=').reduce((acc, cur) => ({ [acc]: cur })));
-    return this[route](route, params);
+    return { route, params };
   },
 
   /*  ! 设置需要预请求页面数据的 API 方法  */
@@ -81,7 +87,7 @@ App({
     });
   },
   // * category page API
-  'pages/category/index': function(route) {
+  'pages/mall/page/category/index': function(route) {
     const cache = this.globalData.cache;
     if (cache.has(route)) return cache.get(route);
 

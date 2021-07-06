@@ -14,7 +14,7 @@
       @include fc(28rpx, $uni_black);
       margin-right: 10rpx;
       .item_name{
-        @include testMulOmit();
+        @include textMulOmit();
         margin-bottom: 15rpx;
       }
       .discount_price{

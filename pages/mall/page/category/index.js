@@ -1,4 +1,5 @@
-import { fetchSubCategory } from '../../api/category';
+import { fetchSubCategory } from '../../../../api/category';
+
 const APP = getApp();
 
 Page({

@@ -1,13 +1,31 @@
 Component({
   properties: {
-    checked: Boolean
+    selected: Boolean,
+    image: String,
+    title: String,
+    params: String,
+    count: Number || String,
+    price: String,
+    oldPrice: String
   },
   data: {
 
   },
   methods: {
-    onClick() {
-      this.triggerEvent('check');
+    onClose() {
+      this.triggerEvent('close');
+    },
+    onClick(e) {
+      this.triggerEvent('click');
+    },
+    onSelect() {
+      this.triggerEvent('select');
+    },
+    onPlus() {
+      this.triggerEvent('plus');
+    },
+    onMinus() {
+      this.triggerEvent('minus');
     }
   }
 });

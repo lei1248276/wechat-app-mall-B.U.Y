@@ -17,7 +17,10 @@
 
   <goods-info list="{{ goodsInfo }}"/>
 
-  <goods-stock list="{{ stock }}"/>
+  <goods-stock list="{{ stock }}"
+               bind:selColor="onSelColor"
+               bind:selSize="onSelSize"
+  />
 
   <goods-rate list="{{ rate }}"/>
 
@@ -29,15 +32,9 @@
   <goods-detail-info list="{{ detailInfo }}"/>
 
   <van-goods-action>
-    <van-goods-action-icon icon="chat-o"
-                           text="客服"
-    />
-    <van-goods-action-icon icon="cart-o"
-                           text="购物车"
-    />
-    <van-goods-action-icon icon="shop-o"
-                           text="店铺"
-    />
+    <van-goods-action-icon icon="chat-o" text="客服"/>
+    <van-goods-action-icon icon="cart-o" text="购物车"/>
+    <van-goods-action-icon icon="shop-o" text="店铺"/>
     <van-goods-action-button color="#be99ff"
                              text="加入购物车"
                              type="warning"
@@ -49,5 +46,6 @@
   </van-goods-action>
 
   <van-toast id="van-toast" />
+
   <scroll-to/>
 </view>

@@ -1,13 +1,38 @@
-<van-swipe-cell right-width="{{ 65 }}">
-  <view class="goods_card"
-        right-width="{{ 65 }}"
-        bind:tap="onClick">
-    <view class="button" style="background-color: {{ checked ? '#98989f' : '' }};">
+<van-swipe-cell right-width="{{ 85 }}">
+  <view class="goods_card">
+    <view class="button {{ selected ? 'bgColor' : '' }}" bind:tap="onClick">
+      <van-icon wx:if="{{ !selected }}"
+                name="/assets/click.svg"
+                size="60rpx"
+                class="click"
+      />
     </view>
-    <view class="goods">
 
+    <view class="goods">
+      <van-image src="{{ image }}" width="200rpx" height="280rpx" lazy-load/>
+      <view class="goods_detail">
+        <view class="title">{{ title }}</view>
+        <view>
+          <van-button size="small"
+                      custom-class="custom_params"
+                      bind:click="onSelect">
+            {{ params }}
+          </van-button>
+          <van-stepper value="{{ count }}"
+                       integer
+                       disable-input
+                       style="display: inline-block;vertical-align: middle;margin-left: 10rpx;"
+                       bind:plus="onPlus"
+                       bind:minus="onMinus"
+          />
+        </view>
+        <view class="price">
+          <text class="discount_price">¥ {{ price }}</text>
+          <text class="old_price">¥ {{ oldPrice }}</text>
+        </view>
+      </view>
     </view>
 
   </view>
-  <view slot="right" class="delete">删除</view>
+  <view slot="right" class="delete" bind:tap="onClose">删除</view>
 </van-swipe-cell>

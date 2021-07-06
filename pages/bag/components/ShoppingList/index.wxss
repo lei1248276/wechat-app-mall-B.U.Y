@@ -1,0 +1,17 @@
+.custom_cell {
+  padding: 10rpx 32rpx 0;
+}
+
+.custom_totalPrice {
+  padding: 40rpx 32rpx;
+}
+
+.custom_price {
+  color: #333;
+}
+
+.custom_button {
+  border-radius: 0;
+  background-color: #333;
+  border: none;
+}

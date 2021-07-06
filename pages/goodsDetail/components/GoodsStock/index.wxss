@@ -1,6 +1,10 @@
 .goods_stock {
   margin-bottom: 40rpx;
 }
+.goods_stock .custom_color_btn {
+  border: 2rpx solid #B20F25;
+  color: #B20F25;
+}
 .goods_stock .item_color, .goods_stock .item_size {
   display: flex;
   justify-content: left;

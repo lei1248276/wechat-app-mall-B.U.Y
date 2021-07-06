@@ -3,6 +3,7 @@
   "usingComponents": {
     "goods-card": "/components/GoodsCard/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index",
-    "van-checkbox": "@vant/weapp/checkbox/index"
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "goods": "/components/Goods/index"
   }
 }
