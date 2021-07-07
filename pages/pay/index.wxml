@@ -1,0 +1,69 @@
+<view class="pay_container">
+  <van-cell title="订单小结" value="{{ payItem.imgs.length }} 商品" border="{{ false }}"/>
+  <scroll-view class="goods_img" scroll-x enable-flex>
+    <block wx:for="{{ payItem.imgs }}" wx:key="index">
+      <van-image style="padding: 0 10rpx;"
+                 src="{{ item }}"
+                 width="230rpx"
+                 height="230rpx"
+                 lazy-load
+      />
+    </block>
+  </scroll-view>
+
+  <view class="address">
+    <van-cell title="收货信息"/>
+    <van-button size="large"
+                plain
+                icon="plus"
+                custom-style="font-size: 28rpx;margin-bottom: 30rpx;">
+      添加新地址
+    </van-button>
+    <van-cell title="3-5个工作日"
+              value="免邮"
+              border="{{ false }}"
+              custom-class="custom_title"
+              value-class="custom_value"
+    />
+  </view>
+
+  <van-collapse value="{{ activeNames }}"
+                bind:change="onChange"
+                border="{{ false }}"
+                custom-class="custom_collapse">
+    <van-collapse-item name="1"
+                       title="优惠码"
+                       label="每单仅能使用 1 个优惠码"
+                       border="{{ false }}"
+                       content-class="custom_content">
+      <van-field model:value="{{ couponCode }}"
+                 placeholder="请输入优惠码"
+                 use-button-slot>
+        <van-button slot="button" color="#333">立即使用</van-button>
+      </van-field>
+    </van-collapse-item>
+  </van-collapse>
+
+  <van-cell title="优惠券"
+            is-link
+            use-label-slot
+            custom-class="custom_coupon">
+    <view slot="label">您有 <text>{{ coupon }}</text> 张优惠券使用</view>
+  </van-cell>
+
+  <van-cell title="发票"
+            is-link
+            custom-class="custom_invoice"
+            label="仅提供电子发票，如需纸质发票，请联系客服。"
+  />
+
+  <van-cell-group border="{{ false }}" custom-class="custom_total">
+    <van-cell title="小计 {{ payItem.imgs.length }} 件商品" value="¥ {{ payItem.totalPrice }}" border="{{ false }}"/>
+    <van-cell title="配送费" value="¥ 15.00" border="{{ false }}"/>
+    <van-cell title="折扣" value="-¥ 15.00" border="{{ false }}"/>
+    <van-cell title="B.U.Y 全站免邮" value="-¥ 15.00" border="{{ false }}"/>
+    <van-cell title="总金额" value="¥ {{ payItem.totalPrice }}" border="{{ false }}"/>
+  </van-cell-group>
+
+  <declaration/>
+</view>

@@ -1,0 +1,14 @@
+.declaration {
+  padding: 0 40rpx 20rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+.declaration .link {
+  display: inline-block;
+  text-decoration: underline;
+  color: #98989f;
+}
+
+.text {
+  padding-bottom: 30rpx;
+}

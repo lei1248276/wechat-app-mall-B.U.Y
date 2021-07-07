@@ -9,8 +9,7 @@ Page({
     isConfig: false,
     tip: false,
     isSelectAll: false,
-    totalPrice: 0,
-    vipPoint: 0
+    totalPrice: 0
   },
   onLoad: function() {
     // 用作判断是否全选
@@ -23,7 +22,7 @@ Page({
     const globalData = APP.globalData;
     if (globalData.isRefresh) {
       globalData.isRefresh = false;
-      this.setData({ purchase: [...globalData.purchase.values()] });
+      this.setData({ purchase: [...globalData.purchase.values()], isSelectAll: false });
     }
   },
   onConfig() {
@@ -36,30 +35,28 @@ Page({
   },
   onAdd({ target: { dataset: { index: i }}}) {
     // eslint-disable-next-line prefer-const
-    let { purchase, totalPrice, vipPoint } = this.data, { selected, price, count } = purchase[i];
+    let { purchase, totalPrice } = this.data, { selected, price, count } = purchase[i];
 
     if (selected) {
       --this.selectNum;
-      totalPrice = this.fixedFloat(totalPrice - price * count);
-      vipPoint = Math.ceil(totalPrice);
-      this.setData({ [`purchase[${i}].selected`]: false, isSelectAll: false, totalPrice, vipPoint });
+      totalPrice = totalPrice - price * count;
+      this.setData({ [`purchase[${i}].selected`]: false, isSelectAll: false, totalPrice });
     } else {
       ++this.selectNum;
-      totalPrice = this.fixedFloat(totalPrice + price * count);
-      vipPoint = Math.ceil(totalPrice);
+      totalPrice = totalPrice + price * count;
       this.selectNum === purchase.length
-        ? this.setData({ [`purchase[${i}].selected`]: true, isSelectAll: true, totalPrice, vipPoint })
-        : this.setData({ [`purchase[${i}].selected`]: true, totalPrice, vipPoint });
+        ? this.setData({ [`purchase[${i}].selected`]: true, isSelectAll: true, totalPrice })
+        : this.setData({ [`purchase[${i}].selected`]: true, totalPrice });
     }
   },
   onClose({ target: { dataset: { index: i }}}) {
     // eslint-disable-next-line prefer-const
-    let { purchase, totalPrice, vipPoint } = this.data, globalPurchase = APP.globalData.purchase;
+    let { purchase, totalPrice } = this.data, globalPurchase = APP.globalData.purchase;
     if (i !== undefined) {
       const { price, count, color, size, selected } = purchase[i];
       purchase.splice(i, 1);
       globalPurchase.delete(color + size);
-      selected && (totalPrice = this.fixedFloat(totalPrice - price * count));
+      selected && (totalPrice = totalPrice - price * count);
     } else {
       totalPrice = 0;
       purchase = purchase.filter(v => {
@@ -67,27 +64,24 @@ Page({
         return !v.selected;
       });
     }
-    vipPoint = Math.ceil(totalPrice);
-    this.setData({ purchase, totalPrice, vipPoint });
+    this.setData({ purchase, totalPrice });
   },
   onSelect() {
     console.log(`onselct`);
   },
   onPlus({ target: { dataset: { index: i }}}) {
     const { count, selected, price } = this.data.purchase[i];
-    let { totalPrice, vipPoint } = this.data;
+    let { totalPrice } = this.data;
 
-    if (selected) totalPrice = this.fixedFloat(totalPrice + price);
-    vipPoint = Math.ceil(totalPrice);
-    this.setData({ [`purchase[${i}].count`]: count + 1, totalPrice, vipPoint });
+    if (selected) totalPrice = totalPrice + price;
+    this.setData({ [`purchase[${i}].count`]: count + 1, totalPrice });
   },
   onMinus({ target: { dataset: { index: i }}}) {
     const { count, selected, price } = this.data.purchase[i];
-    let { totalPrice, vipPoint } = this.data;
+    let { totalPrice } = this.data;
 
-    if (selected) totalPrice = this.fixedFloat(totalPrice - price);
-    vipPoint = Math.ceil(totalPrice);
-    this.setData({ [`purchase[${i}].count`]: count - 1, totalPrice, vipPoint });
+    if (selected) totalPrice = totalPrice - price;
+    this.setData({ [`purchase[${i}].count`]: count - 1, totalPrice });
   },
   onClickAll() {
     const { purchase, isSelectAll } = this.data;
@@ -98,22 +92,27 @@ Page({
       purchase.forEach(v => { v.selected = false; });
     } else {
       this.selectNum = purchase.length;
-      totalPrice = this.fixedFloat(purchase.reduce((acc, cur) => {
+      totalPrice = purchase.reduce((acc, cur) => {
         cur.selected = true;
         return acc + cur.price * cur.count;
-      }, 0));
+      }, 0);
     }
-    this.setData({ isSelectAll: !isSelectAll, purchase, totalPrice, vipPoint: Math.ceil(totalPrice) });
+    this.setData({ isSelectAll: !isSelectAll, purchase, totalPrice });
   },
-  onClickBuy(e) {
-    if (this.data.isConfig) {
+  toPay() {
+    const data = this.data;
+    if (data.isConfig) {
       console.log(`移至愿望清单`);
     } else {
-      console.log(e);
+      if (data.totalPrice) {
+        const imgs = [];
+
+        data.purchase.forEach(v => { if (v.selected) imgs.push(v.img); });
+        APP.globalData.payItem = { imgs, totalPrice: data.totalPrice };
+        wx.navigateTo({ url: '/pages/pay/index' });
+      } else {
+        Toast.fail('请选择商品');
+      }
     }
-  },
-  fixedFloat(number) {
-    if (typeof number !== 'number') throw new Error('必须为number类型');
-    return parseFloat(number.toFixed(2));
   }
 });

@@ -1,0 +1,14 @@
+@import "../../styles/index";
+
+.declaration{
+  padding: 0 40rpx 20rpx;
+  @include fc(28rpx, $uni_black);
+  .link{
+    display: inline-block;
+    text-decoration: underline;
+    color: $uni_grey;
+  }
+}
+.text{
+  padding-bottom: 30rpx;
+}

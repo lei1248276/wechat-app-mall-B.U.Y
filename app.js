@@ -8,7 +8,7 @@ App({
   globalData: {
     cache: new Map(),
     purchase: new Map(),
-    shoppingList: {},
+    payItem: {},
     isRefresh: false
   },
   // * 预获取请求

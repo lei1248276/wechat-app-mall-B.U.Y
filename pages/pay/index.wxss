@@ -1,0 +1,26 @@
+.pay_container .custom_title {
+  font-size: 28rpx;
+  color: #666;
+}
+.pay_container .goods_img {
+  height: 300rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-bottom: 2rpx solid #98989f;
+  margin-bottom: 30rpx;
+}
+.pay_container .address, .pay_container .custom_total, .pay_container .custom_invoice, .pay_container .custom_coupon, .pay_container .custom_collapse {
+  border-bottom: 2rpx solid #98989f;
+  margin-bottom: 30rpx;
+  padding-bottom: 30rpx;
+}
+.pay_container .address .custom_title, .pay_container .custom_total .custom_title, .pay_container .custom_invoice .custom_title, .pay_container .custom_coupon .custom_title, .pay_container .custom_collapse .custom_title {
+  color: #98989f;
+}
+.pay_container .address .custom_value, .pay_container .custom_total .custom_value, .pay_container .custom_invoice .custom_value, .pay_container .custom_coupon .custom_value, .pay_container .custom_collapse .custom_value {
+  color: #666;
+}
+.pay_container .custom_content {
+  padding: 0;
+}

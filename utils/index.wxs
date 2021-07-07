@@ -1,0 +1,11 @@
+var fixedFloat = function(number) {
+  return Number(number).toFixed(2);
+};
+
+var ceil = function (number) {
+  return Math.ceil(number);
+}
+module.exports = {
+  fixedFloat: fixedFloat,
+  ceil: ceil
+}

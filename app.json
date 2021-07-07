@@ -8,7 +8,8 @@
     "pages/profile/index",
     "pages/goodsDetail/index",
     "pages/search/index",
-    "pages/help/index"
+    "pages/help/index",
+    "pages/pay/index"
   ],
   "usingComponents": {
     "scroll-to": "components/ScrollTo/index",

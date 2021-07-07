@@ -1,3 +1,5 @@
+<wxs src="/utils/index.wxs" module="tools"/>
+
 <van-swipe-cell right-width="{{ 85 }}">
   <view class="goods_card">
     <view class="button {{ selected ? 'bgColor' : '' }}" bind:tap="onClick">
@@ -27,8 +29,8 @@
           />
         </view>
         <view class="price">
-          <text class="discount_price">¥ {{ price }}</text>
-          <text class="old_price">¥ {{ oldPrice }}</text>
+          <text class="discount_price">¥ {{ tools.fixedFloat(price) }}</text>
+          <text class="old_price">¥ {{ tools.fixedFloat(oldPrice) }}</text>
         </view>
       </view>
     </view>

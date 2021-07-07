@@ -2,8 +2,9 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "goods-card": "/components/GoodsCard/index",
+    "goods": "/components/Goods/index",
+    "declaration": "/components/Declaration/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index",
-    "van-checkbox": "@vant/weapp/checkbox/index",
-    "goods": "/components/Goods/index"
+    "van-checkbox": "@vant/weapp/checkbox/index"
   }
 }

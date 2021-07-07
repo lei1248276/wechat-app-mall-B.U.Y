@@ -1,0 +1,47 @@
+@import "../../styles/index";
+
+.pay_container{
+
+  .custom_title{
+    @include fc(28rpx, $uni_black);
+  }
+  .goods_img{
+    height: 300rpx;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-bottom: 2rpx solid $uni_grey;
+    margin-bottom: 30rpx;
+  }
+
+  .address{
+    border-bottom: 2rpx solid $uni_grey;
+    margin-bottom: 30rpx;
+    padding-bottom: 30rpx;
+    .custom_title{
+      color: $uni_grey;
+    }
+    .custom_value{
+      color: $uni_black;
+    }
+  }
+
+  .custom_collapse{
+    @extend .address;
+  }
+  .custom_content{
+    padding: 0;
+  }
+
+  .custom_coupon{
+    @extend .address;
+  }
+
+  .custom_invoice{
+    @extend .address;
+  }
+
+  .custom_total{
+    @extend .address;
+  }
+}

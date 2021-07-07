@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "结算中心",
+  "usingComponents": {
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-field": "@vant/weapp/field/index",
+    "declaration": "/components/Declaration/index"
+  }
+}
