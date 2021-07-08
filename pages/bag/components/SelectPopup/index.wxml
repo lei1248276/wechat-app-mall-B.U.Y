@@ -1,0 +1,58 @@
+<van-popup show="{{ show }}"
+           position="bottom"
+           custom-style="height: 65%;overflow: hidden;"
+           round
+           closeable
+           close-icon="close"
+           bind:close="onClose">
+  <view class="popup_goods">
+    <van-image src="{{ currentImgIndex === -1 ? list.img : list.stock.skuImg[currentImgIndex] }}"
+               width="250rpx"
+               height="250rpx"
+               radius="10rpx"
+               custom-class="custom_img"
+    />
+    <view class="goods_detail">
+      <view class="title">{{ list.title }}</view>
+      <view class="desc">{{ (currentColor || list.color) + ' / ' + (currentSize || list.size) }}</view>
+      <view class="price">
+        ¥ {{ list.price }}
+        <text class="oldPrice">¥ {{ list.oldPrice }}</text>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="popup_img"
+               scroll-x
+               enable-flex
+               bind:tap="onPopupImg">
+    <block wx:for="{{ list.stock.skuImg }}" wx:key="index">
+      <van-image data-index="{{ index }}"
+                 src="{{ item }}"
+                 width="150rpx"
+                 height="150rpx"
+                 radius="10rpx"
+                 lazy-load
+                 custom-class="custom_img"
+      />
+    </block>
+  </scroll-view>
+
+  <view class="item_size" bind:tap="onSelectSize">
+    <van-button class="btn"
+                wx:for="{{ list.stock.sizeList }}"
+                wx:key="index"
+                data-name="{{ item.name }}"
+                custom-style="min-width: 160rpx;"
+                color="{{ (currentSize || list.size) === item.name ? '#333' : '' }}">
+      {{ item.name}}
+    </van-button>
+  </view>
+
+  <van-button color="#333"
+              size="large"
+              custom-style="width:98vw;position:fixed;bottom:2%;left:50%;transform:translateX(-50%);"
+              bind:click="onConfirm">
+    确认
+  </van-button>
+</van-popup>

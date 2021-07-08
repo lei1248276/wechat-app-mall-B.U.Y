@@ -22,8 +22,14 @@ Page({
     const page = getCurrentPages(), route = page[page.length - 1].route;
     APP.take(`${route}?iid=${iid}`).then(res => {
       const [goodsDetail, goodsRecommend] = res;
-
       if (!goodsDetail) return this.setData({ isEmpty: true });
+
+      const skuImg = [];
+      goodsDetail.skuInfo.skus.forEach((v, i, arr) => {
+        if (i === 0 || arr[i].style !== arr[i - 1].style) {
+          skuImg.push('https:' + arr[i].img);
+        }
+      });
       this.setData({
         goodsRecommend,
         topBar: goodsDetail.topBar,
@@ -32,6 +38,7 @@ Page({
         'goodsInfo.columns': goodsDetail.columns,
         stock: goodsDetail.skuInfo,
         'stock.sizeTable': goodsDetail.itemParams.rule,
+        'stock.skuImg': skuImg,
         params: goodsDetail.itemParams.info,
         rate: goodsDetail.rate,
         'rate.score': goodsDetail.shopInfo.score,
@@ -48,8 +55,9 @@ Page({
     const size = e.detail;
     Object.assign(this.data.boughtGoods, { size });
   },
-  onAddCar() {
-    const { color, size, img } = this.data.boughtGoods,
+  onAddBag() {
+    const data = this.data,
+      { color, size, img } = data.boughtGoods,
       goods = globalData.purchase.get(color + size);
 
     if (color && size) {
@@ -57,8 +65,9 @@ Page({
       globalData.isRefresh = true;
       if (goods) return ++goods.count;
 
-      const { title, lowNowPrice: price, lowPrice: oldPrice, iid } = this.data.goodsInfo,
-        item = { title, iid, color, size, img, count: 1, selected: false, price: Number(price), oldPrice: Number(oldPrice) };
+      const { title, lowNowPrice: price, lowPrice: oldPrice, iid } = data.goodsInfo,
+        { skuImg, props } = data.stock,
+        item = { title, iid, color, size, img, count: 1, selected: false, price: Number(price), oldPrice: Number(oldPrice), stock: { skuImg, colorList: props[0].list, sizeList: props[1].list }};
 
       globalData.purchase.set(color + size, item);
       this.setData({ bagGoodsInfo: globalData.purchase.size });

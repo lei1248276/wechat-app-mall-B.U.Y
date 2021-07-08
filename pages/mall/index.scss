@@ -6,8 +6,7 @@
 
   .custom_navbar{
     border: none;
-    background-color: #f5f5f5;
-    font-size: 34rpx;
+    @include fc(34rpx, $uni_grey);
   }
 
   .custom_select{

@@ -1,3 +1,4 @@
+<page-meta page-style="{{ popupShow ? 'overflow: hidden;' : '' }}" />
 <wxs src="/utils/index.wxs" module="tools"/>
 
 <view class="bag_container">
@@ -23,7 +24,8 @@
                 params="{{ item.color + ' / ' +  item.size }}"
                 count="{{ item.count }}"
                 bind:click="onAdd"
-                bind:close="onClose"
+                bind:image="toGoodsDetail"
+                bind:close="onDelete"
                 bind:select="onSelect"
                 bind:plus="onPlus"
                 bind:minus="onMinus"
@@ -74,12 +76,17 @@
     <van-button wx-if="{{ isConfig }}"
                 icon="close"
                 custom-class="custom_delete"
-                bind:click="onClose">
+                bind:click="onDelete">
       删除
     </van-button>
   </van-submit-bar>
 
   <declaration/>
+
+  <select-popup list="{{ popupGoods }}"
+                show="{{ popupShow }}"
+                bind:close="onCloseSelect"
+  />
 
   <van-toast id="van-toast" />
 </view>

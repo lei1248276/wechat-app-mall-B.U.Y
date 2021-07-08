@@ -1,0 +1,60 @@
+@import "../../../../styles/index";
+
+.popup_goods{
+  margin-top: 50rpx;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .custom_img{
+    display: inline-block;
+    vertical-align: middle;
+    border: 2rpx solid black;
+  }
+  .goods_detail{
+    @include wh(60%, 240rpx);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    .title{
+      @include textMulOmit();
+      @include fc(32rpx, $uni_black);
+    }
+    .desc{
+      @include fc(28rpx, $uni_grey);
+    }
+    .price{
+      color: $uni_red;
+    }
+    .oldPrice{
+      @include fc(28rpx, $uni_grey);
+      text-decoration: line-through;
+      display: inline-block;
+      margin-left: 30rpx;
+    }
+  }
+}
+
+.popup_img{
+  @include wh(98vw, 180rpx);
+  margin: 0 auto;
+  display: flex;
+  justify-content: left;
+  align-content: center;
+  .custom_img{
+    margin-right: 10rpx;
+    border: 2rpx solid black;
+  }
+}
+
+.item_size{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 10rpx;
+  .btn{
+    margin: 10rpx 10rpx 10rpx 0;
+  }
+}

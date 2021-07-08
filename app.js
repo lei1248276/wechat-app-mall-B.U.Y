@@ -14,19 +14,29 @@ App({
   // * 预获取请求
   fetch(route, params) {
     const cache = this.globalData.cache;
-    ({ route, params } = this.filter(route, params));
-    cache.set(route, this[route](route, params));
+    if (params) {
+      cache.set(route, this[route](route, params));
+    } else {
+      const router = this.filterQuery(route);
+      cache.set(route, this[router.route](route, router.query));
+    }
   },
   // * 获取请求到的缓存数据，如果没有缓存就重新请求
   take(route, params) {
-    ({ route, params } = this.filter(route, params));
-    return this[route](route, params);
+    if (params) {
+      return this[route](route, params);
+    } else {
+      const router = this.filterQuery(route);
+      return this[router.route](route, router.query);
+    }
   },
-  filter(route, params) {
+  // * 对route进行过滤看是否有query
+  filterQuery(route) {
     const path = route.split('?');
+    let query;
     route = path[0];
-    path[1] && (params = path[1].split('=').reduce((acc, cur) => ({ [acc]: cur })));
-    return { route, params };
+    path[1] && (query = path[1].split('=').reduce((acc, cur) => ({ [acc]: cur })));
+    return { route, query };
   },
 
   /*  ! 设置需要预请求页面数据的 API 方法  */
@@ -53,11 +63,8 @@ App({
   // * goodsDetail page API
   'pages/goodsDetail/index': function(route, params) {
     const cache = this.globalData.cache;
-    if (cache.has(route)) {
-      const value = cache.get(route);
-      cache.delete(route);
-      return value;
-    }
+    if (cache.has(route)) return cache.get(route);
+
     const goodsDetail = new Promise((resolve, reject) => {
         fetchGoodsDetail({
           params,

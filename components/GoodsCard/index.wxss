@@ -28,6 +28,9 @@
   justify-content: space-between;
   align-items: center;
 }
+.goods_card .goods .custom_img {
+  border: 2rpx solid black;
+}
 .goods_card .goods .goods_detail {
   width: 66%;
   height: 100%;

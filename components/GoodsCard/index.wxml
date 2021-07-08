@@ -11,7 +11,14 @@
     </view>
 
     <view class="goods">
-      <van-image src="{{ image }}" width="200rpx" height="280rpx" lazy-load/>
+      <van-image src="{{ image }}"
+                 width="200rpx"
+                 height="280rpx"
+                 lazy-load
+                 custom-class="custom_img"
+                 radius="10rpx"
+                 bind:click="onImage"
+      />
       <view class="goods_detail">
         <view class="title">{{ title }}</view>
         <view>

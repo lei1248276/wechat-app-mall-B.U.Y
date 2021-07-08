@@ -4,6 +4,7 @@
     "goods-card": "/components/GoodsCard/index",
     "goods": "/components/Goods/index",
     "declaration": "/components/Declaration/index",
+    "select-popup": "./components/SelectPopup/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index",
     "van-checkbox": "@vant/weapp/checkbox/index"
   }

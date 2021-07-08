@@ -43,7 +43,7 @@
     <van-goods-action-button color="#be99ff"
                              text="加入购物车"
                              type="warning"
-                             bind:click="onAddCar"
+                             bind:click="onAddBag"
     />
     <van-goods-action-button color="#7232dd"
                              text="立即购买"

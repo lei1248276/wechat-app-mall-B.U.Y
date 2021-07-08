@@ -4,8 +4,8 @@
 }
 .mall_container .custom_navbar {
   border: none;
-  background-color: #f5f5f5;
   font-size: 34rpx;
+  color: #98989f;
 }
 .mall_container .custom_select {
   font-size: 32rpx;

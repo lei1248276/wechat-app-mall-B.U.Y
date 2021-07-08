@@ -18,6 +18,9 @@ Component({
     onClick(e) {
       this.triggerEvent('click');
     },
+    onImage() {
+      this.triggerEvent('image');
+    },
     onSelect() {
       this.triggerEvent('select');
     },

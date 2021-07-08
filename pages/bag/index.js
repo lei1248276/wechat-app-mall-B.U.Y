@@ -1,6 +1,7 @@
 import Toast from '@vant/weapp/toast/toast';
 
-const APP = getApp();
+const APP = getApp(),
+  globalData = APP.globalData;
 
 Page({
   data: {
@@ -9,7 +10,10 @@ Page({
     isConfig: false,
     tip: false,
     isSelectAll: false,
-    totalPrice: 0
+    totalPrice: 0,
+    selectIndex: -1,
+    popupShow: false,
+    popupGoods: {}
   },
   onLoad: function() {
     // 用作判断是否全选
@@ -19,7 +23,6 @@ Page({
     APP.take('pages/search/index').then(like => this.setData({ like }));
   },
   onShow() {
-    const globalData = APP.globalData;
     if (globalData.isRefresh) {
       globalData.isRefresh = false;
       this.setData({ purchase: [...globalData.purchase.values()], isSelectAll: false });
@@ -49,16 +52,18 @@ Page({
         : this.setData({ [`purchase[${i}].selected`]: true, totalPrice });
     }
   },
-  onClose({ target: { dataset: { index: i }}}) {
+  onDelete({ target: { dataset: { index: i }}}) {
     // eslint-disable-next-line prefer-const
-    let { purchase, totalPrice } = this.data, globalPurchase = APP.globalData.purchase;
+    let { purchase, totalPrice } = this.data, globalPurchase = globalData.purchase;
     if (i !== undefined) {
       const { price, count, color, size, selected } = purchase[i];
+      // 修改本地 purchase 和全局的 purchase
       purchase.splice(i, 1);
       globalPurchase.delete(color + size);
       selected && (totalPrice = totalPrice - price * count);
     } else {
       totalPrice = 0;
+      // 修改本地 purchase 和全局的 purchase
       purchase = purchase.filter(v => {
         if (v.selected) globalPurchase.delete(v.color + v.size);
         return !v.selected;
@@ -66,8 +71,30 @@ Page({
     }
     this.setData({ purchase, totalPrice });
   },
-  onSelect() {
-    console.log(`onselct`);
+  onSelect({ target: { dataset: { index: i }}}) {
+    const { title, color, size, img, price, oldPrice, stock } = this.data.purchase[i];
+    wx.hideTabBar({
+      animation: true,
+      success: () => this.setData({
+        selectIndex: i,
+        popupShow: true,
+        popupGoods: { title, img, color, size, stock, price: price.toFixed(2), oldPrice: oldPrice.toFixed(2) }})
+    });
+  },
+  onCloseSelect(e) {
+    const selectGoods = e.detail;
+    if (selectGoods) {
+      const { selectIndex, purchase } = this.data, globalPurchase = globalData.purchase,
+        globalGoods = globalPurchase.get(purchase[selectIndex].color + purchase[selectIndex].size);
+      console.log(purchase[selectIndex], selectIndex, globalGoods);
+      // 修改本地 purchase 和全局的 purchase
+      globalGoods.color = purchase[selectIndex].color = selectGoods.color;
+      globalGoods.size = purchase[selectIndex].size = selectGoods.size;
+      globalGoods.img = purchase[selectIndex].img = selectGoods.img;
+      this.setData({ purchase });
+    }
+    this.setData({ popupShow: false });
+    wx.showTabBar({ animation: true });
   },
   onPlus({ target: { dataset: { index: i }}}) {
     const { count, selected, price } = this.data.purchase[i];
@@ -99,6 +126,12 @@ Page({
     }
     this.setData({ isSelectAll: !isSelectAll, purchase, totalPrice });
   },
+  toGoodsDetail({ target: { dataset: { index: i }}}) {
+    const iid = this.data.purchase[i].iid;
+
+    APP.fetch(`pages/goodsDetail/index?iid=${iid}`);
+    wx.navigateTo({ url: `/pages/goodsDetail/index?iid=${iid}` });
+  },
   toPay() {
     const data = this.data;
     if (data.isConfig) {
@@ -108,7 +141,7 @@ Page({
         const imgs = [];
 
         data.purchase.forEach(v => { if (v.selected) imgs.push(v.img); });
-        APP.globalData.payItem = { imgs, totalPrice: data.totalPrice };
+        globalData.payItem = { imgs, totalPrice: data.totalPrice };
         wx.navigateTo({ url: '/pages/pay/index' });
       } else {
         Toast.fail('请选择商品');

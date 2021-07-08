@@ -13,11 +13,7 @@
   ],
   "usingComponents": {
     "scroll-to": "components/ScrollTo/index",
-    "wechat-search": "components/WechatSearch/index",
-    "indicator": "components/Indicator/index",
     "van-nav-bar": "@vant/weapp/nav-bar/index",
-    "van-tabbar": "@vant/weapp/tabbar/index",
-    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "van-image": "@vant/weapp/image/index",
     "van-button": "@vant/weapp/button/index",
     "van-icon": "@vant/weapp/icon/index",

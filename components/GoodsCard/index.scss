@@ -24,6 +24,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .custom_img{
+      border: 2rpx solid black;
+    }
     .goods_detail{
       @include wh(66%, 100%);
       display: flex;

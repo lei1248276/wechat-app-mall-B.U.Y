@@ -12,8 +12,7 @@
     round
     closeable
     close-icon="close"
-    bind:close="onClose"
-  >
+    bind:close="onClose">
     <view class="pop_params">商品参数</view>
     <view class="box">
       <van-row custom-class="allList" wx:for="{{ list.set }}" wx:key="key">

@@ -6,7 +6,7 @@
                 wx:key="index"
                 data-index="{{ index }}"
                 data-name="{{ item.name }}"
-                icon="{{ getImgs[index] }}"
+                icon="{{ list.skuImg[index] }}"
                 custom-style="min-width: 140rpx;font-size: 32rpx;"
                 custom-class="{{ curColorIndex === index ? 'custom_color_btn' : '' }}"
                 plain>

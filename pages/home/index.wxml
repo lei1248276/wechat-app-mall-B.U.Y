@@ -1,5 +1,5 @@
 <view class="home_container">
-  <van-nav-bar fixed placeholder custom-style="background-color: #f5f5f5;">
+  <van-nav-bar fixed placeholder border="{{ false }}">
     <view slot="left" class="nav_bar">B.U.Y</view>
   </van-nav-bar>
 

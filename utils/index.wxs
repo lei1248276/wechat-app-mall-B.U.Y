@@ -5,6 +5,7 @@ var fixedFloat = function(number) {
 var ceil = function (number) {
   return Math.ceil(number);
 }
+
 module.exports = {
   fixedFloat: fixedFloat,
   ceil: ceil

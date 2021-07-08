@@ -4,6 +4,7 @@
     "dis-drawing": "./components/DisDrawing/index",
     "carousels": "./components/Carousels/index",
     "goods": "/components/Goods/index",
+    "wechat-search": "/components/WechatSearch/index",
     "van-divider": "@vant/weapp/divider/index"
   }
 }
