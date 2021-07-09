@@ -17,7 +17,7 @@ Page({
   },
   onLoad: function() {
     // ! 用作判断是否全选
-    this.selectNum = 0;
+    this.selectedNum = 0;
 
     // ! 随便搞点数据。。。
     APP.take('pages/search/index').then(like => this.setData({ like }));
@@ -40,26 +40,21 @@ Page({
   },
   onConfig() {
     this.setData({ isConfig: !this.data.isConfig });
-    Toast.loading({
-      message: '加载中...',
-      forbidClick: true,
-      duration: 500
-    });
+    Toast.loading({ message: '加载中...', forbidClick: true, duration: 500 });
   },
   onAdd({ target: { dataset: { index: i }}}) {
     // eslint-disable-next-line prefer-const
-    let { purchase, totalPrice } = this.data, { selected, price, count } = purchase[i];
+    let { purchase, totalPrice, isSelectAll } = this.data, { selected, price, count } = purchase[i];
 
     if (selected) {
-      --this.selectNum;
+      --this.selectedNum;
       totalPrice = totalPrice - price * count;
       this.setData({ [`purchase[${i}].selected`]: false, isSelectAll: false, totalPrice });
     } else {
-      ++this.selectNum;
+      ++this.selectedNum;
       totalPrice = totalPrice + price * count;
-      this.selectNum === purchase.length
-        ? this.setData({ [`purchase[${i}].selected`]: true, isSelectAll: true, totalPrice })
-        : this.setData({ [`purchase[${i}].selected`]: true, totalPrice });
+      isSelectAll = this.selectedNum === purchase.length;
+      this.setData({ [`purchase[${i}].selected`]: true, isSelectAll, totalPrice });
     }
   },
   onDelete({ target: { dataset: { index: i }}}) {
@@ -68,51 +63,55 @@ Page({
     if (i !== undefined) {
       const { price, count, selected } = purchase[i];
       purchase.splice(i, 1);
-      selected && (totalPrice = totalPrice - price * count);
+      if (selected) {
+        --this.selectedNum;
+        totalPrice = totalPrice - price * count;
+      }
     } else {
       // * 点击 submit-bar 删除按钮时
-      totalPrice = 0;
+      totalPrice = this.selectedNum = 0;
       purchase = purchase.filter(v => !v.selected);
     }
     // ! 刷新全局的 purchase
     globalData.isRefresh = true;
-    this.setData({ purchase, totalPrice });
+    this.setData({ purchase, totalPrice, isSelectAll: this.selectedNum === purchase.length });
   },
   onSelect({ target: { dataset: { index: i }}}) {
     const { title, color, size, img, price, oldPrice, stock } = this.data.purchase[i];
-    wx.hideTabBar({
-      animation: true,
-      success: () => {
-        this.setData({
-          selectIndex: i,
-          popupShow: true,
-          popupGoods: { title, img, color, size, stock, price: price.toFixed(2), oldPrice: oldPrice.toFixed(2) }
-        });
-      }
+    this.setData({
+      selectIndex: i,
+      popupShow: true,
+      popupGoods: { title, img, color, size, stock, price, oldPrice }
     });
   },
   onCloseSelect(e) {
     const selectGoods = e.detail;
     // * 选择更改商品时
     if (selectGoods) {
-      const { selectIndex, purchase } = this.data, { color, size, img } = selectGoods;
-      const findIndex = purchase.findIndex(v => v.id === color + size);
+      const { selectIndex, purchase, totalPrice } = this.data,
+        { color, size, img } = selectGoods,
+        { selected, price, count } = purchase[selectIndex],
+        findIndex = purchase.findIndex(v => v.id === color + size);
+
       // * 更改的商品不存在就更改内容
       if (findIndex === -1) {
         purchase[selectIndex] = Object.assign(purchase[selectIndex], { color, size, img });
       } else {
-        // * 更改的商品已经存在就删除选定的
+        // * 更改的商品已经存在就删除选择的（如果还是选定状态就减去对应价钱）
+        if (selected) {
+          --this.selectedNum;
+          this.setData({ totalPrice: totalPrice - price * count });
+        }
         purchase.splice(selectIndex, 1);
         Toast.fail('商品已存在！');
       }
       // ! 刷新全局的 purchase
       globalData.isRefresh = true;
-      this.setData({ purchase, popupShow: false });
+      this.setData({ purchase, popupShow: false, isSelectAll: this.selectedNum === purchase.length });
     } else {
       // * 没有更改商品时，仅仅关闭popup
       this.setData({ popupShow: false });
     }
-    wx.showTabBar({ animation: true });
   },
   onPlus({ target: { dataset: { index: i }}}) {
     const { count, selected, price } = this.data.purchase[i];
@@ -133,10 +132,10 @@ Page({
     let totalPrice;
 
     if (isSelectAll) {
-      this.selectNum = totalPrice = 0;
+      this.selectedNum = totalPrice = 0;
       purchase.forEach(v => { v.selected = false; });
     } else {
-      this.selectNum = purchase.length;
+      this.selectedNum = purchase.length;
       totalPrice = purchase.reduce((acc, cur) => {
         cur.selected = true;
         return acc + cur.price * cur.count;
@@ -144,6 +143,7 @@ Page({
     }
     this.setData({ isSelectAll: !isSelectAll, purchase, totalPrice });
   },
+
   toGoodsDetail({ target: { dataset: { index: i }}}) {
     const iid = this.data.purchase[i].iid;
 
@@ -152,18 +152,16 @@ Page({
   },
   toPay() {
     const data = this.data;
-    if (data.isConfig) {
-      console.log(`移至愿望清单`);
-    } else {
-      if (data.totalPrice) {
-        const imgs = [];
+    if (data.isConfig) return console.log(`移至愿望清单`);
 
-        data.purchase.forEach(v => { if (v.selected) imgs.push(v.img); });
-        globalData.payItem = { imgs, totalPrice: data.totalPrice };
-        wx.navigateTo({ url: '/pages/pay/index' });
-      } else {
-        Toast.fail('请选择商品');
-      }
+    if (data.totalPrice) {
+      const imgs = [];
+
+      data.purchase.forEach(v => { if (v.selected) imgs.push(v.img); });
+      globalData.payItem = { imgs, totalPrice: data.totalPrice };
+      wx.navigateTo({ url: '/pages/pay/index' });
+    } else {
+      Toast.fail('请选择商品');
     }
   }
 });

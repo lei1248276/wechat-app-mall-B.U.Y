@@ -10,7 +10,7 @@
   background: linear-gradient(to top, #114357, #f29492);
 }
 .profile_container .user_info .cell {
-  width: 82%;
+  width: 90%;
   position: absolute;
   bottom: 10%;
   left: 50%;
@@ -19,12 +19,58 @@
   justify-content: space-between;
   align-items: center;
   color: #fff;
+  text-align: center;
 }
 .profile_container .user_info .cell .name {
   padding: 10rpx 0;
 }
 .profile_container .user_info .cell .point {
   font-size: 28rpx;
+}
+.profile_container .user_detail {
+  width: 95vw;
+  height: 280rpx;
+  margin: 80rpx auto 0;
+  border-radius: 10rpx;
+  background: linear-gradient(to top, #114357, #f29492);
+}
+.profile_container .user_detail .title_cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 20rpx;
+}
+.profile_container .user_detail .title_cell .title {
+  font-size: 46rpx;
+  font-weight: bold;
+}
+.profile_container .user_detail .title_cell .value {
+  font-size: 28rpx;
+}
+.profile_container .message {
+  font-size: 28rpx;
+  color: #98989f;
+  padding: 40rpx 20rpx;
+}
+.profile_container .vip_info {
+  height: 320rpx;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile_container .vip_info .custom_usercode {
+  display: block;
+  margin: 0 auto;
+}
+.profile_container .vip_info .vip_number {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
 }
 .profile_container .shelf {
   padding: 40rpx;

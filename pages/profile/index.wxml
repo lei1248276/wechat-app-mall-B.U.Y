@@ -1,3 +1,5 @@
+<page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}" />
+
 <view class="profile_container">
   <van-nav-bar border="{{ false }}" custom-style="background: #f29492;">
     <view class="navbar" slot="left">B.U.Y</view>
@@ -6,18 +8,45 @@
   <view class="user_info">
     <view class="cell">
       <view class="user">
-        <van-image src=""
+        <van-image src="{{ userInfo.avatarUrl }}"
                    round
                    width="140rpx"
                    height="140rpx"
                    bind:click="onLogin"
         />
-        <view class="name">{{ username }}</view>
+        <view class="name">{{ userInfo.nickName || '点击登录' }}</view>
         <view class="point">时尚友人 / {{ point }} 积分</view>
       </view>
-      <van-icon name="/assets/QRcode.svg" size="60rpx"/>
+      <van-icon name="/assets/QRcode.svg" size="60rpx" bind:tap="onQRcode"/>
     </view>
   </view>
+
+  <van-popup show="{{ show }}"
+             position="bottom"
+             custom-style="height: 65%;overflow: hidden;"
+             round
+             closeable
+             close-icon="close"
+             bind:close="onCloseQRcode">
+    <view class="user_detail">
+      <view class="title_cell">
+        <text class="title">B.U.Y</text>
+        <text class="value">时尚友人</text>
+      </view>
+    </view>
+    <view class="message">
+      门店消费时，向店员出示并扫描下方二维码获取积分。
+    </view>
+    <view class="vip_info">
+      <van-image src="/assets/user_QRcode.svg"
+                 width="150rpx"
+                 height="150rpx"
+                 custom-class="custom_usercode"
+      />
+      <view class="vip_number">会员编号：107664912</view>
+      <van-image src="/assets/bar_code.svg" width="90vw" height="90rpx" fit="cover"/>
+    </view>
+  </van-popup>
 
   <view class="shelf">
     <show-shelf title="我的订单" icon="send-gift-o"/>
@@ -31,4 +60,6 @@
     <van-cell title="我的愿望清单" is-link custom-class="custom_cell"/>
     <van-cell title="潮品抽取" is-link custom-class="custom_cell"/>
   </van-cell-group>
+
+  <van-toast id="van-toast" />
 </view>
