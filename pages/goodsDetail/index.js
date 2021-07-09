@@ -58,6 +58,7 @@ Page({
   onAddBag() {
     const data = this.data,
       { color, size, img } = data.boughtGoods,
+      // 将color + size作为key值
       goods = globalData.purchase.get(color + size);
 
     if (color && size) {
@@ -66,10 +67,18 @@ Page({
       if (goods) return ++goods.count;
 
       const { title, lowNowPrice: price, lowPrice: oldPrice, iid } = data.goodsInfo,
-        { skuImg, props } = data.stock,
-        item = { title, iid, color, size, img, count: 1, selected: false, price: Number(price), oldPrice: Number(oldPrice), stock: { skuImg, colorList: props[0].list, sizeList: props[1].list }};
+        { skuImg, props: { 0: { list: colorList }, 1: { list: sizeList }}} = data.stock,
+        item = {
+          title, iid, color, size, img,
+          id: color + size,
+          count: 1,
+          selected: false,
+          price: Number(price),
+          oldPrice: Number(oldPrice),
+          stock: { skuImg, colorList, sizeList }
+        };
 
-      globalData.purchase.set(color + size, item);
+      globalData.purchase.set(item.id, item);
       this.setData({ bagGoodsInfo: globalData.purchase.size });
     } else {
       Toast.fail('请选择商品');

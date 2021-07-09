@@ -16,16 +16,26 @@ Page({
     popupGoods: {}
   },
   onLoad: function() {
-    // 用作判断是否全选
+    // ! 用作判断是否全选
     this.selectNum = 0;
 
-    // 随便搞点数据。。。
+    // ! 随便搞点数据。。。
     APP.take('pages/search/index').then(like => this.setData({ like }));
   },
   onShow() {
+    // ! 用作判断是否更改本地purchase数据
     if (globalData.isRefresh) {
       globalData.isRefresh = false;
-      this.setData({ purchase: [...globalData.purchase.values()], isSelectAll: false });
+      this.setData({ purchase: [...globalData.purchase.values()].reverse(), isSelectAll: false });
+    }
+  },
+  onHide() {
+    // ! 如果更改了本地purchase数据就刷新全局
+    if (globalData.isRefresh) {
+      globalData.purchase = new Map(this.data.purchase.reduceRight((acc, cur, i) => {
+        acc.push([cur.color + cur.size, cur]);
+        return acc;
+      }, []));
     }
   },
   onConfig() {
@@ -53,47 +63,55 @@ Page({
     }
   },
   onDelete({ target: { dataset: { index: i }}}) {
-    // eslint-disable-next-line prefer-const
-    let { purchase, totalPrice } = this.data, globalPurchase = globalData.purchase;
+    let { purchase, totalPrice } = this.data;
+    // * 点击 card 删除按钮时
     if (i !== undefined) {
-      const { price, count, color, size, selected } = purchase[i];
-      // 修改本地 purchase 和全局的 purchase
+      const { price, count, selected } = purchase[i];
       purchase.splice(i, 1);
-      globalPurchase.delete(color + size);
       selected && (totalPrice = totalPrice - price * count);
     } else {
+      // * 点击 submit-bar 删除按钮时
       totalPrice = 0;
-      // 修改本地 purchase 和全局的 purchase
-      purchase = purchase.filter(v => {
-        if (v.selected) globalPurchase.delete(v.color + v.size);
-        return !v.selected;
-      });
+      purchase = purchase.filter(v => !v.selected);
     }
+    // ! 刷新全局的 purchase
+    globalData.isRefresh = true;
     this.setData({ purchase, totalPrice });
   },
   onSelect({ target: { dataset: { index: i }}}) {
     const { title, color, size, img, price, oldPrice, stock } = this.data.purchase[i];
     wx.hideTabBar({
       animation: true,
-      success: () => this.setData({
-        selectIndex: i,
-        popupShow: true,
-        popupGoods: { title, img, color, size, stock, price: price.toFixed(2), oldPrice: oldPrice.toFixed(2) }})
+      success: () => {
+        this.setData({
+          selectIndex: i,
+          popupShow: true,
+          popupGoods: { title, img, color, size, stock, price: price.toFixed(2), oldPrice: oldPrice.toFixed(2) }
+        });
+      }
     });
   },
   onCloseSelect(e) {
     const selectGoods = e.detail;
+    // * 选择更改商品时
     if (selectGoods) {
-      const { selectIndex, purchase } = this.data, globalPurchase = globalData.purchase,
-        globalGoods = globalPurchase.get(purchase[selectIndex].color + purchase[selectIndex].size);
-      console.log(purchase[selectIndex], selectIndex, globalGoods);
-      // 修改本地 purchase 和全局的 purchase
-      globalGoods.color = purchase[selectIndex].color = selectGoods.color;
-      globalGoods.size = purchase[selectIndex].size = selectGoods.size;
-      globalGoods.img = purchase[selectIndex].img = selectGoods.img;
-      this.setData({ purchase });
+      const { selectIndex, purchase } = this.data, { color, size, img } = selectGoods;
+      const findIndex = purchase.findIndex(v => v.id === color + size);
+      // * 更改的商品不存在就更改内容
+      if (findIndex === -1) {
+        purchase[selectIndex] = Object.assign(purchase[selectIndex], { color, size, img });
+      } else {
+        // * 更改的商品已经存在就删除选定的
+        purchase.splice(selectIndex, 1);
+        Toast.fail('商品已存在！');
+      }
+      // ! 刷新全局的 purchase
+      globalData.isRefresh = true;
+      this.setData({ purchase, popupShow: false });
+    } else {
+      // * 没有更改商品时，仅仅关闭popup
+      this.setData({ popupShow: false });
     }
-    this.setData({ popupShow: false });
     wx.showTabBar({ animation: true });
   },
   onPlus({ target: { dataset: { index: i }}}) {

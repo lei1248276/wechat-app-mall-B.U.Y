@@ -23,7 +23,7 @@ Component({
       });
     },
     onSelectSize({ target: { dataset: { name: size }}}) {
-      // 因为使用了事件委托，防止点到空白处时报错
+      // ! 因为使用了事件委托，防止点到空白处时报错
       if (size) {
         this.setData({
           currentSize: size
@@ -35,7 +35,7 @@ Component({
       if (size || color) {
         const item = {
           color: color || list.color,
-          size,
+          size: size || list.size,
           img: currentImgIndex === -1 ? list.img : list.stock.skuImg[currentImgIndex]
         };
         this.triggerEvent('close', item);
@@ -46,7 +46,7 @@ Component({
     },
     init() {
       setTimeout(() => {
-        this.setData({ currentSize: '', currentColor: '', currentIndex: -1 });
+        this.setData({ currentSize: '', currentColor: '', currentImgIndex: -1 });
       });
     }
   }

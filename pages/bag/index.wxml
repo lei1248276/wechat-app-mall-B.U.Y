@@ -14,7 +14,7 @@
     </van-button>
   </van-cell>
 
-  <block wx:for="{{ purchase }}" wx:key="index">
+  <block wx:for="{{ purchase }}" wx:key="id">
     <goods-card data-index="{{ index }}"
                 selected="{{ item.selected }}"
                 image="{{ item.img }}"
