@@ -1,12 +1,15 @@
+<wxs src="/utils/index.wxs" module="tools"/>
+
 <view class="pay_container">
   <van-cell title="订单小结" value="{{ payItem.imgs.length }} 商品" border="{{ false }}"/>
-  <scroll-view class="goods_img" scroll-x enable-flex>
+  <scroll-view class="goods_img" scroll-x enable-flex bind:tap="onLookImg">
     <block wx:for="{{ payItem.imgs }}" wx:key="index">
-      <van-image style="padding: 0 10rpx;"
-                 src="{{ item }}"
+      <van-image src="{{ item }}"
                  width="230rpx"
                  height="230rpx"
                  lazy-load
+                 style="padding: 0 10rpx;"
+                 data-index="{{ index }}"
       />
     </block>
   </scroll-view>
@@ -58,11 +61,17 @@
   />
 
   <van-cell-group border="{{ false }}" custom-class="custom_total">
-    <van-cell title="小计 {{ payItem.imgs.length }} 件商品" value="¥ {{ payItem.totalPrice }}" border="{{ false }}"/>
+    <van-cell title="小计 {{ payItem.imgs.length }} 件商品"
+              value="¥ {{ tools.fixedFloat(payItem.totalPrice) }}"
+              border="{{ false }}"
+    />
     <van-cell title="配送费" value="¥ 15.00" border="{{ false }}"/>
     <van-cell title="折扣" value="-¥ 15.00" border="{{ false }}"/>
     <van-cell title="B.U.Y 全站免邮" value="-¥ 15.00" border="{{ false }}"/>
-    <van-cell title="总金额" value="¥ {{ payItem.totalPrice }}" border="{{ false }}"/>
+    <van-cell title="总金额"
+              value="¥ {{ tools.fixedFloat(payItem.totalPrice) }}"
+              border="{{ false }}"
+    />
   </van-cell-group>
 
   <declaration/>

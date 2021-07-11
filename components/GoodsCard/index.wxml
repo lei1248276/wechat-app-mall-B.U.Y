@@ -2,7 +2,9 @@
 
 <van-swipe-cell right-width="{{ 85 }}">
   <view class="goods_card">
-    <view class="button {{ selected ? 'bgColor' : '' }}" bind:tap="onClick">
+    <view wx:if="{{ isSelected }}"
+          class="button {{ selected ? 'bgColor' : '' }}"
+          bind:tap="onSelect">
       <van-icon wx:if="{{ !selected }}"
                 name="/assets/click.svg"
                 size="60rpx"
@@ -21,13 +23,16 @@
       />
       <view class="goods_detail">
         <view class="title">{{ title }}</view>
-        <view>
-          <van-button size="small"
+        <slot name="params"></slot>
+        <view wx:if="{{ params && count }}">
+          <van-button wx:if="{{ params }}"
+                      size="small"
                       custom-class="custom_params"
-                      bind:click="onSelect">
+                      bind:click="onSet">
             {{ params }}
           </van-button>
-          <van-stepper value="{{ count }}"
+          <van-stepper wx:if="{{ count }}"
+                       value="{{ count }}"
                        integer
                        disable-input
                        style="display: inline-block;vertical-align: middle;margin-left: 10rpx;"
@@ -43,5 +48,5 @@
     </view>
 
   </view>
-  <view slot="right" class="delete" bind:tap="onClose">删除</view>
+  <view slot="right" class="delete" bind:tap="onDelete">删除</view>
 </van-swipe-cell>

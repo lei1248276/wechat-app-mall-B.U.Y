@@ -1,0 +1,4 @@
+.params {
+  font-size: 30rpx;
+  color: #70a7e8;
+}

@@ -15,8 +15,8 @@
                custom-class="custom_img"
     />
     <view class="goods_detail">
-      <view class="title">{{ list.title }}</view>
-      <view class="desc">{{ (currentColor || list.color) + ' / ' + (currentSize || list.size) }}</view>
+      <view class="desc">{{ list.desc }}</view>
+      <view class="params">{{ (currentColor || list.color) + ' / ' + (currentSize || list.size) }}</view>
       <view class="price">
         ¥ {{ tools.fixedFloat(list.price) }}
         <text class="oldPrice">¥ {{ tools.fixedFloat(list.oldPrice) }}</text>

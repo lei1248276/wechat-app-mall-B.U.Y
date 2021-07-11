@@ -18,7 +18,7 @@
   justify-content: space-between;
   align-items: left;
 }
-.popup_goods .goods_detail .title {
+.popup_goods .goods_detail .desc {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -27,7 +27,7 @@
   font-size: 32rpx;
   color: #666;
 }
-.popup_goods .goods_detail .desc {
+.popup_goods .goods_detail .params {
   font-size: 28rpx;
   color: #98989f;
 }

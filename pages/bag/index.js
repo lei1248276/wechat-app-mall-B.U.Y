@@ -32,8 +32,8 @@ Page({
   onHide() {
     // ! 如果更改了本地purchase数据就刷新全局
     if (globalData.isRefresh) {
-      globalData.purchase = new Map(this.data.purchase.reduceRight((acc, cur, i) => {
-        acc.push([cur.color + cur.size, cur]);
+      globalData.purchase = new Map(this.data.purchase.reduceRight((acc, cur) => {
+        acc.push([cur.id, cur]);
         return acc;
       }, []));
     }
@@ -42,7 +42,7 @@ Page({
     this.setData({ isConfig: !this.data.isConfig });
     Toast.loading({ message: '加载中...', forbidClick: true, duration: 500 });
   },
-  onAdd({ target: { dataset: { index: i }}}) {
+  onSelect({ target: { dataset: { index: i }}}) {
     // eslint-disable-next-line prefer-const
     let { purchase, totalPrice, isSelectAll } = this.data, { selected, price, count } = purchase[i];
 
@@ -76,15 +76,15 @@ Page({
     globalData.isRefresh = true;
     this.setData({ purchase, totalPrice, isSelectAll: this.selectedNum === purchase.length });
   },
-  onSelect({ target: { dataset: { index: i }}}) {
-    const { title, color, size, img, price, oldPrice, stock } = this.data.purchase[i];
+  onSet({ target: { dataset: { index: i }}}) {
+    const { desc, color, size, img, price, oldPrice, stock } = this.data.purchase[i];
     this.setData({
       selectIndex: i,
       popupShow: true,
-      popupGoods: { title, img, color, size, stock, price, oldPrice }
+      popupGoods: { desc, img, color, size, stock, price, oldPrice }
     });
   },
-  onCloseSelect(e) {
+  onCloseSet(e) {
     const selectGoods = e.detail;
     // * 选择更改商品时
     if (selectGoods) {

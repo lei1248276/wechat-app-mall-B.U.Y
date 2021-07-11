@@ -16,6 +16,7 @@
 
   <block wx:for="{{ purchase }}" wx:key="id">
     <goods-card data-index="{{ index }}"
+                isSelected
                 selected="{{ item.selected }}"
                 image="{{ item.img }}"
                 title="{{ item.title }}"
@@ -23,10 +24,10 @@
                 oldPrice="{{ item.oldPrice }}"
                 params="{{ item.color + ' / ' +  item.size }}"
                 count="{{ item.count }}"
-                bind:click="onAdd"
-                bind:image="toGoodsDetail"
-                bind:close="onDelete"
                 bind:select="onSelect"
+                bind:image="toGoodsDetail"
+                bind:delete="onDelete"
+                bind:set="onSet"
                 bind:plus="onPlus"
                 bind:minus="onMinus"
     />
@@ -64,12 +65,12 @@
     tip="{{ tip }}"
     price-class="{{ isConfig ? 'custom_priceHide' : 'custom_price'}}"
     button-class="custom_button"
-    bind:submit="toPay"
-  >
+    bind:submit="toPay">
     <van-checkbox value="{{ isSelectAll }}"
                   icon-size="40rpx"
                   shape
                   checked-color="#333"
+                  custom-class="custom_checkbox"
                   bind:change="onClickAll">
       全选
     </van-checkbox>
@@ -85,7 +86,7 @@
 
   <select-popup list="{{ popupGoods }}"
                 show="{{ popupShow }}"
-                bind:close="onCloseSelect"
+                bind:close="onCloseSet"
   />
 
   <van-toast id="van-toast" />

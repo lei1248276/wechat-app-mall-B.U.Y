@@ -17,10 +17,12 @@ Component({
       this.init();
     },
     onPopupImg({ target: { dataset: { index: i }}}) {
-      this.setData({
-        currentImgIndex: i,
-        currentColor: this.data.list.stock.colorList[i].name
-      });
+      if (i !== undefined) {
+        this.setData({
+          currentImgIndex: i,
+          currentColor: this.data.list.stock.colorList[i].name
+        });
+      }
     },
     onSelectSize({ target: { dataset: { name: size }}}) {
       // ! 因为使用了事件委托，防止点到空白处时报错

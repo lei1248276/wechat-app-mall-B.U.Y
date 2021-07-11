@@ -1,5 +1,9 @@
 Component({
+  options: {
+    multipleSlots: true
+  },
   properties: {
+    isSelected: Boolean,
     selected: Boolean,
     image: String,
     title: String,
@@ -12,17 +16,17 @@ Component({
 
   },
   methods: {
-    onClose() {
-      this.triggerEvent('close');
+    onDelete() {
+      this.triggerEvent('delete');
     },
-    onClick(e) {
-      this.triggerEvent('click');
+    onSelect(e) {
+      this.triggerEvent('select');
     },
     onImage() {
       this.triggerEvent('image');
     },
-    onSelect() {
-      this.triggerEvent('select');
+    onSet() {
+      this.triggerEvent('set');
     },
     onPlus() {
       this.triggerEvent('plus');

@@ -56,8 +56,12 @@
 
   <van-cell-group class="user_detail_list">
     <van-cell title="我的信息" is-link custom-class="custom_cell"/>
+    <van-cell title="我的愿望清单"
+              is-link
+              url="/pages/collection/index"
+              custom-class="custom_cell"
+    />
     <van-cell title="我的会籍" is-link custom-class="custom_cell"/>
-    <van-cell title="我的愿望清单" is-link custom-class="custom_cell"/>
     <van-cell title="潮品抽取" is-link custom-class="custom_cell"/>
   </van-cell-group>
 

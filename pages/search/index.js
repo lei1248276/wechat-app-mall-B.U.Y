@@ -1,4 +1,6 @@
 import { fetchPopularGoods } from '../../api/search';
+
+import { randomRange } from '../../utils/util';
 const APP = getApp();
 
 Page({
@@ -22,7 +24,7 @@ Page({
   },
   _fetchPopularGoods(type) {
     fetchPopularGoods({
-      params: { type, page: 1 },
+      params: { type, page: randomRange(1, 20) },
       success: res => this.setData({
         [`popularGoods.${type}`]: res.data.data.list
       }),

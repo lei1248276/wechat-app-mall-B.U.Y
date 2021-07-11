@@ -14,6 +14,11 @@ const formatNumber = n => {
   return n[1] ? n : `0${n}`;
 };
 
+const randomRange = (low, high) => {
+  return Math.round(Math.random() * (high - low + 1) + low);
+};
+
 module.exports = {
-  formatTime
+  formatTime,
+  randomRange
 };

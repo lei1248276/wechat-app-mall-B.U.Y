@@ -7,15 +7,17 @@ Page({
     show: false
   },
   onLogin() {
-    wx.getUserProfile({
-      desc: '测试',
-      success: res => {
-        this.setData({
-          userInfo: res.userInfo,
-          point: 3000
-        });
-      }
-    });
+    if (!this.data.userInfo.nickName) {
+      wx.getUserProfile({
+        desc: '测试',
+        success: res => {
+          this.setData({
+            userInfo: res.userInfo,
+            point: 3000
+          });
+        }
+      });
+    }
   },
   onQRcode() {
     if (this.data.userInfo.nickName) {

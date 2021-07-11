@@ -17,11 +17,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: left;
-    .title{
+    .desc{
       @include textMulOmit();
       @include fc(32rpx, $uni_black);
     }
-    .desc{
+    .params{
       @include fc(28rpx, $uni_grey);
     }
     .price{

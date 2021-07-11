@@ -16,9 +16,11 @@ Page({
     rate: {},
     detailInfo: {},
     boughtGoods: {},
-    bagGoodsInfo: 0
+    bagGoodsInfo: 0,
+    collectionInfo: 0
   },
   onLoad: function({ iid }) {
+    this.iid = iid;
     const page = getCurrentPages(), route = page[page.length - 1].route;
     APP.take(`${route}?iid=${iid}`).then(res => {
       const [goodsDetail, goodsRecommend] = res;
@@ -42,10 +44,29 @@ Page({
         params: goodsDetail.itemParams.info,
         rate: goodsDetail.rate,
         'rate.score': goodsDetail.shopInfo.score,
-        detailInfo: goodsDetail.detailInfo,
-        bagGoodsInfo: globalData.purchase.size
+        detailInfo: goodsDetail.detailInfo
       });
     });
+  },
+  onShow() {
+    const { bagGoodsInfo, collectionInfo } = this.data,
+      { purchase, collection } = globalData;
+    if (purchase.size !== bagGoodsInfo || collection.size !== collectionInfo) {
+      this.setData({ bagGoodsInfo: purchase.size, collectionInfo: collection.size });
+    }
+  },
+  onCollect(e) {
+    if (!e.detail) {
+      const { iid, title, columns,
+        lowNowPrice: price,
+        lowPrice: oldPrice,
+        topImages: { 0: img }} = this.data.goodsInfo;
+      globalData.collection.set(iid, { iid, title, price, oldPrice, img, selected: false, collected: true, params: columns.join(' ') });
+      this.setData({ collectionInfo: this.data.collectionInfo + 1 });
+    } else {
+      globalData.collection.get(this.iid).collected = false;
+    }
+    console.log(e.detail, globalData.collection);
   },
   onSelColor(e) {
     const { img, color } = e.detail;
@@ -66,10 +87,10 @@ Page({
       globalData.isRefresh = true;
       if (goods) return ++goods.count;
 
-      const { title, lowNowPrice: price, lowPrice: oldPrice, iid } = data.goodsInfo,
+      const { title, desc, iid, lowNowPrice: price, lowPrice: oldPrice } = data.goodsInfo,
         { skuImg, props: { 0: { list: colorList }, 1: { list: sizeList }}} = data.stock,
         item = {
-          title, iid, color, size, img,
+          title, desc, iid, color, size, img,
           id: color + size,
           count: 1,
           selected: false,

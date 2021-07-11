@@ -1,3 +1,5 @@
+const globalData = getApp().globalData;
+
 Component({
   options: {
     addGlobalClass: true
@@ -16,6 +18,16 @@ Component({
     index: 0,
     collected: false
   },
+  pageLifetimes: {
+    show() {
+      const page = getCurrentPages(), collection = globalData.collection;
+      this.iid = page[page.length - 1].iid;
+
+      if (collection.has(this.iid)) {
+        this.setData({ collected: collection.get(this.iid).collected });
+      }
+    }
+  },
   methods: {
     onChange(e) {
       this.setData({
@@ -31,9 +43,11 @@ Component({
       });
     },
     onCollect() {
+      const { collected } = this.data;
       this.setData({
-        collected: !this.data.collected
+        collected: !collected
       });
+      this.triggerEvent('collect', collected);
     }
   }
 });

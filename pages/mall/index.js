@@ -1,12 +1,14 @@
 import { fetchMallGoods } from '../../api/mall';
 import { fetchSubCategoryGoods } from '../../api/category';
 
+import { randomRange } from '../../utils/util';
+
 const APP = getApp();
 
 Page({
   data: {
     loaded: true,
-    mallGoods: [{ type: 'new', page: 0, total: 0 }],
+    mallGoods: [{ type: 'new', page: randomRange(1, 10), total: 0 }],
     tags: [{ title: '全部新品', key: '' }],
     tagsColor: {
       color: '#ffe1e1',

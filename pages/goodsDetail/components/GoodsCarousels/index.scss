@@ -13,8 +13,9 @@
     top: 2%;
     left: 5%;
     border: 2rpx solid $uni_red;
-    @include fc(26rpx, $uni_red);
+    @include fc(30rpx, $uni_red);
     font-weight: bold;
+    padding: 2rpx 4rpx;
   }
 
   .heart{

@@ -13,7 +13,10 @@
              height="86rpx"
   />
 
-  <goods-carousels list="{{ topImages }}" discount="{{ itemInfo.discountDesc }}"/>
+  <goods-carousels list="{{ topImages }}"
+                   discount="{{ goodsInfo.discountDesc }}"
+                   bind:collect="onCollect"
+  />
 
   <goods-info list="{{ goodsInfo }}"/>
 
@@ -39,7 +42,11 @@
                            url="/pages/bag/index"
                            info="{{ bagGoodsInfo }}"
     />
-    <van-goods-action-icon icon="shop-o" text="店铺"/>
+    <van-goods-action-icon icon="shop-collect-o"
+                           text="收藏"
+                           url="/pages/collection/index"
+                           info="{{ collectionInfo }}"
+    />
     <van-goods-action-button color="#be99ff"
                              text="加入购物车"
                              type="warning"

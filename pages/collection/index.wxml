@@ -1,0 +1,54 @@
+<view class="collection_container">
+  <van-tabs active="{{ currentIndex }}"
+            line-width="230rpx"
+            color="#98989f"
+            bind:change="onChange">
+    <van-tab title="商品">
+      <block wx:if="{{ collection.length }}">
+        <van-cell title="购物免费配送" icon="location-o">
+          <van-button slot="right-icon"
+                      icon="setting-o"
+                      size="mini"
+                      custom-style="border: none;font-size: 30rpx"
+                      bind:click="onConfig">
+            管理
+          </van-button>
+        </van-cell>
+        <block wx:for="{{ collection }}" wx:key="iid">
+          <goods-card data-index="{{ index }}"
+                      isSelected="{{ isSelected }}"
+                      selected="{{ item.selected }}"
+                      image="{{ item.img }}"
+                      title="{{ item.title }}"
+                      price="{{ item.price }}"
+                      oldPrice="{{ item.oldPrice }}"
+                      bind:image="toGoodsDetail"
+                      bind:select="onSelect"
+                      bind:delete="onDelete">
+            <view slot="params" class="params">{{ item.params }}</view>
+          </goods-card>
+        </block>
+      </block>
+
+      <van-empty wx:else description="您还没有收藏任何商品">
+        <van-button round
+                    type="danger"
+                    custom-style="width: 160px; height: 40px;"
+                    bind:click="toMall">
+          前往选购
+        </van-button>
+      </van-empty>
+    </van-tab>
+
+    <van-tab title="品牌">
+      <van-empty description="您还没有收藏任何品牌">
+        <van-button round
+                    type="danger"
+                    custom-style="width: 160px; height: 40px;"
+                    bind:click="toMall">
+          前往选购
+        </van-button>
+      </van-empty>
+    </van-tab>
+  </van-tabs>
+</view>

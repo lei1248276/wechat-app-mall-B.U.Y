@@ -20,5 +20,12 @@ Page({
     this.setData({
       activeNames: event.detail
     });
+  },
+  onLookImg({ target: { dataset: { index: i }}}) {
+    const { imgs } = this.data.payItem;
+    wx.previewImage({
+      urls: imgs,
+      current: imgs[i]
+    });
   }
 });

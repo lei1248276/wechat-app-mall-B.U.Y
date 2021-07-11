@@ -19,7 +19,7 @@
     <van-icon class="heart"
               name="{{ collected ? 'like' : 'like-o' }}"
               color="{{ collected ? '#B20F25' : '' }}"
-              size="45rpx"
+              size="50rpx"
               bind:click="onCollect"/>
 
     <indicator class="indicator"

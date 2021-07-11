@@ -1,3 +1,6 @@
+.goods_rate {
+  margin-bottom: 20rpx;
+}
 .goods_rate .score {
   display: flex;
   justify-content: space-evenly;

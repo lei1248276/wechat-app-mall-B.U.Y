@@ -9,7 +9,8 @@
     "pages/goodsDetail/index",
     "pages/search/index",
     "pages/help/index",
-    "pages/pay/index"
+    "pages/pay/index",
+    "pages/collection/index"
   ],
   "usingComponents": {
     "scroll-to": "components/ScrollTo/index",
@@ -24,7 +25,8 @@
     "van-col": "@vant/weapp/col/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-notice-bar": "@vant/weapp/notice-bar/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-empty": "@vant/weapp/empty/index"
   },
   "tabBar": {
     "selectedColor": "#222",

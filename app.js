@@ -1,4 +1,5 @@
 // app.js
+import { randomRange } from './utils/util';
 import { fetchDisDrawing, fetchGoods } from './api/home';
 import { fetchGoodsDetail, fetchGoodsRecommend } from './api/goodsDetail';
 import { fetchPopularGoods } from './api/search';
@@ -9,6 +10,7 @@ App({
     cache: new Map(),
     purchase: new Map(),
     payItem: {},
+    collection: new Map(),
     isRefresh: false
   },
   // * 预获取请求
@@ -41,7 +43,7 @@ App({
 
   /*  ! 设置需要预请求页面数据的 API 方法  */
   // * home page API
-  'pages/home/index': function(route, params = { type: 'sell', page: 1 }) {
+  'pages/home/index': function(route, params = { type: 'sell', page: randomRange(1, 10) }) {
     const cache = this.globalData.cache;
     if (cache.has(route)) return cache.get(route);
 
@@ -81,7 +83,7 @@ App({
     return Promise.all([goodsDetail, goodsRecommend]);
   },
   // * search page API
-  'pages/search/index': function(route, params = { type: 'pop', page: 1 }) {
+  'pages/search/index': function(route, params = { type: 'pop', page: randomRange(1, 10) }) {
     const cache = this.globalData.cache;
     if (cache.has(route)) return cache.get(route);
 
