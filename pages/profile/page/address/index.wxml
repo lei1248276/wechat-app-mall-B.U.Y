@@ -1,0 +1,96 @@
+<view class="address_container">
+  <view class="title">收货信息</view>
+
+  <van-button custom-style="width: 90vw;margin: 30rpx auto;"
+              block
+              size="large"
+              icon="/assets/wei.svg"
+              color="#3fb326"
+              bind:click="onAddress">
+    添加微信中的地址
+  </van-button>
+  <van-button custom-style="width: 90vw;margin: 30rpx auto;"
+              block
+              size="large"
+              icon="plus"
+              bind:click="onAddAddress">
+    添加新的收货地址
+  </van-button>
+
+  <van-button wx:if="{{ confirm }}"
+              size="large"
+              color="#333"
+              block
+              custom-class="custom_confirm"
+              bind:click="toBack">
+    确认
+  </van-button>
+
+
+  <page-container show="{{ show }}"
+                  position="right">
+    <view class="title">收货信息</view>
+
+    <view class="sub_title">收货人</view>
+    <van-field value="{{ name }}"
+               border="{{ false }}"
+               input-class="custom_input"
+               bind:change="onChange"
+    />
+
+    <view class="sub_title">国家</view>
+    <van-field value="{{ country }}"
+               placeholder="中国"
+               readonly
+               disabled
+               border="{{ false }}"
+               input-class="custom_input"
+               bind:change="onChange"
+    />
+
+    <view class="sub_title">省份/市/区</view>
+    <view bind:tap="onProvince">
+      <van-field value="{{ province }}"
+                 readonly
+                 border="{{ false }}"
+                 input-class="custom_input"
+                 use-button-slot
+                 bind:change="onChange">
+        <van-button slot="button" icon="down" size="small" color="#333" ></van-button>
+      </van-field>
+    </view>
+    <van-popup show="{{ popupShow }}"
+               position="bottom"
+               custom-style="height: 65%;overflow: hidden;"
+               round
+               close-icon="close"
+               bind:close="onClosePopup">
+      <van-area area-list="{{ areaList }}"
+                bind:confirm="onConfirm"
+                bind:cancel="onCancel"/>
+    </van-popup>
+
+    <view class="sub_title">详细地址</view>
+    <van-field value="{{ city }}"
+               border="{{ false }}"
+               input-class="custom_input"
+               bind:change="onChange"
+    />
+
+    <view class="sub_title">电话号码</view>
+    <van-field value="{{ phoneNumber }}"
+               border="{{ false }}"
+               type="number"
+               input-class="custom_input"
+               bind:change="onChange"
+    />
+
+    <van-button size="large"
+                color="#333"
+                block
+                custom-class="custom_confirm"
+                bind:click="toBack">
+      确认
+    </van-button>
+  </page-container>
+</view>

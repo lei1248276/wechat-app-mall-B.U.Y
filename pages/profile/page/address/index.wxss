@@ -1,0 +1,20 @@
+.address_container .title, .address_container .sub_title {
+  padding: 30rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+.address_container .sub_title {
+  padding-bottom: 0;
+}
+.address_container .custom_input {
+  height: 60rpx;
+  padding: 10rpx 20rpx;
+  border: 2rpx solid rgba(152, 152, 159, 0.3);
+}
+.address_container .custom_confirm {
+  width: 90vw;
+  position: fixed;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+}

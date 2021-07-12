@@ -19,7 +19,8 @@
     <van-button size="large"
                 plain
                 icon="plus"
-                custom-style="font-size: 28rpx;margin-bottom: 30rpx;">
+                custom-style="font-size: 28rpx;margin-bottom: 30rpx;"
+                bind:click="toAddress">
       添加新地址
     </van-button>
     <van-cell title="3-5个工作日"

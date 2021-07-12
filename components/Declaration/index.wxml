@@ -2,7 +2,14 @@
   <view class="text">配送方式</view>
   <view class="text">由顺丰提供标准配送服务，即发货日 3 至 5 个工作日内送达，法定节假日除外。</view>
   <view class="text">退货政策</view>
-  <view class="text">B.U.Y 提供 7 天无理由退货。详情请查看 <navigator class="link">帮助中心</navigator></view>
+  <view class="text">B.U.Y 提供 7 天无理由退货。详情请查看
+    <navigator class="link" open-type="switchTab" url="/pages/help/index">帮助中心</navigator>
+  </view>
   <view class="text">需要帮助</view>
-  <view class="text">访问我们的 <navigator class="link">帮助中心</navigator>，或<navigator class="link">点击此处</navigator>咨询在线客服</view>
+  <view class="text">访问我们的
+    <navigator class="link" open-type="switchTab" url="/pages/help/index">帮助中心</navigator>
+    ，或
+    <navigator class="link">点击此处</navigator>
+    咨询在线客服
+  </view>
 </view>

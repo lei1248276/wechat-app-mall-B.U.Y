@@ -8,13 +8,13 @@
   <view class="user_info">
     <view class="cell">
       <view class="user">
-        <van-image src="{{ userInfo.avatarUrl }}"
+        <van-image src="{{ userinfo.avatarUrl }}"
                    round
                    width="140rpx"
                    height="140rpx"
                    bind:click="onLogin"
         />
-        <view class="name">{{ userInfo.nickName || '点击登录' }}</view>
+        <view class="name">{{ userinfo.nickName || '点击登录' }}</view>
         <view class="point">时尚友人 / {{ point }} 积分</view>
       </view>
       <van-icon name="/assets/QRcode.svg" size="60rpx" bind:tap="onQRcode"/>
@@ -55,7 +55,10 @@
   </view>
 
   <van-cell-group class="user_detail_list">
-    <van-cell title="我的信息" is-link custom-class="custom_cell"/>
+    <van-cell title="我的信息"
+              is-link
+              bind:click="toUserinfo"
+              custom-class="custom_cell"/>
     <van-cell title="我的愿望清单"
               is-link
               url="/pages/collection/index"

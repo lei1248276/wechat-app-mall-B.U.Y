@@ -3,16 +3,16 @@ import Toast from '@vant/weapp/toast/toast';
 Page({
   data: {
     point: 0,
-    userInfo: {},
+    userinfo: {},
     show: false
   },
   onLogin() {
-    if (!this.data.userInfo.nickName) {
+    if (!this.data.userinfo.nickName) {
       wx.getUserProfile({
         desc: '测试',
         success: res => {
           this.setData({
-            userInfo: res.userInfo,
+            userinfo: res.userInfo,
             point: 3000
           });
         }
@@ -20,7 +20,7 @@ Page({
     }
   },
   onQRcode() {
-    if (this.data.userInfo.nickName) {
+    if (this.data.userinfo.nickName) {
       this.setData({ show: true });
     } else {
       Toast.fail('请登录！');
@@ -34,5 +34,17 @@ Page({
   },
   onCoupon() {
     Toast.fail('暂无兑换券！');
+  },
+  toUserinfo() {
+    if (this.data.userinfo.nickName) {
+      wx.navigateTo({
+        url: './page/userinfo/index',
+        success: res => {
+          res.eventChannel.emit('acceptUserinfo', this.data.userinfo);
+        }
+      });
+    } else {
+      Toast.fail('请登录！');
+    }
   }
 });

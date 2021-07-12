@@ -32,8 +32,9 @@ Page({
     }
   },
   onSelectItem() {
-    const { category, currentIndex: i } = this.data;
-    this.eventChannel.emit('acceptCategory', i, { miniWallkey: category[i].miniWallkey, type: 'sell' });
+    const { category, currentIndex: i } = this.data,
+      { miniWallkey, title } = category[i];
+    this.eventChannel.emit('acceptCategory', i, { title, params: { miniWallkey, type: 'sell' }});
 
     wx.navigateBack({ delta: 1 });
   }

@@ -1,0 +1,26 @@
+@import "../../../../styles/index";
+
+.address_container{
+  .title{
+    padding: 30rpx;
+    @include fc(28rpx, $uni_black);
+  }
+
+  .sub_title{
+    @extend .title;
+    padding-bottom: 0;
+  }
+  .custom_input{
+    height: 60rpx;
+    padding: 10rpx 20rpx;
+    border: 2rpx solid rgba(152, 152, 159, .3);
+  }
+
+  .custom_confirm{
+    width: 90vw;
+    position: fixed;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

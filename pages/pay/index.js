@@ -27,5 +27,10 @@ Page({
       urls: imgs,
       current: imgs[i]
     });
+  },
+  toAddress() {
+    wx.navigateTo({
+      url: '/pages/profile/page/address/index'
+    });
   }
 });

@@ -1,0 +1,22 @@
+<van-cell-group class="userinfo_container">
+  <van-cell title="电话号码"
+            label="{{ phoneNumber }}"
+            is-link
+            custom-class="custom_cell"/>
+  <van-cell title="电子邮箱"
+            label="{{ email }}"
+            is-link
+            custom-class="custom_cell"
+  />
+  <van-cell title="我的收货地址"
+            label="{{ address }}"
+            is-link
+            url="../address/index"
+            custom-class="custom_cell"
+  />
+  <van-cell title="个人信息"
+            label="{{ user }}"
+            is-link
+            custom-class="custom_cell"
+  />
+</van-cell-group>

@@ -6,6 +6,8 @@
     "pages/mall/page/category/index",
     "pages/bag/index",
     "pages/profile/index",
+    "pages/profile/page/userinfo/index",
+    "pages/profile/page/address/index",
     "pages/goodsDetail/index",
     "pages/search/index",
     "pages/help/index",

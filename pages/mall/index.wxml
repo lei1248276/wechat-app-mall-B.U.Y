@@ -25,18 +25,19 @@
   </van-cell>
 
   <view class="goods_list">
-    <van-tag class="tag"
-             wx:for="{{ tags }}"
-             wx:key="title"
-             data-index="{{ index }}"
-             size="large"
-             color="{{ index === tagIndex ? tagsColor.active_color : tagsColor.color }}"
-             text-color="{{ index === tagIndex ? tagsColor.active_textColor : tagsColor.textColor }}"
-             type="primary"
-             closeable="{{ index === tagIndex && index !== 0 }}"
-             catch:tap="onTag">
-      {{ item.title }}
-    </van-tag>
+    <block wx:for="{{ tags }}" wx:key="title">
+      <van-tag wx:if="{{ item }}"
+               class="tag"
+               data-index="{{ index }}"
+               size="large"
+               color="{{ index === tagIndex ? tagsColor.active_color : tagsColor.color }}"
+               text-color="{{ index === tagIndex ? tagsColor.active_textColor : tagsColor.textColor }}"
+               type="primary"
+               closeable="{{ index === tagIndex && index !== 0 }}"
+               catch:tap="onTag">
+        {{ item.title }}
+      </van-tag>
+    </block>
 
     <goods list="{{ mallGoods[tagIndex].list }}"
            scrollY
