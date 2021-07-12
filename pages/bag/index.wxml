@@ -16,6 +16,7 @@
 
   <block wx:for="{{ purchase }}" wx:key="id">
     <goods-card data-index="{{ index }}"
+                isCollect
                 isSelected
                 selected="{{ item.selected }}"
                 image="{{ item.img }}"
@@ -30,6 +31,7 @@
                 bind:set="onSet"
                 bind:plus="onPlus"
                 bind:minus="onMinus"
+                bind:collect="onCollect"
     />
   </block>
 
@@ -57,15 +59,14 @@
     <goods list="{{ like }}" progress></goods>
   </view>
 
-  <van-submit-bar
-    price="{{ totalPrice * 100 }}"
-    button-text="{{ isConfig ? '移至愿望清单' : '立即结算'}}"
-    button-type="info"
-    label="{{ isConfig ? ' ' : '合计: ' }}"
-    tip="{{ tip }}"
-    price-class="{{ isConfig ? 'custom_priceHide' : 'custom_price'}}"
-    button-class="custom_button"
-    bind:submit="toPay">
+  <van-submit-bar price="{{ totalPrice * 100 }}"
+                  button-text="{{ isConfig ? '移至愿望清单' : '立即结算'}}"
+                  button-type="info"
+                  label="{{ isConfig ? ' ' : '合计: ' }}"
+                  tip="{{ tip }}"
+                  price-class="{{ isConfig ? 'custom_priceHide' : 'custom_price'}}"
+                  button-class="custom_button"
+                  bind:submit="toPay">
     <van-checkbox value="{{ isSelectAll }}"
                   icon-size="40rpx"
                   shape

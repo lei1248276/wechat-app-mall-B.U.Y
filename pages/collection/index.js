@@ -5,7 +5,8 @@ Page({
   data: {
     collection: [],
     currentIndex: 0,
-    isSelected: false
+    isSelected: false,
+    isSelectAll: false
   },
   onLoad: function() {
     this.setData({ collection: [...globalData.collection.values()].reverse() });
@@ -24,13 +25,27 @@ Page({
   },
   onSelect({ target: { dataset: { index: i }}}) {
     this.setData({ [`collection[${i}].selected`]: !this.data.collection[i].selected });
-    console.log(this.data.collection[i].selected);
   },
   onDelete({ target: { dataset: { index: i }}}) {
-    const collection = this.data.collection;
-    globalData.collection.delete(collection[i].iid);
-    collection.splice(i, 1);
+    let collection = this.data.collection;
+    if (i === undefined) {
+      collection = collection.filter(v => {
+        if (v.selected) globalData.collection.delete(v.iid);
+        return !v.selected;
+      });
+    } else {
+      globalData.collection.delete(collection[i].iid);
+      collection.splice(i, 1);
+    }
     this.setData({ collection });
+  },
+  onClickAll() {
+    const { collection, isSelectAll } = this.data;
+    collection.forEach(v => { v.selected = !v.selected; });
+    this.setData({
+      collection,
+      isSelectAll: !isSelectAll
+    });
   },
   toMall() {
     wx.switchTab({

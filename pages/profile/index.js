@@ -28,5 +28,11 @@ Page({
   },
   onCloseQRcode() {
     this.setData({ show: false });
+  },
+  onOrderForm() {
+    Toast.fail('暂无订单！');
+  },
+  onCoupon() {
+    Toast.fail('暂无兑换券！');
   }
 });

@@ -1,6 +1,6 @@
 <wxs src="/utils/index.wxs" module="tools"/>
 
-<van-swipe-cell right-width="{{ 85 }}">
+<van-swipe-cell right-width="{{ isCollect ? 120 : 60 }}">
   <view class="goods_card">
     <view wx:if="{{ isSelected }}"
           class="button {{ selected ? 'bgColor' : '' }}"
@@ -24,7 +24,7 @@
       <view class="goods_detail">
         <view class="title">{{ title }}</view>
         <slot name="params"></slot>
-        <view wx:if="{{ params && count }}">
+        <view>
           <van-button wx:if="{{ params }}"
                       size="small"
                       custom-class="custom_params"
@@ -48,5 +48,8 @@
     </view>
 
   </view>
-  <view slot="right" class="delete" bind:tap="onDelete">删除</view>
+  <view slot="right">
+    <view class="delete" bind:tap="onDelete">删除</view>
+    <view wx:if="{{ isCollect }}" class="collect" bind:tap="onCollect">收藏</view>
+  </view>
 </van-swipe-cell>

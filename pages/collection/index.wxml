@@ -14,20 +14,22 @@
             管理
           </van-button>
         </van-cell>
-        <block wx:for="{{ collection }}" wx:key="iid">
-          <goods-card data-index="{{ index }}"
-                      isSelected="{{ isSelected }}"
-                      selected="{{ item.selected }}"
-                      image="{{ item.img }}"
-                      title="{{ item.title }}"
-                      price="{{ item.price }}"
-                      oldPrice="{{ item.oldPrice }}"
-                      bind:image="toGoodsDetail"
-                      bind:select="onSelect"
-                      bind:delete="onDelete">
-            <view slot="params" class="params">{{ item.params }}</view>
-          </goods-card>
-        </block>
+        <scroll-view style="{{ isSelected ? 'height: 77vh;' : 'height: 85vh;'}}" scroll-y>
+          <block wx:for="{{ collection }}" wx:key="iid">
+            <goods-card data-index="{{ index }}"
+                        isSelected="{{ isSelected }}"
+                        selected="{{ item.selected }}"
+                        image="{{ item.img }}"
+                        title="{{ item.title }}"
+                        price="{{ item.price }}"
+                        oldPrice="{{ item.oldPrice }}"
+                        bind:image="toGoodsDetail"
+                        bind:select="onSelect"
+                        bind:delete="onDelete">
+              <view slot="params" class="params">{{ item.params }}</view>
+            </goods-card>
+          </block>
+        </scroll-view>
       </block>
 
       <van-empty wx:else description="您还没有收藏任何商品">
@@ -51,4 +53,19 @@
       </van-empty>
     </van-tab>
   </van-tabs>
+
+  <van-submit-bar style="{{ isSelected ? 'display: block;' : 'display: none;' }}"
+                  button-text="{{ '删除' }}"
+                  button-type="info"
+                  button-class="custom_button"
+                  bind:submit="onDelete">
+    <van-checkbox value="{{ isSelectAll }}"
+                  icon-size="40rpx"
+                  shape
+                  checked-color="#333"
+                  custom-class="custom_checkbox"
+                  bind:change="onClickAll">
+      全选
+    </van-checkbox>
+  </van-submit-bar>
 </view>

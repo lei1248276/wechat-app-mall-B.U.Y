@@ -65,11 +65,16 @@
   text-decoration: line-through;
 }
 
-.delete {
-  width: 25vw;
+.delete, .collect {
+  display: inline-block;
+  width: 16vw;
   height: 320rpx;
   color: #fff;
   line-height: 320rpx;
   text-align: center;
   background-color: #B20F25;
+}
+
+.collect {
+  background-color: #70a7e8;
 }

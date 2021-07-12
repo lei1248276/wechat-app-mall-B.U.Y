@@ -19,7 +19,7 @@
 }
 .goods-carousels .heart {
   position: absolute;
-  top: 2%;
+  top: -8%;
   right: 5%;
 }
 .goods-carousels .indicator {

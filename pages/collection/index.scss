@@ -1,5 +1,21 @@
 @import "../../styles/index";
 
-.params{
-  @include fc(30rpx, $uni_blue);
+.collection_container{
+  height: 100vh;
+  overflow: hidden;
+
+  .params{
+    @include fc(30rpx, $uni_blue);
+  }
+
+  .custom_button{
+    padding: 0;
+    border-radius: 0;
+    background-color: #333;
+    border: none;
+  }
+  .custom_checkbox{
+    position: relative;
+    right: 280rpx;
+  }
 }

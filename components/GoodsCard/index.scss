@@ -62,9 +62,14 @@
 }
 
 .delete{
-  @include wh(25vw, 320rpx);
+  display: inline-block;
+  @include wh(16vw, 320rpx);
   color: #fff;
   line-height: 320rpx;
   text-align: center;
   background-color: $uni_red;
+}
+.collect{
+  @extend .delete;
+  background-color: $uni_blue;
 }

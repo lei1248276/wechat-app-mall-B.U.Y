@@ -83,7 +83,7 @@ App({
     return Promise.all([goodsDetail, goodsRecommend]);
   },
   // * search page API
-  'pages/search/index': function(route, params = { type: 'pop', page: randomRange(1, 10) }) {
+  'pages/search/index': function(route, params = { type: 'pop', page: randomRange(1, 20) }) {
     const cache = this.globalData.cache;
     if (cache.has(route)) return cache.get(route);
 

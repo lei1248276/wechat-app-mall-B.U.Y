@@ -76,6 +76,15 @@ Page({
     globalData.isRefresh = true;
     this.setData({ purchase, totalPrice, isSelectAll: this.selectedNum === purchase.length });
   },
+  onCollect(e) {
+    const i = typeof e === 'number' ? e : e.target.dataset.index,
+      collection = globalData.collection,
+      { iid, title, columns, price, oldPrice, img } = this.data.purchase[i];
+    if (!collection.has(iid)) {
+      collection.set(iid, { iid, title, columns, price, oldPrice, img, selected: false, collected: true, params: columns.join(' ') });
+    }
+    Toast.success('收藏成功！');
+  },
   onSet({ target: { dataset: { index: i }}}) {
     const { desc, color, size, img, price, oldPrice, stock } = this.data.purchase[i];
     this.setData({
@@ -152,9 +161,11 @@ Page({
   },
   toPay() {
     const data = this.data;
-    if (data.isConfig) return console.log(`移至愿望清单`);
-
-    if (data.totalPrice) {
+    if (data.isConfig) {
+      for (let i = 0, len = data.purchase.length; i < len; i++) {
+        if (data.purchase[i].selected) this.onCollect(i);
+      }
+    } else if (data.totalPrice) {
       const imgs = [];
 
       data.purchase.forEach(v => { if (v.selected) imgs.push(v.img); });

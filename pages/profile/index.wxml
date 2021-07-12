@@ -49,8 +49,8 @@
   </van-popup>
 
   <view class="shelf">
-    <show-shelf title="我的订单" icon="send-gift-o"/>
-    <show-shelf title="我的券包" icon="coupon-o"/>
+    <show-shelf title="我的订单" icon="send-gift-o" bind:tap="onOrderForm"/>
+    <show-shelf title="我的券包" icon="coupon-o" bind:tap="onCoupon"/>
     <show-shelf title="兑换积分" icon="point-gift-o"/>
   </view>
 

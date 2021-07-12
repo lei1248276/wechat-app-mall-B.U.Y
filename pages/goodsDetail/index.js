@@ -64,9 +64,9 @@ Page({
       globalData.collection.set(iid, { iid, title, price, oldPrice, img, selected: false, collected: true, params: columns.join(' ') });
       this.setData({ collectionInfo: this.data.collectionInfo + 1 });
     } else {
-      globalData.collection.get(this.iid).collected = false;
+      globalData.collection.delete(this.iid);
+      this.setData({ collectionInfo: this.data.collectionInfo - 1 });
     }
-    console.log(e.detail, globalData.collection);
   },
   onSelColor(e) {
     const { img, color } = e.detail;
@@ -87,10 +87,10 @@ Page({
       globalData.isRefresh = true;
       if (goods) return ++goods.count;
 
-      const { title, desc, iid, lowNowPrice: price, lowPrice: oldPrice } = data.goodsInfo,
+      const { title, desc, iid, columns, lowNowPrice: price, lowPrice: oldPrice } = data.goodsInfo,
         { skuImg, props: { 0: { list: colorList }, 1: { list: sizeList }}} = data.stock,
         item = {
-          title, desc, iid, color, size, img,
+          title, desc, iid, color, size, img, columns,
           id: color + size,
           count: 1,
           selected: false,

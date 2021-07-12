@@ -1,4 +1,18 @@
-.params {
+.collection_container {
+  height: 100vh;
+  overflow: hidden;
+}
+.collection_container .params {
   font-size: 30rpx;
   color: #70a7e8;
+}
+.collection_container .custom_button {
+  padding: 0;
+  border-radius: 0;
+  background-color: #333;
+  border: none;
+}
+.collection_container .custom_checkbox {
+  position: relative;
+  right: 280rpx;
 }
