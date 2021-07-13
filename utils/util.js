@@ -18,7 +18,18 @@ const randomRange = (low, high) => {
   return Math.round(Math.random() * (high - low + 1) + low);
 };
 
+const shuffle = arr => {
+  let len = arr.length, randomIndex;
+  while (len) {
+    randomIndex = Math.floor(Math.random() * len);
+    len--;
+    [arr[len], arr[randomIndex]] = [arr[randomIndex], arr[len]];
+  }
+  return arr;
+};
+
 module.exports = {
   formatTime,
-  randomRange
+  randomRange,
+  shuffle
 };

@@ -1,4 +1,5 @@
 import Toast from '@vant/weapp/toast/toast';
+import { shuffle } from '../../utils/util';
 
 const APP = getApp(),
   globalData = APP.globalData;
@@ -33,7 +34,7 @@ Page({
         }
       });
       this.setData({
-        goodsRecommend,
+        goodsRecommend: shuffle(goodsRecommend), // 障眼法，打乱一下顺序让每次进来都感觉有点不一样
         topBar: goodsDetail.topBar,
         topImages: goodsDetail.itemInfo.topImages,
         goodsInfo: goodsDetail.itemInfo,
