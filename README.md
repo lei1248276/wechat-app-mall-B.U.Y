@@ -26,7 +26,5 @@
 - pay 支付
 
 ***
-###扫描体验
-![体验](assets/体验.png)
-***
+####进入WechatTools 导入体验
 ![展示](assets/展示.png)
